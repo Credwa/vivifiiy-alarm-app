@@ -31,7 +31,7 @@ You can download the expo mobile app also see [expo docs](https://docs.expo.io/)
 
 Run the command below to start development and follow instructions detailed in command line for more information
 
-\$ yarn start
+ $ yarn start
 
 <a name="Build"></a>
 
