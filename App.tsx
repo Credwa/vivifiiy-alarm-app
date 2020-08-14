@@ -1,19 +1,19 @@
+import Navigation from '@/components/navigation';
+import useCachedResources from '@/hooks/useCachedResources';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { StyleSheet, Text, View } from 'react-native';
-import useCachedResources from '@/hooks/useCachedResources';
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
-
   if (!isLoadingComplete) {
     return null;
   } else {
     return (
       <SafeAreaProvider style={styles.container}>
-        <Text>Vivifiiy Apps</Text>
-        <StatusBar />
+        <Navigation />
+        <StatusBar style="light" />
       </SafeAreaProvider>
     );
   }
@@ -21,9 +21,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
+    flex: 1
   }
 });
