@@ -2,21 +2,26 @@ import Background from '@/components/Background';
 import VivButton from '@/components/VivButton';
 import { Ionicons } from '@expo/vector-icons';
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import VivText from '@/components/VivText';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Colors from '@/constants/Colors';
 
 export default function HomeTabScreen() {
   return (
     <Background>
       <SafeAreaView style={styles.container}>
-        <Text style={styles.title}>Tab One</Text>
+        <View style={styles.timeLeft}>
+          <VivText fontName="Body" color={Colors.greyLight2}>
+            Time left ~
+          </VivText>
+          <VivText fontName="Body" color={Colors.blueLight}>
+            {' '}
+            8 hrs 23 mins
+          </VivText>
+        </View>
         <View style={styles.separator} />
-        <VivButton
-          color="Primary"
-          text="Create alarm"
-          iconPosition="right"
-          icon={<Ionicons name="md-alarm" size={17} />}
-        />
+        <VivButton color="Primary" text="Create alarm" icon={<Ionicons name="md-alarm" size={22} />} />
       </SafeAreaView>
     </Background>
   );
@@ -25,16 +30,15 @@ export default function HomeTabScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingTop: 30
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#fff'
+  timeLeft: {
+    flexDirection: 'row'
   },
   separator: {
     marginVertical: 30,
-    height: 1,
+    height: 0.3,
     width: '80%'
   }
 });

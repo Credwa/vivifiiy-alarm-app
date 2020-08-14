@@ -27,9 +27,7 @@ export default function useCachedResources() {
           Font.loadAsync({
             ...FontAwesome.font,
             ...Ionicons.font,
-            ...SimpleLineIcons.font,
-            'nunito': require('~/assets/fonts/Nunito-Regular.ttf'),
-            'nunito-semi': require('~/assets/fonts/Nunito-SemiBold.ttf')
+            ...SimpleLineIcons.font
           }),
           ...imageAssets
         ]);
