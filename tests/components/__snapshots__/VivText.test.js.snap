@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<VivText /> renders correctly 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "color": "#869DB2",
+      },
+      Object {
+        "fontFamily": "Nunito_400Regular",
+        "fontSize": 17,
+      },
+      Object {
+        "color": undefined,
+      },
+      undefined,
+    ]
+  }
+>
+  Snapshot test!
+</Text>
+`;

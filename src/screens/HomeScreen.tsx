@@ -22,6 +22,14 @@ export default function HomeTabScreen() {
         </View>
         <View style={styles.separator} />
         <VivButton color="Primary" text="Create alarm" icon={<Ionicons name="md-alarm" size={22} />} />
+        <View style={styles.separator} />
+        <VivButton
+          color="Default"
+          text="Sign in with Apple"
+          separator
+          paddingHorizontal={{ left: 15, right: 50 }}
+          icon={<Ionicons name="logo-apple" size={22} />}
+        />
       </SafeAreaView>
     </Background>
   );

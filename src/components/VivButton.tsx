@@ -1,15 +1,21 @@
 import Colors from '@/constants/Colors';
 import * as React from 'react';
-import { StyleSheet, TouchableOpacity, GestureResponderEvent } from 'react-native';
+import { StyleSheet, TouchableOpacity, GestureResponderEvent, View } from 'react-native';
 import { Icon } from '@expo/vector-icons/build/createIconSet';
 import VivText from '@/components/VivText';
 
+interface PaddingHorizontal {
+  left: number;
+  right: number;
+}
 interface ButtonProps {
   icon?: React.ReactComponentElement<Icon<string, any>>;
   text: string;
   iconPosition?: 'left' | 'right';
-  seperator?: boolean;
+  separator?: boolean;
   type?: 'basic' | 'separated';
+  paddingHorizontal?: PaddingHorizontal;
+  paddingVertical?: number;
   color?: 'Primary' | 'Secondary' | 'Default';
   onPress?: ((event: GestureResponderEvent) => void) | undefined;
 }
@@ -39,8 +45,19 @@ export default function VivButton(props: ButtonProps) {
       margin.marginRight = 8;
   }
 
-  return !props.type || props.type === 'basic' ? (
-    <TouchableOpacity style={[styles.button, { backgroundColor: color }]} {...props}>
+  return !props.separator ? (
+    <TouchableOpacity
+      style={[
+        styles.button,
+        {
+          backgroundColor: color,
+          paddingVertical: props.paddingVertical || 13.5,
+          paddingLeft: props.paddingHorizontal && props.paddingHorizontal.left ? props.paddingHorizontal.left : 12.5,
+          paddingRight: props.paddingHorizontal && props.paddingHorizontal.right ? props.paddingHorizontal.right : 12.5
+        }
+      ]}
+      {...props}
+    >
       {props.iconPosition && props.iconPosition === 'left' ? props.icon : null}
       <VivText fontName="Headline" color={Colors.blueDark} style={margin}>
         {props.text}
@@ -48,8 +65,21 @@ export default function VivButton(props: ButtonProps) {
       {!props.iconPosition || props.iconPosition === 'right' ? props.icon : null}
     </TouchableOpacity>
   ) : (
-    <TouchableOpacity style={[styles.buttonSeperated, { backgroundColor: color }]} {...props}>
-      <VivText fontName="Headline" style={margin}>
+    <TouchableOpacity style={[styles.buttonSeparated, { backgroundColor: color }]} {...props}>
+      <View style={[styles.iconSeparatedView, { paddingVertical: props.paddingVertical || 13.5 }]}>{props.icon}</View>
+      <VivText
+        fontName="Headline"
+        color={Colors.blueDark}
+        style={[
+          styles.textSeparated,
+          {
+            paddingVertical: props.paddingVertical || 13.5,
+            paddingLeft: props.paddingHorizontal && props.paddingHorizontal.left ? props.paddingHorizontal.left : 12.5,
+            paddingRight:
+              props.paddingHorizontal && props.paddingHorizontal.right ? props.paddingHorizontal.right : 12.5
+          }
+        ]}
+      >
         {props.text}
       </VivText>
     </TouchableOpacity>
@@ -61,12 +91,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#FFFFFF',
     paddingHorizontal: 25,
-    paddingVertical: 13.5,
     borderRadius: 7
   },
-  buttonSeperated: {
+  buttonSeparated: {
     flexDirection: 'row',
     backgroundColor: '#FFFFFF',
     borderRadius: 7
+  },
+  iconSeparatedView: {
+    borderRightWidth: 0.3,
+    borderColor: Colors.greyLight2,
+    paddingHorizontal: 18
+  },
+  textSeparated: {
+    paddingVertical: 13.5,
+    paddingLeft: 10,
+    paddingRight: 25
   }
 });

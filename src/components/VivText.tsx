@@ -9,7 +9,7 @@ interface FontStyle {
 interface TextProps {
   children?: React.ReactNode;
   color?: string;
-  fontName:
+  fontName?:
     | 'Title1'
     | 'Title2'
     | 'Title3'

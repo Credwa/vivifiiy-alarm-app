@@ -8,6 +8,12 @@
     "eject": "expo eject",
     "test": "jest --watchAll"
   },
+  "jest": {
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
+    ]
+  },
   "dependencies": {
     "@expo-google-fonts/nunito": "^0.1.0",
     "@expo-google-fonts/roboto": "^0.1.0",
