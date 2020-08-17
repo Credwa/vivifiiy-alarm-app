@@ -32,7 +32,7 @@ export default function useCachedResources() {
           ...imageAssets
         ]);
       } catch (error) {
-        console.warn(error);
+        throw error;
       } finally {
         setLoadingComplete(true);
         SplashScreen.hideAsync();

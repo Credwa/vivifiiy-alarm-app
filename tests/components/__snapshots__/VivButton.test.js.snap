@@ -118,75 +118,6 @@ exports[`<VivButton /> renders a basic button correctly with all props 1`] = `
 </View>
 `;
 
-exports[`<VivButton /> renders a basic correctly with all props 1`] = `
-<View
-  accessible={true}
-  focusable={true}
-  onClick={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
-  style={
-    Object {
-      "backgroundColor": "#3DD7F2",
-      "borderRadius": 7,
-      "flexDirection": "row",
-      "opacity": 1,
-      "paddingHorizontal": 25,
-      "paddingLeft": 12,
-      "paddingRight": 12,
-      "paddingVertical": 14,
-    }
-  }
->
-  <Text
-    allowFontScaling={false}
-    style={
-      Array [
-        Object {
-          "color": undefined,
-          "fontSize": 22,
-        },
-        undefined,
-        Object {
-          "fontFamily": "ionicons",
-          "fontStyle": "normal",
-          "fontWeight": "normal",
-        },
-        Object {},
-      ]
-    }
-  >
-    
-  </Text>
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "#869DB2",
-        },
-        Object {
-          "fontFamily": "Nunito_600SemiBold",
-          "fontSize": 17,
-        },
-        Object {
-          "color": "#191940",
-        },
-        Object {
-          "marginLeft": 8,
-          "marginRight": 0,
-        },
-      ]
-    }
-  >
-    Hello World props
-  </Text>
-</View>
-`;
-
 exports[`<VivButton /> renders a separated button correctly with all props 1`] = `
 <View
   accessible={true}
@@ -271,55 +202,6 @@ exports[`<VivButton /> renders a separated button correctly with all props 1`] =
     }
   >
     Hello World props
-  </Text>
-</View>
-`;
-
-exports[`<VivButton /> renders correctly 1`] = `
-<View
-  accessible={true}
-  focusable={false}
-  onClick={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
-  style={
-    Object {
-      "backgroundColor": "#ffffff",
-      "borderRadius": 7,
-      "flexDirection": "row",
-      "opacity": 1,
-      "paddingHorizontal": 25,
-      "paddingLeft": 12.5,
-      "paddingRight": 12.5,
-      "paddingVertical": 13.5,
-    }
-  }
->
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "#869DB2",
-        },
-        Object {
-          "fontFamily": "Nunito_600SemiBold",
-          "fontSize": 17,
-        },
-        Object {
-          "color": "#191940",
-        },
-        Object {
-          "marginLeft": 0,
-          "marginRight": 8,
-        },
-      ]
-    }
-  >
-    Hello World
   </Text>
 </View>
 `;

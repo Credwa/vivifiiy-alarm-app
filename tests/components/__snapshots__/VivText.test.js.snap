@@ -21,3 +21,25 @@ exports[`<VivText /> renders correctly 1`] = `
   Snapshot test!
 </Text>
 `;
+
+exports[`<VivText /> renders headline text correctly 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "color": "#869DB2",
+      },
+      Object {
+        "fontFamily": "Nunito_600SemiBold",
+        "fontSize": 17,
+      },
+      Object {
+        "color": "#869DB2",
+      },
+      undefined,
+    ]
+  }
+>
+  Snapshot test!
+</Text>
+`;

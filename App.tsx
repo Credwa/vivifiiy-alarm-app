@@ -12,6 +12,9 @@ export default function App() {
   const [robotoLoaded, robotoError] = useFontsRoboto({ Roboto_400Regular, Roboto_500Medium });
   const [nunitoLoaded, nunitoError] = useFontsNunito({ Nunito_400Regular, Nunito_600SemiBold });
 
+  if (robotoError) throw robotoError;
+  if (nunitoError) throw nunitoError;
+
   if (!isLoadingComplete || !robotoLoaded || !nunitoLoaded) {
     return null;
   } else {

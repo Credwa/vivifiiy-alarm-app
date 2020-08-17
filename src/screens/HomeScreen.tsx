@@ -1,11 +1,11 @@
 import Background from '@/components/Background';
 import VivButton from '@/components/VivButton';
+import VivText from '@/components/VivText';
+import Colors from '@/constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
-import VivText from '@/components/VivText';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Colors from '@/constants/Colors';
 
 export default function HomeTabScreen() {
   return (
