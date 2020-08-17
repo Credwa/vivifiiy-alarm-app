@@ -1,0 +1,260 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HomeScreen /> renders correctly 1`] = `
+<View
+  accessibilityIgnoresInvertColors={true}
+  style={
+    Object {
+      "flex": 1,
+      "paddingHorizontal": 20,
+      "resizeMode": "cover",
+    }
+  }
+>
+  <Image
+    source={1}
+    style={
+      Array [
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        Object {
+          "height": undefined,
+          "width": undefined,
+        },
+        undefined,
+      ]
+    }
+  />
+  <RNCSafeAreaView
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "paddingTop": 30,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#869DB2",
+            },
+            Object {
+              "fontFamily": "Nunito_400Regular",
+              "fontSize": 17,
+            },
+            Object {
+              "color": "#869DB2",
+            },
+            undefined,
+          ]
+        }
+      >
+        Time left ~
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#869DB2",
+            },
+            Object {
+              "fontFamily": "Nunito_400Regular",
+              "fontSize": 17,
+            },
+            Object {
+              "color": "#5EC5FF",
+            },
+            undefined,
+          ]
+        }
+      >
+         
+        8 hrs 23 mins
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "height": 0.3,
+          "marginVertical": 30,
+          "width": "80%",
+        }
+      }
+    />
+    <View
+      accessible={true}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#3DD7F2",
+          "borderRadius": 7,
+          "flexDirection": "row",
+          "opacity": 1,
+          "paddingHorizontal": 25,
+          "paddingLeft": 12.5,
+          "paddingRight": 12.5,
+          "paddingVertical": 13.5,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#869DB2",
+            },
+            Object {
+              "fontFamily": "Nunito_600SemiBold",
+              "fontSize": 17,
+            },
+            Object {
+              "color": "#191940",
+            },
+            Object {
+              "marginLeft": 0,
+              "marginRight": 8,
+            },
+          ]
+        }
+      >
+        Create alarm
+      </Text>
+      <Text
+        allowFontScaling={false}
+        style={
+          Array [
+            Object {
+              "color": undefined,
+              "fontSize": 22,
+            },
+            undefined,
+            Object {
+              "fontFamily": "ionicons",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+            Object {},
+          ]
+        }
+      >
+        
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "height": 0.3,
+          "marginVertical": 30,
+          "width": "80%",
+        }
+      }
+    />
+    <View
+      accessible={true}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderRadius": 7,
+          "flexDirection": "row",
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "borderColor": "#869DB2",
+              "borderRightWidth": 0.3,
+              "paddingHorizontal": 18,
+            },
+            Object {
+              "paddingVertical": 13.5,
+            },
+          ]
+        }
+      >
+        <Text
+          allowFontScaling={false}
+          style={
+            Array [
+              Object {
+                "color": undefined,
+                "fontSize": 22,
+              },
+              undefined,
+              Object {
+                "fontFamily": "ionicons",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          
+        </Text>
+      </View>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#869DB2",
+            },
+            Object {
+              "fontFamily": "Nunito_600SemiBold",
+              "fontSize": 17,
+            },
+            Object {
+              "color": "#191940",
+            },
+            Array [
+              Object {
+                "paddingLeft": 10,
+                "paddingRight": 25,
+                "paddingVertical": 13.5,
+              },
+              Object {
+                "paddingLeft": 15,
+                "paddingRight": 50,
+                "paddingVertical": 13.5,
+              },
+            ],
+          ]
+        }
+      >
+        Sign in with Apple
+      </Text>
+    </View>
+  </RNCSafeAreaView>
+</View>
+`;

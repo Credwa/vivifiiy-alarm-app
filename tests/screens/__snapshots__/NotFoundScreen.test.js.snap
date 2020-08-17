@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NotFoundScreen /> renders correctly 1`] = `
+<RNCSafeAreaView
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 20,
+        "fontWeight": "bold",
+      }
+    }
+  >
+    Not found
+  </Text>
+  <View
+    style={
+      Object {
+        "height": 1,
+        "marginVertical": 30,
+        "width": "80%",
+      }
+    }
+  />
+</RNCSafeAreaView>
+`;
