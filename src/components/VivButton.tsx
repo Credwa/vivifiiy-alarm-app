@@ -1,6 +1,6 @@
 import Colors from '@/constants/Colors';
 import * as React from 'react';
-import { StyleSheet, TouchableOpacity, GestureResponderEvent, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, Pressable, GestureResponderEvent, View } from 'react-native';
 import { Icon } from '@expo/vector-icons/build/createIconSet';
 import VivText from '@/components/VivText';
 
@@ -46,7 +46,7 @@ export default function VivButton(props: ButtonProps) {
   }
 
   return !props.separator ? (
-    <TouchableOpacity
+    <Pressable
       style={[
         styles.button,
         {
@@ -56,16 +56,16 @@ export default function VivButton(props: ButtonProps) {
           paddingRight: props.paddingHorizontal && props.paddingHorizontal.right ? props.paddingHorizontal.right : 12.5
         }
       ]}
-      {...props}
+      onPress={props.onPress}
     >
       {props.iconPosition && props.iconPosition === 'left' ? props.icon : null}
       <VivText fontName="Headline" color={Colors.blueDark} style={margin}>
         {props.text}
       </VivText>
       {!props.iconPosition || props.iconPosition === 'right' ? props.icon : null}
-    </TouchableOpacity>
+    </Pressable>
   ) : (
-    <TouchableOpacity style={[styles.buttonSeparated, { backgroundColor: color }]} {...props}>
+    <Pressable style={[styles.buttonSeparated, { backgroundColor: color }]} onPress={props.onPress}>
       <View style={[styles.iconSeparatedView, { paddingVertical: props.paddingVertical || 13.5 }]}>{props.icon}</View>
       <VivText
         fontName="Headline"
@@ -82,7 +82,7 @@ export default function VivButton(props: ButtonProps) {
       >
         {props.text}
       </VivText>
-    </TouchableOpacity>
+    </Pressable>
   );
 }
 
