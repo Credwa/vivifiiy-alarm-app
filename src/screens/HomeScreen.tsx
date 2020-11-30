@@ -2,6 +2,7 @@ import Background from '@/components/Background';
 import VivButton from '@/components/VivButton';
 import VivText from '@/components/VivText';
 import Colors from '@/constants/Colors';
+import Alarm from '@/components/Alarm';
 import { Ionicons } from '@expo/vector-icons';
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
@@ -20,6 +21,8 @@ export default function HomeTabScreen() {
             8 hrs 23 mins
           </VivText>
         </View>
+        <View style={styles.separator} />
+        <Alarm />
         <View style={styles.separator} />
         <VivButton color="Primary" text="Create alarm" icon={<Ionicons name="md-alarm" size={22} />} />
         <View style={styles.separator} />

@@ -3,8 +3,10 @@
 exports[`<VivButton /> renders a basic button correctly 1`] = `
 <View
   accessible={true}
-  focusable={false}
+  focusable={true}
+  onBlur={[Function]}
   onClick={[Function]}
+  onFocus={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -12,16 +14,20 @@ exports[`<VivButton /> renders a basic button correctly 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    Object {
-      "backgroundColor": "#ffffff",
-      "borderRadius": 7,
-      "flexDirection": "row",
-      "opacity": 1,
-      "paddingHorizontal": 25,
-      "paddingLeft": 12.5,
-      "paddingRight": 12.5,
-      "paddingVertical": 13.5,
-    }
+    Array [
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "borderRadius": 7,
+        "flexDirection": "row",
+        "paddingHorizontal": 25,
+      },
+      Object {
+        "backgroundColor": "#ffffff",
+        "paddingLeft": 12.5,
+        "paddingRight": 12.5,
+        "paddingVertical": 13.5,
+      },
+    ]
   }
 >
   <Text
@@ -53,7 +59,9 @@ exports[`<VivButton /> renders a basic button correctly with all props 1`] = `
 <View
   accessible={true}
   focusable={true}
+  onBlur={[Function]}
   onClick={[Function]}
+  onFocus={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -61,16 +69,20 @@ exports[`<VivButton /> renders a basic button correctly with all props 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    Object {
-      "backgroundColor": "#3DD7F2",
-      "borderRadius": 7,
-      "flexDirection": "row",
-      "opacity": 1,
-      "paddingHorizontal": 25,
-      "paddingLeft": 12,
-      "paddingRight": 12,
-      "paddingVertical": 14,
-    }
+    Array [
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "borderRadius": 7,
+        "flexDirection": "row",
+        "paddingHorizontal": 25,
+      },
+      Object {
+        "backgroundColor": "#3DD7F2",
+        "paddingLeft": 12,
+        "paddingRight": 12,
+        "paddingVertical": 14,
+      },
+    ]
   }
 >
   <Text
@@ -122,7 +134,9 @@ exports[`<VivButton /> renders a separated button correctly with all props 1`] =
 <View
   accessible={true}
   focusable={true}
+  onBlur={[Function]}
   onClick={[Function]}
+  onFocus={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -130,12 +144,16 @@ exports[`<VivButton /> renders a separated button correctly with all props 1`] =
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    Object {
-      "backgroundColor": "#D98436",
-      "borderRadius": 7,
-      "flexDirection": "row",
-      "opacity": 1,
-    }
+    Array [
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "borderRadius": 7,
+        "flexDirection": "row",
+      },
+      Object {
+        "backgroundColor": "#D98436",
+      },
+    ]
   }
 >
   <View

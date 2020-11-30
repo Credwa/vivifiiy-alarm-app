@@ -97,8 +97,10 @@ exports[`<HomeScreen /> renders correctly 1`] = `
     />
     <View
       accessible={true}
-      focusable={false}
+      focusable={true}
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -106,16 +108,20 @@ exports[`<HomeScreen /> renders correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
-          "backgroundColor": "#3DD7F2",
-          "borderRadius": 7,
-          "flexDirection": "row",
-          "opacity": 1,
-          "paddingHorizontal": 25,
-          "paddingLeft": 12.5,
-          "paddingRight": 12.5,
-          "paddingVertical": 13.5,
-        }
+        Array [
+          Object {
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": 7,
+            "flexDirection": "row",
+            "paddingHorizontal": 25,
+          },
+          Object {
+            "backgroundColor": "#3DD7F2",
+            "paddingLeft": 12.5,
+            "paddingRight": 12.5,
+            "paddingVertical": 13.5,
+          },
+        ]
       }
     >
       <Text
@@ -172,8 +178,10 @@ exports[`<HomeScreen /> renders correctly 1`] = `
     />
     <View
       accessible={true}
-      focusable={false}
+      focusable={true}
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -181,12 +189,16 @@ exports[`<HomeScreen /> renders correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
-          "backgroundColor": "#ffffff",
-          "borderRadius": 7,
-          "flexDirection": "row",
-          "opacity": 1,
-        }
+        Array [
+          Object {
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": 7,
+            "flexDirection": "row",
+          },
+          Object {
+            "backgroundColor": "#ffffff",
+          },
+        ]
       }
     >
       <View
