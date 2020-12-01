@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { StyleSheet, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
+import { NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 import ScrollSelector from '@/components/ScrollSelector';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Colors from '@/constants/Colors';
+import useStore from '@/store';
 
 interface SnapScrollProps {
   data: string[];
@@ -11,19 +12,23 @@ interface SnapScrollProps {
 export default function MinuteView({ data }: SnapScrollProps) {
   const [listState, setEndOfList] = useState(data);
   const [timesExtended, setTimesExtended] = useState(0);
-
+  const updateMinuteOnChange = useStore((state) => state.setMinute);
   const onEndReached = (event: NativeSyntheticEvent<NativeScrollEvent> | NativeScrollEvent) => {
     if (timesExtended <= 2) {
       setEndOfList([...listState, ...data]);
       setTimesExtended(timesExtended + 1);
     }
   };
+  useEffect(() => {
+    console.log('running');
+    updateMinuteOnChange('30');
+  }, []);
   return (
     <ScrollSelector
       dataSource={listState}
       selectedIndex={Math.ceil(data.length / 2)}
-      onValueChange={(data, selectedIndex) => {
-        console.log(data);
+      onValueChange={(data) => {
+        updateMinuteOnChange(data);
       }}
       wrapperHeight={200}
       wrapperWidth={60}
@@ -34,10 +39,3 @@ export default function MinuteView({ data }: SnapScrollProps) {
     />
   );
 }
-
-const styles = StyleSheet.create({
-  slide: {
-    flex: 0.2,
-    alignItems: 'center'
-  }
-});

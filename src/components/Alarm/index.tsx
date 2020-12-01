@@ -5,20 +5,7 @@ import MinuteView from './MinuteView';
 import MeridiemView from './MeridiemView';
 import VivText from '@/components/VivText';
 import Colors from '@/constants/Colors';
-
-const generateTimerArray = (max: number, zeroIncluded: boolean, startingRepeats?: number) => {
-  let tempArr: string[] = [];
-  for (let index = zeroIncluded ? 0 : 1; index <= max; index++) {
-    tempArr.push(index.toLocaleString('en-IN', { minimumIntegerDigits: 2 }));
-  }
-  if (startingRepeats) {
-    let originalArr = tempArr;
-    for (let index = 0; index < startingRepeats; index++) {
-      tempArr = [...tempArr, ...originalArr];
-    }
-  }
-  return tempArr;
-};
+import { generateTimerArray } from '@/utils';
 
 export default function Alarm() {
   generateTimerArray(12, false);

@@ -25,3 +25,7 @@ export type InsightsTabParamList = {
 export type SettingsTabParamList = {
   SettingsTabScreen: undefined;
 };
+
+export type meridiem = 'AM' | 'PM';
+
+export type twelveHrTime = { hour: string; minute: string; meridiem: meridiem };
