@@ -10,11 +10,31 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import useStore from '@/store';
 import { useEffect, useState } from 'react';
 import { twelveHrTime } from '@/types';
-import { convertTo24Hour, getTimeTillAlarm } from '@/utils';
+import { getTimeTillAlarm } from '@/utils';
+import { AlarmInterface } from '@/interfaces';
+import { clearAlarms, createNewAlarm } from '@/services/alarm.service';
 
 export default function HomeTabScreen() {
   const [time, setTime] = useState<twelveHrTime>(useStore.getState().getCurrentAlarm());
   const [timeTillAlarm, setTimeTillAlarm] = useState({ hour: 0, minute: 0 });
+  const [hasActiveAlarm, setHasActiveAlarm] = useState(false);
+  const setAlarmsState = useStore((state) => state.setAlarms);
+
+  const onCreateAlarm = () => {
+    createNewAlarm({ ...time, active: true, key: time.hour + time.minute + time.meridiem }, setAlarmsState);
+  };
+
+  const onClearAlarms = () => {
+    clearAlarms();
+  };
+
+  const onCancelAlarm = () => {
+    console.log('cancel alarm');
+  };
+
+  const onEditAlarm = () => {
+    console.log('edit alarm');
+  };
 
   useEffect(() => {
     useStore.subscribe(
@@ -23,6 +43,20 @@ export default function HomeTabScreen() {
         setTimeTillAlarm(getTimeTillAlarm(timeUpdate));
       },
       (state) => state.getCurrentAlarm()
+    );
+  }, []);
+
+  useEffect(() => {
+    useStore.subscribe(
+      (activeAlarms: Map<string, AlarmInterface>) => {
+        console.log(activeAlarms);
+        if (activeAlarms.size > 0) {
+          setHasActiveAlarm(true);
+        } else {
+          setHasActiveAlarm(false);
+        }
+      },
+      (state) => state.getActiveAlarms()
     );
   }, []);
 
@@ -48,20 +82,40 @@ export default function HomeTabScreen() {
         <View style={styles.separator} />
         <Alarm />
         <View style={styles.separator} />
+        {hasActiveAlarm ? (
+          <View style={styles.hasAlarmButtons}>
+            <VivButton
+              color="Primary"
+              text="Edit alarm"
+              onPress={onEditAlarm}
+              style={{ marginRight: 25 }}
+              paddingHorizontal={{ left: 23, right: 23 }}
+            />
+            <VivButton
+              color="Secondary"
+              text="Cancel"
+              onPress={onCancelAlarm}
+              paddingHorizontal={{ left: 35, right: 35 }}
+            />
+          </View>
+        ) : (
+          <VivButton
+            color="Primary"
+            text="Create alarm"
+            onPress={onCreateAlarm}
+            iconPosition="right"
+            icon={<Ionicons name="md-alarm" size={22} />}
+            paddingHorizontal={{ left: 65, right: 65 }}
+          />
+        )}
+        <View style={styles.separator} />
         <VivButton
-          color="Primary"
-          text="Create alarm"
-          icon={<Ionicons name="md-alarm" size={22} />}
+          color="Secondary"
+          text="Clear alarms"
+          onPress={onClearAlarms}
+          iconPosition="right"
           paddingHorizontal={{ left: 65, right: 65 }}
         />
-        <View style={styles.separator} />
-        {/* <VivButton
-          color="Default"
-          text="Sign in with Apple"
-          separator
-          paddingHorizontal={{ left: 15, right: 50 }}
-          icon={<Ionicons name="logo-apple" size={22} />}
-        /> */}
       </SafeAreaView>
     </Background>
   );
@@ -72,6 +126,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     paddingTop: 30
+  },
+  hasAlarmButtons: {
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    justifyContent: 'center',
+    alignContent: 'space-around'
   },
   timeLeft: {
     flexDirection: 'row'

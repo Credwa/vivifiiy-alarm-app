@@ -16,16 +16,14 @@ exports[`<VivButton /> renders a basic button correctly 1`] = `
   style={
     Array [
       Object {
-        "backgroundColor": "#FFFFFF",
+        "backgroundColor": "#ffffff",
         "borderRadius": 7,
         "flexDirection": "row",
         "paddingHorizontal": 25,
-      },
-      Object {
-        "backgroundColor": "#ffffff",
         "paddingLeft": 12.5,
         "paddingRight": 12.5,
         "paddingVertical": 13.5,
+        "textAlign": "center",
       },
     ]
   }
@@ -45,7 +43,7 @@ exports[`<VivButton /> renders a basic button correctly 1`] = `
         },
         Object {
           "marginLeft": 0,
-          "marginRight": 8,
+          "marginRight": 0,
         },
       ]
     }
@@ -71,16 +69,14 @@ exports[`<VivButton /> renders a basic button correctly with all props 1`] = `
   style={
     Array [
       Object {
-        "backgroundColor": "#FFFFFF",
+        "backgroundColor": "#3DD7F2",
         "borderRadius": 7,
         "flexDirection": "row",
         "paddingHorizontal": 25,
-      },
-      Object {
-        "backgroundColor": "#3DD7F2",
         "paddingLeft": 12,
         "paddingRight": 12,
         "paddingVertical": 14,
+        "textAlign": "center",
       },
     ]
   }
@@ -146,12 +142,9 @@ exports[`<VivButton /> renders a separated button correctly with all props 1`] =
   style={
     Array [
       Object {
-        "backgroundColor": "#FFFFFF",
+        "backgroundColor": "#D98436",
         "borderRadius": 7,
         "flexDirection": "row",
-      },
-      Object {
-        "backgroundColor": "#D98436",
       },
     ]
   }

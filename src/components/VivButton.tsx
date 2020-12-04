@@ -11,6 +11,7 @@ interface PaddingHorizontal {
 interface ButtonProps {
   icon?: React.ReactComponentElement<Icon<string, any>>;
   text: string;
+  style?: any;
   iconPosition?: 'left' | 'right';
   separator?: boolean;
   type?: 'basic' | 'separated';
@@ -21,36 +22,32 @@ interface ButtonProps {
 }
 
 export default function VivButton(props: ButtonProps) {
-  let color = Colors.white;
+  let color = { default: Colors.white, pressed: Colors.greyLight1 };
   let margin = { marginLeft: 0, marginRight: 0 };
   switch (props.color) {
     case 'Primary':
-      color = Colors.blueLight2;
+      color = { default: Colors.blueLight2, pressed: Colors.blueLight3 };
       break;
     case 'Secondary':
-      color = Colors.orangeMedium;
+      color = { default: Colors.orangeMedium, pressed: Colors.orangeMedium2 };
       break;
     default:
-      color = Colors.white;
+      color = color;
   }
 
-  switch (props.iconPosition) {
-    case 'left':
-      margin.marginLeft = 8;
-      break;
-    case 'right':
-      margin.marginRight = 8;
-      break;
-    default:
-      margin.marginRight = 8;
+  if (props.iconPosition === 'left') {
+    margin.marginLeft = 8;
+  } else if (props.iconPosition === 'right') {
+    margin.marginRight = 8;
   }
 
   return !props.separator ? (
     <Pressable
-      style={[
-        styles.button,
+      style={({ pressed }) => [
         {
-          backgroundColor: color,
+          ...styles.button,
+          ...props.style,
+          backgroundColor: pressed ? color.pressed : color.default,
           paddingVertical: props.paddingVertical || 13.5,
           paddingLeft: props.paddingHorizontal && props.paddingHorizontal.left ? props.paddingHorizontal.left : 12.5,
           paddingRight: props.paddingHorizontal && props.paddingHorizontal.right ? props.paddingHorizontal.right : 12.5
@@ -58,30 +55,46 @@ export default function VivButton(props: ButtonProps) {
       ]}
       onPress={props.onPress}
     >
-      {props.iconPosition && props.iconPosition === 'left' ? props.icon : null}
-      <VivText fontName="Headline" color={Colors.blueDark} style={margin}>
-        {props.text}
-      </VivText>
-      {!props.iconPosition || props.iconPosition === 'right' ? props.icon : null}
+      {({ pressed }) => (
+        <>
+          {props.iconPosition && props.iconPosition === 'left' ? props.icon : null}
+          <VivText fontName="Headline" color={pressed ? Colors.black : Colors.blueDark} style={margin}>
+            {props.text}
+          </VivText>
+          {!props.iconPosition || props.iconPosition === 'right' ? props.icon : null}
+        </>
+      )}
     </Pressable>
   ) : (
-    <Pressable style={[styles.buttonSeparated, { backgroundColor: color }]} onPress={props.onPress}>
-      <View style={[styles.iconSeparatedView, { paddingVertical: props.paddingVertical || 13.5 }]}>{props.icon}</View>
-      <VivText
-        fontName="Headline"
-        color={Colors.blueDark}
-        style={[
-          styles.textSeparated,
-          {
-            paddingVertical: props.paddingVertical || 13.5,
-            paddingLeft: props.paddingHorizontal && props.paddingHorizontal.left ? props.paddingHorizontal.left : 12.5,
-            paddingRight:
-              props.paddingHorizontal && props.paddingHorizontal.right ? props.paddingHorizontal.right : 12.5
-          }
-        ]}
-      >
-        {props.text}
-      </VivText>
+    <Pressable
+      style={({ pressed }) => [
+        { ...props.style, ...styles.buttonSeparated, backgroundColor: pressed ? color.pressed : color.default }
+      ]}
+      onPress={props.onPress}
+    >
+      {({ pressed }) => (
+        <>
+          <View style={[styles.iconSeparatedView, { paddingVertical: props.paddingVertical || 13.5 }]}>
+            {props.icon}
+          </View>
+          <VivText
+            fontName="Headline"
+            color={pressed ? Colors.black : Colors.blueDark}
+            style={[
+              styles.textSeparated,
+              {
+                paddingVertical: props.paddingVertical || 13.5,
+                paddingLeft:
+                  props.paddingHorizontal && props.paddingHorizontal.left ? props.paddingHorizontal.left : 12.5,
+                paddingRight:
+                  props.paddingHorizontal && props.paddingHorizontal.right ? props.paddingHorizontal.right : 12.5
+              }
+            ]}
+          >
+            {props.text}
+          </VivText>
+        </>
+      )}
     </Pressable>
   );
 }
@@ -89,6 +102,7 @@ export default function VivButton(props: ButtonProps) {
 const styles = StyleSheet.create({
   button: {
     flexDirection: 'row',
+    textAlign: 'center',
     backgroundColor: '#FFFFFF',
     paddingHorizontal: 25,
     borderRadius: 7

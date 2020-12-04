@@ -20,7 +20,6 @@ export default function MinuteView({ data }: SnapScrollProps) {
     }
   };
   useEffect(() => {
-    console.log('running');
     updateMinuteOnChange('30');
   }, []);
   return (

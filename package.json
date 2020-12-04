@@ -18,6 +18,7 @@
     "@expo-google-fonts/nunito": "^0.1.0",
     "@expo-google-fonts/roboto": "^0.1.0",
     "@expo/vector-icons": "^10.0.0",
+    "@react-native-async-storage/async-storage": "^1.13.2",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/bottom-tabs": "^5.11.2",
     "@react-navigation/native": "^5.8.10",
