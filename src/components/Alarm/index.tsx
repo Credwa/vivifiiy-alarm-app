@@ -6,13 +6,19 @@ import MeridiemView from './MeridiemView';
 import VivText from '@/components/VivText';
 import Colors from '@/constants/Colors';
 import { generateTimerArray } from '@/utils';
+import { AlarmInterface } from '@/interfaces';
 
-export default function Alarm() {
+interface AlarmProps {
+  nearestActiveAlarm: AlarmInterface;
+  style?: any;
+}
+
+export default function Alarm({ nearestActiveAlarm, style }: AlarmProps) {
   generateTimerArray(12, false);
   return (
-    <View style={styles.container}>
+    <View style={{ ...styles.container, ...style }}>
       <View style={styles.timeView}>
-        <HourView data={generateTimerArray(12, false, 2)} />
+        <HourView data={generateTimerArray(12, false, 2)} initValue={nearestActiveAlarm.hour} />
       </View>
       <View>
         <VivText fontName="Title2" color={Colors.white}>
@@ -20,10 +26,10 @@ export default function Alarm() {
         </VivText>
       </View>
       <View style={styles.timeView}>
-        <MinuteView data={generateTimerArray(59, true, 2)} />
+        <MinuteView data={generateTimerArray(59, true, 2)} initValue={nearestActiveAlarm.minute} />
       </View>
 
-      <MeridiemView data={['AM', 'PM']} />
+      <MeridiemView data={['AM', 'PM']} initValue={nearestActiveAlarm.meridiem} />
     </View>
   );
 }

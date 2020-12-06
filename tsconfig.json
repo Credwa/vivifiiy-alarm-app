@@ -9,7 +9,7 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "strict": true,
-    "target": "es5",
+    "target": "ES6",
     "paths": {
       "@/*": ["./src/*"],
       "~/*": ["./*"]

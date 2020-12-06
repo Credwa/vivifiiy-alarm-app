@@ -1,5 +1,4 @@
-import { twelveHrTime } from '@/types';
-import { differenceInHours, differenceInMinutes, startOfTomorrow } from 'date-fns';
+import { meridiem, twelveHrTime } from '@/types';
 
 /**
  * ConvertTo24Hour
@@ -44,45 +43,24 @@ export const generateTimerArray = (max: number, zeroIncluded: boolean, startingR
 };
 
 /**
- * getTimeTillAlarm
+ * findSelectedAlarmViewIndex
  *
- * Calculates the remaining time till alarm time passed through parameter goes off
+ * returns the index for matching initial alarm view value
  *
- * @param time
+ * @param data
+ * @param initValue
+ * @param startingIndex
  */
-export const getTimeTillAlarm = (time: twelveHrTime) => {
-  let currentTime = new Date();
-  let newTime = convertTo24Hour(time);
-  let alarmIsTomorrow = false;
-
-  if (Number(newTime.hour) < currentTime.getHours()) {
-    alarmIsTomorrow = true;
-  } else if (Number(newTime.hour) === currentTime.getHours() && Number(newTime.minute) < currentTime.getMinutes()) {
-    alarmIsTomorrow = true;
-  } else if (Number(newTime.hour) === currentTime.getHours() && Number(newTime.minute) === currentTime.getMinutes()) {
-    alarmIsTomorrow = true;
-  }
-
-  let alarmTime = alarmIsTomorrow
-    ? new Date(
-        startOfTomorrow().getFullYear(),
-        startOfTomorrow().getMonth(),
-        startOfTomorrow().getDate(),
-        Number(newTime.hour),
-        Number(newTime.minute)
-      )
-    : new Date(
-        currentTime.getFullYear(),
-        currentTime.getMonth(),
-        currentTime.getDate(),
-        Number(newTime.hour),
-        Number(newTime.minute)
-      );
-
-  return {
-    hour: differenceInHours(alarmTime, currentTime),
-    get minute() {
-      return differenceInMinutes(alarmTime, currentTime) - this.hour * 60;
+export const findSelectedAlarmViewIndex = (
+  data: meridiem[] | string[],
+  initValue: meridiem | string,
+  startingIndex: number
+) => {
+  let index = Math.floor(data.length / 2);
+  for (let i = startingIndex; i < data.length; i++) {
+    if (data[i] === initValue) {
+      index = i;
     }
-  };
+  }
+  return index;
 };

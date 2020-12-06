@@ -4,19 +4,24 @@ import { useState } from 'react';
 import Colors from '@/constants/Colors';
 import { meridiem } from '@/types';
 import useStore from '@/store';
+import { useEffect } from 'react';
+import { findSelectedAlarmViewIndex } from '@/utils';
 interface SnapScrollProps {
   data: meridiem[];
+  initValue: meridiem;
 }
 
-export default function MeridiemView({ data }: SnapScrollProps) {
-  const [listState, setEndOfList] = useState(data);
+export default function MeridiemView({ data, initValue }: SnapScrollProps) {
   const updateMeridiemOnChange = useStore((state) => state.setMeridiem);
+  useEffect(() => {
+    updateMeridiemOnChange(initValue);
+  }, []);
 
   return (
     <ScrollSelector
-      dataSource={listState}
+      dataSource={data}
       overrideFontName={['Title3', 'Title4']}
-      selectedIndex={0}
+      selectedIndex={findSelectedAlarmViewIndex(data, initValue, 0)}
       onValueChange={(data) => {
         updateMeridiemOnChange(data);
       }}

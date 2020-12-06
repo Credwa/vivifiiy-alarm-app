@@ -10,15 +10,28 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import useStore from '@/store';
 import { useEffect, useState } from 'react';
 import { twelveHrTime } from '@/types';
-import { getTimeTillAlarm } from '@/utils';
 import { AlarmInterface } from '@/interfaces';
-import { clearAlarms, createNewAlarm } from '@/services/alarm.service';
+import SongSelector from '@/components/SongSelector';
+import ActiveAlarms from '@/components/Alarm/ActiveAlarm';
+import {
+  clearAlarms,
+  createNewAlarm,
+  findNearestActiveAlarm,
+  getTimeTillAlarm,
+  updateAlarms
+} from '@/services/alarm.service';
 
 export default function HomeTabScreen() {
+  const fakeActiveAlarm: any = { active: true, key: '0730AM', hour: '07', minute: '30', meridiem: 'AM' };
   const [time, setTime] = useState<twelveHrTime>(useStore.getState().getCurrentAlarm());
+  const [activeAlarms, setActiveAlarms] = useState(useStore.getState().getActiveAlarms());
+  const [isEditMode, setEditMode] = useState(false);
   const [timeTillAlarm, setTimeTillAlarm] = useState({ hour: 0, minute: 0 });
   const [hasActiveAlarm, setHasActiveAlarm] = useState(false);
+  const [nearestActiveAlarm, setNearestActiveAlarm] = useState(fakeActiveAlarm);
   const setAlarmsState = useStore((state) => state.setAlarms);
+  const alarms = useStore((state) => state.alarms);
+  const mockSongs = ['Escape from LA - The Weeknd', 'POPSTAR (feat Drake) - DJ Khaled, Dra...', 'No Good - dsvn'];
 
   const onCreateAlarm = () => {
     createNewAlarm({ ...time, active: true, key: time.hour + time.minute + time.meridiem }, setAlarmsState);
@@ -29,27 +42,58 @@ export default function HomeTabScreen() {
   };
 
   const onCancelAlarm = () => {
-    console.log('cancel alarm');
+    const lastAlarmState = alarms;
+    alarms[nearestActiveAlarm.key].active = false;
+    setAlarmsState(alarms);
+    updateAlarms(alarms).catch((e) => {
+      // if saving to storage fails don't update
+      setAlarmsState(lastAlarmState);
+      // error handler goes here when built
+      console.log(e);
+    });
   };
 
   const onEditAlarm = () => {
-    console.log('edit alarm');
+    setEditMode(true);
   };
 
+  const onUpdateAlarm = () => {
+    let tempAlarms = alarms;
+    delete tempAlarms[nearestActiveAlarm.key];
+    const updatedAlarm: AlarmInterface = { ...time, active: true, key: time.hour + time.minute + time.meridiem };
+    tempAlarms = { ...tempAlarms, [updatedAlarm.key]: updatedAlarm };
+    setAlarmsState(tempAlarms);
+    setEditMode(false);
+    setTimeTillAlarm(getTimeTillAlarm(updatedAlarm));
+    updateAlarms(tempAlarms).catch((e) => {
+      // if saving to storage fails don't update
+      setAlarmsState(alarms);
+      // error handler goes here when built
+      console.log(e);
+    });
+  };
+
+  const onCancelEditAlarm = () => {
+    setTimeTillAlarm(getTimeTillAlarm(nearestActiveAlarm));
+    setEditMode(false);
+  };
+
+  // Listen to time changes
   useEffect(() => {
     useStore.subscribe(
       (timeUpdate: twelveHrTime) => {
         setTime(timeUpdate);
-        setTimeTillAlarm(getTimeTillAlarm(timeUpdate));
+        setTimeTillAlarm(getTimeTillAlarm(hasActiveAlarm ? nearestActiveAlarm : timeUpdate));
       },
       (state) => state.getCurrentAlarm()
     );
   }, []);
 
+  // List to new alarms
   useEffect(() => {
     useStore.subscribe(
       (activeAlarms: Map<string, AlarmInterface>) => {
-        console.log(activeAlarms);
+        setActiveAlarms(activeAlarms);
         if (activeAlarms.size > 0) {
           setHasActiveAlarm(true);
         } else {
@@ -60,10 +104,26 @@ export default function HomeTabScreen() {
     );
   }, []);
 
+  // Set nearest alarm
   useEffect(() => {
-    setTimeTillAlarm(getTimeTillAlarm(time));
+    if (activeAlarms.size > 0) {
+      const nearestAlarm = findNearestActiveAlarm(activeAlarms);
+      setNearestActiveAlarm(nearestAlarm);
+    }
+  }, [activeAlarms]);
+
+  // Test to see if there are any active alarms
+  useEffect(() => {
+    if (activeAlarms.size > 0) {
+      setHasActiveAlarm(true);
+    }
+  }, []);
+
+  // Calculate time left till next alarm goes off every 60s
+  useEffect(() => {
+    setTimeTillAlarm(getTimeTillAlarm(nearestActiveAlarm || time));
     setInterval(() => {
-      setTimeTillAlarm(getTimeTillAlarm(time));
+      setTimeTillAlarm(getTimeTillAlarm(nearestActiveAlarm || time));
     }, 60000);
   }, []);
 
@@ -80,21 +140,30 @@ export default function HomeTabScreen() {
           </VivText>
         </View>
         <View style={styles.separator} />
-        <Alarm />
+        {/* {isEditMode ? (
+          <VivText style={{ marginBottom: 25, marginTop: -15 }} fontName="Body" color={Colors.greyLight3}>
+            Editing {nearestActiveAlarm.hour + ':' + nearestActiveAlarm.minute + nearestActiveAlarm.meridiem}
+          </VivText>
+        ) : null} */}
+        {hasActiveAlarm && !isEditMode ? (
+          <ActiveAlarms nearestAlarm={nearestActiveAlarm} />
+        ) : (
+          <Alarm style={{ paddingVertical: 30 }} nearestActiveAlarm={nearestActiveAlarm} />
+        )}
         <View style={styles.separator} />
         {hasActiveAlarm ? (
           <View style={styles.hasAlarmButtons}>
             <VivButton
               color="Primary"
-              text="Edit alarm"
-              onPress={onEditAlarm}
+              text={isEditMode ? 'Update alarm' : 'Edit alarm'}
+              onPress={isEditMode ? onUpdateAlarm : onEditAlarm}
               style={{ marginRight: 25 }}
               paddingHorizontal={{ left: 23, right: 23 }}
             />
             <VivButton
               color="Secondary"
-              text="Cancel"
-              onPress={onCancelAlarm}
+              text={isEditMode ? 'Cancel edit' : 'Cancel'}
+              onPress={isEditMode ? onCancelEditAlarm : onCancelAlarm}
               paddingHorizontal={{ left: 35, right: 35 }}
             />
           </View>
@@ -109,13 +178,16 @@ export default function HomeTabScreen() {
           />
         )}
         <View style={styles.separator} />
-        <VivButton
-          color="Secondary"
-          text="Clear alarms"
-          onPress={onClearAlarms}
-          iconPosition="right"
-          paddingHorizontal={{ left: 65, right: 65 }}
-        />
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'column',
+            justifyContent: 'flex-end',
+            alignItems: 'center'
+          }}
+        >
+          <SongSelector data={mockSongs} />
+        </View>
       </SafeAreaView>
     </Background>
   );

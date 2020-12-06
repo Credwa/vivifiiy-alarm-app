@@ -1,6 +1,6 @@
 import Colors from '@/constants/Colors';
 import * as React from 'react';
-import { StyleSheet, TouchableOpacity, Pressable, GestureResponderEvent, View } from 'react-native';
+import { StyleSheet, Pressable, GestureResponderEvent, View } from 'react-native';
 import { Icon } from '@expo/vector-icons/build/createIconSet';
 import VivText from '@/components/VivText';
 

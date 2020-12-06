@@ -4,11 +4,14 @@ import ScrollSelector from '@/components/ScrollSelector';
 import { useState } from 'react';
 import Colors from '@/constants/Colors';
 import useStore from '@/store';
+import { useEffect } from 'react';
+import { findSelectedAlarmViewIndex } from '@/utils';
 interface SnapScrollProps {
   data: string[];
+  initValue: string;
 }
 
-export default function HourView({ data }: SnapScrollProps) {
+export default function HourView({ data, initValue }: SnapScrollProps) {
   const [listState, setEndOfList] = useState(data);
   const [timesExtended, setTimesExtended] = useState(0);
   const updateHourOnChange = useStore((state) => state.setHour);
@@ -18,11 +21,14 @@ export default function HourView({ data }: SnapScrollProps) {
       setTimesExtended(timesExtended + 1);
     }
   };
+  useEffect(() => {
+    updateHourOnChange(initValue);
+  }, []);
 
   return (
     <ScrollSelector
       dataSource={listState}
-      selectedIndex={Math.ceil(data.length / 2)}
+      selectedIndex={findSelectedAlarmViewIndex(data, initValue, 11)}
       onValueChange={(data) => {
         updateHourOnChange(data);
       }}

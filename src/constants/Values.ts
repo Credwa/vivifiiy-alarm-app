@@ -1,5 +1,6 @@
-const orangeMain = '#D98436';
-const blueMain = '#3DD7F2';
+export const storageKeys: { [key: string]: string } = {
+  alarms: '@vivifiiy-alarm-app/alarms'
+};
 
 export default {
   fontSizes: {

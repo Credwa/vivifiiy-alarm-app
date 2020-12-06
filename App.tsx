@@ -20,10 +20,12 @@ export default function App() {
 
   useEffect(() => {
     try {
-      SplashScreen.preventAutoHideAsync();
+      SplashScreen.preventAutoHideAsync().catch(console.warn);
+    } catch (e) {
+      console.warn('hide async error');
     } finally {
       if (isLoadingComplete && isAlarmsLoaded && robotoLoaded && nunitoLoaded) {
-        SplashScreen.hideAsync();
+        SplashScreen.hideAsync().catch(console.warn);
       }
     }
   }, [isLoadingComplete, isAlarmsLoaded, robotoLoaded, nunitoLoaded]);
