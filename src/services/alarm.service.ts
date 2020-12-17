@@ -52,7 +52,7 @@ export const createNewAlarm = async (time: AlarmInterface, setAlarmsState: (newA
  * Get all alarms in storage
  */
 export const getAlarms = async () => {
-  let alarms;
+  let alarms: string | null;
   try {
     alarms = await AsyncStorage.getItem(storageKeys.alarms);
     return alarms != null ? JSON.parse(alarms) : null;

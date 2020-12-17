@@ -140,11 +140,7 @@ export default function HomeTabScreen() {
           </VivText>
         </View>
         <View style={styles.separator} />
-        {/* {isEditMode ? (
-          <VivText style={{ marginBottom: 25, marginTop: -15 }} fontName="Body" color={Colors.greyLight3}>
-            Editing {nearestActiveAlarm.hour + ':' + nearestActiveAlarm.minute + nearestActiveAlarm.meridiem}
-          </VivText>
-        ) : null} */}
+
         {hasActiveAlarm && !isEditMode ? (
           <ActiveAlarms nearestAlarm={nearestActiveAlarm} />
         ) : (

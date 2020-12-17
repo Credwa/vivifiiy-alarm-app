@@ -1,10 +1,10 @@
-import HomeScreen from '@/screens/HomeScreen';
+import InsightsScreen from '@/screens/InsightsScreen';
 import { Ionicons } from '@expo/vector-icons';
 import * as Font from 'expo-font';
 import * as React from 'react';
 import renderer from 'react-test-renderer';
 
-describe('<HomeScreen />', () => {
+describe('<InsightsScreen />', () => {
   beforeEach(async () => {
     await Font.loadAsync({
       ...Ionicons.font
@@ -12,7 +12,7 @@ describe('<HomeScreen />', () => {
   });
 
   it(`renders correctly`, () => {
-    const tree = renderer.create(<HomeScreen />).toJSON();
+    const tree = renderer.create(InsightsScreen()).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

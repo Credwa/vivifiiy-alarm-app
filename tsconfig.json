@@ -3,16 +3,17 @@
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
     "jsx": "react-native",
+    "esModuleInterop": true,
     "lib": ["dom", "esnext"],
     "moduleResolution": "node",
     "noEmit": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "strict": true,
-    "target": "ES6",
+    "target": "esnext",
     "paths": {
       "@/*": ["./src/*"],
       "~/*": ["./*"]
-    }
+    },
   }
 }

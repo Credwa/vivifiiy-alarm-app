@@ -1,10 +1,11 @@
-import InsightsScreen from '@/screens/InsightsScreen';
+import * as React from 'react';
+import AlarmsScreen from '@/screens/AlarmsScreen.tsx';
 import { Ionicons } from '@expo/vector-icons';
 import * as Font from 'expo-font';
-import * as React from 'react';
+
 import renderer from 'react-test-renderer';
 
-describe('<InsightsScreen />', () => {
+describe('<AlarmsScreen />', () => {
   beforeEach(async () => {
     await Font.loadAsync({
       ...Ionicons.font
@@ -12,7 +13,7 @@ describe('<InsightsScreen />', () => {
   });
 
   it(`renders correctly`, () => {
-    const tree = renderer.create(<InsightsScreen />).toJSON();
+    const tree = renderer.create(<AlarmsScreen />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
