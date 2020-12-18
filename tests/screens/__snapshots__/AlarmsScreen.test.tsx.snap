@@ -33,31 +33,65 @@ exports[`<AlarmsScreen /> renders correctly 1`] = `
   <RNCSafeAreaView
     style={
       Object {
-        "alignItems": "center",
         "flex": 1,
-        "justifyContent": "center",
+        "marginTop": 30,
       }
     }
   >
-    <Text
-      style={
-        Object {
-          "fontSize": 20,
-          "fontWeight": "bold",
-        }
-      }
-    >
-      Alarms
-    </Text>
     <View
       style={
         Object {
-          "height": 1,
-          "marginVertical": 30,
-          "width": "80%",
+          "alignContent": "space-between",
+          "flex": 1,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
         }
       }
-    />
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#869DB2",
+            },
+            Object {
+              "fontFamily": "Nunito_400Regular",
+              "fontSize": 28,
+            },
+            Object {
+              "color": "#CEE1F2",
+            },
+            undefined,
+          ]
+        }
+      >
+        Alarms
+      </Text>
+      <View
+        accessible={true}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignContent": "center",
+            "alignItems": "center",
+            "height": 44,
+            "justifyContent": "center",
+            "width": 44,
+          }
+        }
+      >
+        <Text />
+      </View>
+    </View>
   </RNCSafeAreaView>
 </View>
 `;

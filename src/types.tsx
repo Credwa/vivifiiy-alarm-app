@@ -1,4 +1,4 @@
-import { Alarm } from './interfaces';
+import { AlarmInterface } from './interfaces';
 
 export type RootStackParamList = {
   Root: undefined;
@@ -32,4 +32,4 @@ export type meridiem = 'AM' | 'PM';
 
 export type twelveHrTime = { hour: string; minute: string; meridiem: meridiem };
 
-export type alarmObject = { [x: string]: Alarm };
+export type alarmObject = { [x: string]: AlarmInterface };

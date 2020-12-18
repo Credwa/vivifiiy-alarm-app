@@ -4,12 +4,14 @@ import MockStorage from '~/tests/mockStorage';
 import { storageKeys } from '@/constants/Values';
 import { AlarmInterface } from '@/interfaces';
 import * as utils from '@/utils';
-import { twelveHrTime } from '@/types';
+import { alarmObject, twelveHrTime } from '@/types';
 
 const mockStorageCache = {};
 const mockAsyncStorage = new MockStorage(mockStorageCache);
 const timeMock: AlarmInterface = { active: true, key: '1130PM', hour: '11', minute: '30', meridiem: 'PM' };
-const alarmsDataMock = { '1130PM': { active: true, key: '1130PM', hour: '11', minute: '30', meridiem: 'PM' } };
+const alarmsDataMock: alarmObject = {
+  '1130PM': { active: true, key: '1130PM', hour: '11', minute: '30', meridiem: 'PM' }
+};
 
 describe('alarm.service tests', () => {
   beforeEach(() => {

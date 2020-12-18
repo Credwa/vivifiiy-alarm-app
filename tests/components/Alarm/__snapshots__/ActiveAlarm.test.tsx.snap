@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ActiveAlarms /> renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "marginTop": 20,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#869DB2",
+        },
+        Object {
+          "fontFamily": "Nunito_400Regular",
+          "fontSize": 28,
+        },
+        Object {
+          "color": "#B1C2D1",
+        },
+        undefined,
+      ]
+    }
+  >
+    Next alarm at...
+  </Text>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "marginTop": 30,
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#869DB2",
+          },
+          Object {
+            "fontFamily": "Nunito_400Regular",
+            "fontSize": 48,
+          },
+          Object {
+            "color": "#CEE1F2",
+          },
+          undefined,
+        ]
+      }
+    >
+      07
+       : 
+      30
+       
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#869DB2",
+            },
+            Object {
+              "fontFamily": "Nunito_400Regular",
+              "fontSize": 44,
+            },
+            Object {
+              "color": "#CEE1F2",
+            },
+            undefined,
+          ]
+        }
+      >
+        AM
+      </Text>
+    </Text>
+  </View>
+</View>
+`;

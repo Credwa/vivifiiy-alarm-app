@@ -10,7 +10,7 @@ interface PaddingHorizontal {
 }
 interface ButtonProps {
   icon?: React.ReactComponentElement<Icon<string, any>>;
-  text: string;
+  text?: string;
   style?: any;
   iconPosition?: 'left' | 'right';
   separator?: boolean;

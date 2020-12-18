@@ -1,4 +1,4 @@
-import { FontAwesome, Ionicons, SimpleLineIcons } from '@expo/vector-icons';
+import { FontAwesome, Ionicons, SimpleLineIcons, AntDesign } from '@expo/vector-icons';
 import * as Font from 'expo-font';
 import { Asset } from 'expo-asset';
 import { useState, useEffect } from 'react';
@@ -25,7 +25,8 @@ export default function useCachedResources() {
           Font.loadAsync({
             ...FontAwesome.font,
             ...Ionicons.font,
-            ...SimpleLineIcons.font
+            ...SimpleLineIcons.font,
+            ...AntDesign.font
           }),
           ...imageAssets
         ]);

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScrollSelector/src/ <SelectedItem /> renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "height": 60,
+      "justifyContent": "center",
+    }
+  }
+/>
+`;

@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SongSelector /> renders correctly 1`] = `
+Array [
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#869DB2",
+        },
+        Object {
+          "fontFamily": "Nunito_400Regular",
+          "fontSize": 22,
+        },
+        Object {
+          "color": "#CEE1F2",
+        },
+        undefined,
+      ]
+    }
+  >
+    Up next...
+  </Text>,
+  <View
+    style={
+      Object {
+        "alignSelf": "center",
+        "backgroundColor": null,
+        "height": 180,
+        "overflow": "hidden",
+        "width": 350,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "borderBottomColor": "#ffffff",
+          "borderBottomWidth": 0.001,
+          "borderTopColor": "#ffffff",
+          "borderTopWidth": 0.001,
+          "height": 50,
+          "position": "absolute",
+          "top": 65,
+          "width": "100%",
+        }
+      }
+    />
+    <RCTScrollView
+      bounces={false}
+      onMomentumScrollBegin={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      scrollEventThrottle={400}
+      showsVerticalScrollIndicator={false}
+    >
+      <View>
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "height": 65,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "height": 65,
+            }
+          }
+        />
+      </View>
+    </RCTScrollView>
+  </View>,
+]
+`;

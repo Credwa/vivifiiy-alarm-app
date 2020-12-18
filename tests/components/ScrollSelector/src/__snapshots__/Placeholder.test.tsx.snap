@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScrollSelector/src/ <Placeholder /> renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "height": 125,
+    }
+  }
+/>
+`;

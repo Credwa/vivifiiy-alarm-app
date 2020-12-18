@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScrollSelector/src/ <HighlightView /> renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "borderBottomColor": "#333",
+      "borderBottomWidth": 2,
+      "borderTopColor": "#333",
+      "borderTopWidth": 2,
+      "height": 60,
+      "position": "absolute",
+      "top": 60,
+      "width": "100%",
+    }
+  }
+/>
+`;

@@ -1,0 +1,1103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HourView /> renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignSelf": "center",
+      "backgroundColor": null,
+      "height": 200,
+      "overflow": "hidden",
+      "width": 60,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "borderBottomColor": "#B1C2D1",
+        "borderBottomWidth": 1,
+        "borderTopColor": "#B1C2D1",
+        "borderTopWidth": 1,
+        "height": 75,
+        "position": "absolute",
+        "top": 62.5,
+        "width": "100%",
+      }
+    }
+  />
+  <RCTScrollView
+    bounces={false}
+    onMomentumScrollBegin={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    scrollEventThrottle={400}
+    showsVerticalScrollIndicator={false}
+  >
+    <View>
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "height": 62.5,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          01
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 48,
+              },
+              Object {
+                "color": "#CEE1F2",
+              },
+              undefined,
+            ]
+          }
+        >
+          02
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          03
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          04
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          05
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          06
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          07
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          08
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          09
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          10
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          11
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          12
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          01
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          02
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          03
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          04
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          05
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          06
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          07
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          08
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          09
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          10
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          11
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          12
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          01
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          02
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          03
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          04
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          05
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          06
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          07
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          08
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          09
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          10
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          11
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 75,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 44,
+              },
+              Object {
+                "color": "#869DB2",
+              },
+              undefined,
+            ]
+          }
+        >
+          12
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "height": 62.5,
+          }
+        }
+      />
+    </View>
+  </RCTScrollView>
+</View>
+`;

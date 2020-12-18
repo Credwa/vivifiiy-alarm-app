@@ -1,4 +1,4 @@
-import InsightsScreen from '@/screens/InsightsScreen';
+import InsightsScreen from '@/screens/InsightsScreen.tsx';
 import { Ionicons } from '@expo/vector-icons';
 import * as Font from 'expo-font';
 import * as React from 'react';
@@ -12,7 +12,7 @@ describe('<InsightsScreen />', () => {
   });
 
   it(`renders correctly`, () => {
-    const tree = renderer.create(InsightsScreen()).toJSON();
+    const tree = renderer.create(<InsightsScreen />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
