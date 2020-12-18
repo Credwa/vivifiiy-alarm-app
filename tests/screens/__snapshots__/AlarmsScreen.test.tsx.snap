@@ -89,7 +89,26 @@ exports[`<AlarmsScreen /> renders correctly 1`] = `
           }
         }
       >
-        <Text />
+        <Text
+          allowFontScaling={false}
+          style={
+            Array [
+              Object {
+                "color": "#CEE1F2",
+                "fontSize": 28,
+              },
+              undefined,
+              Object {
+                "fontFamily": "anticon",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          
+        </Text>
       </View>
     </View>
   </RNCSafeAreaView>

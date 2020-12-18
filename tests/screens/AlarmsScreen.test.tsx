@@ -1,13 +1,14 @@
 import * as React from 'react';
 import AlarmsScreen from '@/screens/AlarmsScreen.tsx';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, AntDesign } from '@expo/vector-icons';
 import * as Font from 'expo-font';
 import renderer from 'react-test-renderer';
 jest.useFakeTimers();
 describe('<AlarmsScreen />', () => {
   beforeEach(async () => {
     await Font.loadAsync({
-      ...Ionicons.font
+      ...Ionicons.font,
+      ...AntDesign.font
     });
   });
 
