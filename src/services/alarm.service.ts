@@ -65,7 +65,7 @@ export const getAlarms = async () => {
 /**
  * updateAlarms
  *
- * Apdate alarms in storage
+ * Update alarms in storage
  *
  * @param alarms
  */

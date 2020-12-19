@@ -4,22 +4,15 @@ import VivText from '@/components/VivText';
 import Colors from '@/constants/Colors';
 import Alarm from '@/components/Alarm';
 import { Ionicons } from '@expo/vector-icons';
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import useStore from '@/store';
-import { useEffect, useState } from 'react';
 import { twelveHrTime } from '@/types';
 import { AlarmInterface } from '@/interfaces';
 import SongSelector from '@/components/SongSelector';
 import ActiveAlarms from '@/components/Alarm/ActiveAlarm';
-import {
-  clearAlarms,
-  createNewAlarm,
-  findNearestActiveAlarm,
-  getTimeTillAlarm,
-  updateAlarms
-} from '@/services/alarm.service';
+import { createNewAlarm, findNearestActiveAlarm, getTimeTillAlarm, updateAlarms } from '@/services/alarm.service';
 
 export default function HomeTabScreen() {
   const fakeActiveAlarm: any = { active: true, key: '0730AM', hour: '07', minute: '30', meridiem: 'AM' };
@@ -30,15 +23,12 @@ export default function HomeTabScreen() {
   const [hasActiveAlarm, setHasActiveAlarm] = useState(false);
   const [nearestActiveAlarm, setNearestActiveAlarm] = useState(fakeActiveAlarm);
   const setAlarmsState = useStore((state) => state.setAlarms);
+  const getActiveAlarmsInit = useStore((state) => state.getActiveAlarms);
   const alarms = useStore((state) => state.alarms);
   const mockSongs = ['Escape from LA - The Weeknd', 'POPSTAR (feat Drake) - DJ Khaled, Dra...', 'No Good - dsvn'];
 
   const onCreateAlarm = () => {
     createNewAlarm({ ...time, active: true, key: time.hour + time.minute + time.meridiem }, setAlarmsState);
-  };
-
-  const onClearAlarms = () => {
-    clearAlarms();
   };
 
   const onCancelAlarm = () => {
@@ -89,12 +79,14 @@ export default function HomeTabScreen() {
     );
   }, []);
 
-  // List to new alarms
+  // Listen to new alarms
   useEffect(() => {
     useStore.subscribe(
       (activeAlarms: Map<string, AlarmInterface>) => {
         setActiveAlarms(activeAlarms);
         if (activeAlarms.size > 0) {
+          const nearestAlarm = findNearestActiveAlarm(activeAlarms);
+          setTimeTillAlarm(getTimeTillAlarm(nearestAlarm as AlarmInterface));
           setHasActiveAlarm(true);
         } else {
           setHasActiveAlarm(false);
@@ -121,9 +113,13 @@ export default function HomeTabScreen() {
 
   // Calculate time left till next alarm goes off every 60s
   useEffect(() => {
-    setTimeTillAlarm(getTimeTillAlarm(nearestActiveAlarm || time));
+    const activeAlarmsInit = getActiveAlarmsInit();
+    let nearestActiveAlarmInit =
+      activeAlarmsInit.size > 0 ? findNearestActiveAlarm(activeAlarmsInit) : nearestActiveAlarm;
+
+    setTimeTillAlarm(getTimeTillAlarm(nearestActiveAlarmInit || time));
     setInterval(() => {
-      setTimeTillAlarm(getTimeTillAlarm(nearestActiveAlarm || time));
+      setTimeTillAlarm(getTimeTillAlarm(nearestActiveAlarmInit || time));
     }, 60000);
   }, []);
 

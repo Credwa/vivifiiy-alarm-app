@@ -34,7 +34,7 @@ exports[`<AlarmsScreen /> renders correctly 1`] = `
     style={
       Object {
         "flex": 1,
-        "marginTop": 30,
+        "marginTop": 20,
       }
     }
   >
@@ -42,9 +42,11 @@ exports[`<AlarmsScreen /> renders correctly 1`] = `
       style={
         Object {
           "alignContent": "space-between",
-          "flex": 1,
+          "alignItems": "center",
           "flexDirection": "row",
+          "height": 44,
           "justifyContent": "space-between",
+          "marginBottom": 25,
         }
       }
     >
@@ -85,6 +87,7 @@ exports[`<AlarmsScreen /> renders correctly 1`] = `
             "alignItems": "center",
             "height": 44,
             "justifyContent": "center",
+            "marginRight": -13,
             "width": 44,
           }
         }
@@ -111,6 +114,37 @@ exports[`<AlarmsScreen /> renders correctly 1`] = `
         </Text>
       </View>
     </View>
+    <RCTScrollView
+      bounces={false}
+      collapsable={false}
+      data={Array []}
+      disableVirtualization={false}
+      getItem={[Function]}
+      getItemCount={[Function]}
+      horizontal={false}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      maxToRenderPerBatch={10}
+      onContentSizeChange={[Function]}
+      onEndReachedThreshold={2}
+      onGestureHandlerEvent={[Function]}
+      onGestureHandlerStateChange={[Function]}
+      onLayout={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      renderScrollComponent={[Function]}
+      scrollEventThrottle={50}
+      stickyHeaderIndices={Array []}
+      updateCellsBatchingPeriod={50}
+      viewabilityConfigCallbackPairs={Array []}
+      windowSize={21}
+    >
+      <View />
+    </RCTScrollView>
   </RNCSafeAreaView>
 </View>
 `;

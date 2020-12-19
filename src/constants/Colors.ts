@@ -13,12 +13,13 @@ export default {
   blueLight3: '#0ba5bf',
   blueGradient: ['#4481EB', blueMain],
   blueDark: '#191940',
-
+  blueEdit: '#38c1f2',
   blueMedium: '#030162',
   blueMediumNavbar: '#131173',
   blueMediumCardHeader: '#070562',
   blueMediumCardBody: '#100F62',
   orangeMedium: orangeMain,
-  orangeMedium2: '#cc690e',
-  orangeGradient: ['#F5B478', orangeMain]
+  orangeMedium2: '#31b0de',
+  orangeGradient: ['#F5B478', orangeMain],
+  redCancel: '#bf3f3f'
 };

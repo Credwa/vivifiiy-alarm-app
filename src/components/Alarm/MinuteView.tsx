@@ -1,7 +1,6 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 import ScrollSelector from '@/components/ScrollSelector';
-import { useEffect, useState } from 'react';
 import Colors from '@/constants/Colors';
 import useStore from '@/store';
 import { findSelectedAlarmViewIndex } from '@/utils';

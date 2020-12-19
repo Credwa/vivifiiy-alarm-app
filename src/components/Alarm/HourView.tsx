@@ -1,10 +1,8 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 import ScrollSelector from '@/components/ScrollSelector';
-import { useState } from 'react';
 import Colors from '@/constants/Colors';
 import useStore from '@/store';
-import { useEffect } from 'react';
 import { findSelectedAlarmViewIndex } from '@/utils';
 interface SnapScrollProps {
   data: string[];

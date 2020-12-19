@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import ScrollSelector from '@/components/ScrollSelector';
 import Colors from '@/constants/Colors';
 import VivText from '@/components/VivText';

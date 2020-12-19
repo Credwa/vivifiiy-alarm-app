@@ -1,7 +1,7 @@
 import VivButton from '@/components/VivButton';
 import { Ionicons } from '@expo/vector-icons';
 import * as Font from 'expo-font';
-import * as React from 'react';
+import React from 'react';
 import renderer from 'react-test-renderer';
 
 describe('<VivButton />', () => {

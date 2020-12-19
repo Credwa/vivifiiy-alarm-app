@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import AlarmsScreen from '@/screens/AlarmsScreen.tsx';
 import { Ionicons, AntDesign } from '@expo/vector-icons';
 import * as Font from 'expo-font';

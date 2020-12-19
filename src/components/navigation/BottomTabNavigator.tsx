@@ -13,7 +13,7 @@ import {
 import { FontAwesome, Ionicons, SimpleLineIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import * as React from 'react';
+import React from 'react';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 

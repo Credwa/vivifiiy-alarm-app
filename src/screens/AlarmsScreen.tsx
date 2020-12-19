@@ -1,13 +1,27 @@
 import Background from '@/components/Background';
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import VivText from '@/components/VivText';
 import { AntDesign } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Colors from '@/constants/Colors';
+import useStore from '@/store';
+import AlarmsList from '@/components/Alarm/AlarmsList';
+import { AlarmInterface } from '@/interfaces';
 
 export default function AlarmsScreen() {
   const createNewAlarm = () => {};
+  const [getAllAlarms, setAllAlarms] = useState(useStore.getState().getAllAlarms());
+
+  // List to new alarms
+  useEffect(() => {
+    useStore.subscribe(
+      (allAlarms: Map<string, AlarmInterface>) => {
+        setAllAlarms(allAlarms);
+      },
+      (state) => state.getAllAlarms()
+    );
+  }, []);
 
   return (
     <Background>
@@ -22,6 +36,7 @@ export default function AlarmsScreen() {
             )}
           </Pressable>
         </View>
+        <AlarmsList alarms={getAllAlarms} />
       </SafeAreaView>
     </Background>
   );
@@ -30,17 +45,20 @@ export default function AlarmsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 30
+    marginTop: 20
   },
   header: {
     flexDirection: 'row',
-    flex: 1,
+    height: 44,
+    marginBottom: 25,
+    alignItems: 'center',
     justifyContent: 'space-between',
     alignContent: 'space-between'
   },
   addAlarm: {
     height: 44,
     width: 44,
+    marginRight: -13,
     alignContent: 'center',
     alignItems: 'center',
     justifyContent: 'center'

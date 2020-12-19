@@ -1,10 +1,8 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import ScrollSelector from '@/components/ScrollSelector';
-import { useState } from 'react';
 import Colors from '@/constants/Colors';
 import { meridiem } from '@/types';
 import useStore from '@/store';
-import { useEffect } from 'react';
 import { findSelectedAlarmViewIndex } from '@/utils';
 interface SnapScrollProps {
   data: meridiem[];

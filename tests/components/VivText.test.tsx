@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import renderer from 'react-test-renderer';
 import VivText from '@/components/VivText';
 import Colors from '@/constants/Colors';
