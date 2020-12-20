@@ -8,10 +8,14 @@ import Colors from '@/constants/Colors';
 import useStore from '@/store';
 import AlarmsList from '@/components/Alarm/AlarmsList';
 import { AlarmInterface } from '@/interfaces';
+import { StackScreenProps } from '@react-navigation/stack';
+import { AlarmsTabParamList } from '@/types';
 
-export default function AlarmsScreen() {
-  const createNewAlarm = () => {};
+export default function AlarmsScreen({ navigation }: StackScreenProps<AlarmsTabParamList, 'AlarmsTabScreen'>) {
   const [getAllAlarms, setAllAlarms] = useState(useStore.getState().getAllAlarms());
+  const createNewAlarm = () => {
+    navigation.navigate('NewAlarmScreen');
+  };
 
   // List to new alarms
   useEffect(() => {

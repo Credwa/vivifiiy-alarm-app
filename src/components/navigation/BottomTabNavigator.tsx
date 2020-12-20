@@ -3,6 +3,8 @@ import AlarmsScreen from '@/screens/AlarmsScreen';
 import HomeScreen from '@/screens/HomeScreen';
 import InsightsScreen from '@/screens/InsightsScreen';
 import SettingsScreen from '@/screens/SettingsScreen';
+import NewAlarmScreen from '@/screens/NewAlarmScreen';
+import EditAlarmScreen from '@/screens/EditAlarmScreen';
 import {
   AlarmsTabParamList,
   BottomTabParamList,
@@ -76,6 +78,14 @@ function AlarmsTabNavigator() {
   return (
     <AlarmsTabStack.Navigator>
       <AlarmsTabStack.Screen name="AlarmsTabScreen" component={AlarmsScreen} options={{ headerShown: false }} />
+      <AlarmsTabStack.Screen name="EditAlarmScreen" component={NewAlarmScreen} options={{ headerShown: true }} />
+      <AlarmsTabStack.Screen
+        name="NewAlarmScreen"
+        component={NewAlarmScreen}
+        options={{
+          headerShown: false
+        }}
+      />
     </AlarmsTabStack.Navigator>
   );
 }

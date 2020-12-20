@@ -18,6 +18,8 @@ export type HomeTabParamList = {
 
 export type AlarmsTabParamList = {
   AlarmsTabScreen: undefined;
+  NewAlarmScreen: undefined;
+  EditAlarmScreen: { alarm: AlarmInterface };
 };
 
 export type InsightsTabParamList = {

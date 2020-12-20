@@ -13,7 +13,9 @@ export default {
           },
           Alarms: {
             screens: {
-              AlarmsScreen: 'alarms'
+              AlarmsScreen: 'alarms',
+              NewAlarmScreen: 'newAlarm',
+              EditAlarmScreen: 'editAlarm'
             }
           },
           Insights: {

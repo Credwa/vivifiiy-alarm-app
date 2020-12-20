@@ -1,10 +1,12 @@
-import React from 'react';
-import AlarmsScreen from '@/screens/AlarmsScreen.tsx';
+import { AlarmInterface } from '@/interfaces';
+import NewAlarmScreen from '@/screens/NewAlarmScreen';
 import { Ionicons, AntDesign } from '@expo/vector-icons';
 import * as Font from 'expo-font';
+import React from 'react';
 import renderer from 'react-test-renderer';
 jest.useFakeTimers();
-describe('<AlarmsScreen />', () => {
+
+describe('<NewAlarmScreen />', () => {
   beforeEach(async () => {
     await Font.loadAsync({
       ...Ionicons.font,
@@ -15,7 +17,7 @@ describe('<AlarmsScreen />', () => {
   it(`renders correctly`, async () => {
     const mockNav: any = { goBack: jest.fn() };
     const mockRoute: any = { params: {} };
-    const tree = renderer.create(<AlarmsScreen navigation={mockNav} route={mockRoute} />).toJSON();
+    let tree = await renderer.create(<NewAlarmScreen navigation={mockNav} route={mockRoute} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

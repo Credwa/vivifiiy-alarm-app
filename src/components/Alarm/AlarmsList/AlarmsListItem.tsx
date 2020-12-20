@@ -6,6 +6,7 @@ import VivText from '@/components/VivText';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { RectButton } from 'react-native-gesture-handler';
 import useStore from '@/store';
+import { useNavigation } from '@react-navigation/native';
 
 interface AlarmListItemProps {
   alarm: AlarmInterface;
@@ -14,6 +15,7 @@ interface AlarmListItemProps {
 }
 
 export default function AlarmListItem({ alarm, isLastAlarm, setOpenAlarm }: AlarmListItemProps) {
+  const navigation = useNavigation();
   const setAlarm = useStore((state) => state.setAlarm);
   const removeAlarm = useStore((state) => state.removeAlarm);
   let swipeableRow: any = useRef(0);
@@ -37,6 +39,9 @@ export default function AlarmListItem({ alarm, isLastAlarm, setOpenAlarm }: Alar
     const pressHandler = () => {
       // edit
       close();
+      navigation.navigate('NewAlarmScreen', {
+        alarm
+      });
     };
     return (
       <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
