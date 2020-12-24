@@ -44,13 +44,13 @@ export default function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <Ionicons name="md-alarm" size={26} color={color} />
         }}
       />
-      <BottomTab.Screen
+      {/* <BottomTab.Screen
         name="Insights"
         component={InsightsTabNavigator}
         options={{
           tabBarIcon: ({ color }) => <SimpleLineIcons name="bulb" size={24} color={color} />
         }}
-      />
+      /> */}
       <BottomTab.Screen
         name="Settings"
         component={SettingsTabNavigator}
@@ -78,7 +78,7 @@ function AlarmsTabNavigator() {
   return (
     <AlarmsTabStack.Navigator>
       <AlarmsTabStack.Screen name="AlarmsTabScreen" component={AlarmsScreen} options={{ headerShown: false }} />
-      <AlarmsTabStack.Screen name="EditAlarmScreen" component={NewAlarmScreen} options={{ headerShown: true }} />
+      <AlarmsTabStack.Screen name="EditAlarmScreen" component={EditAlarmScreen} options={{ headerShown: false }} />
       <AlarmsTabStack.Screen
         name="NewAlarmScreen"
         component={NewAlarmScreen}

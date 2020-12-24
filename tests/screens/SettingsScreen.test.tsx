@@ -1,18 +1,22 @@
 import SettingsScreen from '@/screens/SettingsScreen';
-import { Ionicons } from '@expo/vector-icons';
+import { AntDesign, FontAwesome, Ionicons, SimpleLineIcons } from '@expo/vector-icons';
 import * as Font from 'expo-font';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
+jest.useFakeTimers();
 describe('<SettingsScreen />', () => {
   beforeEach(async () => {
     await Font.loadAsync({
-      ...Ionicons.font
+      ...Ionicons.font,
+      ...AntDesign.font,
+      ...FontAwesome.font,
+      ...SimpleLineIcons.font
     });
   });
 
-  it(`renders correctly`, () => {
-    const tree = renderer.create(<SettingsScreen />).toJSON();
+  it(`renders correctly`, async () => {
+    const tree = await renderer.create(<SettingsScreen />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

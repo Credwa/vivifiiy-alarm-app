@@ -39,7 +39,7 @@ export default function AlarmListItem({ alarm, isLastAlarm, setOpenAlarm }: Alar
     const pressHandler = () => {
       // edit
       close();
-      navigation.navigate('NewAlarmScreen', {
+      navigation.navigate('EditAlarmScreen', {
         alarm
       });
     };

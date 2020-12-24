@@ -34,29 +34,42 @@ exports[`<InsightsScreen /> renders correctly 1`] = `
     style={
       Object {
         "flex": 1,
+        "marginTop": 20,
       }
     }
   >
-    <Text
-      style={
-        Object {
-          "color": "#fff",
-          "fontSize": 20,
-          "fontWeight": "bold",
-        }
-      }
-    >
-      Tab One
-    </Text>
     <View
       style={
         Object {
-          "height": 1,
-          "marginVertical": 30,
-          "width": "80%",
+          "alignContent": "space-between",
+          "alignItems": "center",
+          "flexDirection": "row",
+          "height": 44,
+          "justifyContent": "space-between",
+          "marginBottom": 25,
         }
       }
-    />
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#869DB2",
+            },
+            Object {
+              "fontFamily": "Nunito_400Regular",
+              "fontSize": 28,
+            },
+            Object {
+              "color": "#CEE1F2",
+            },
+            undefined,
+          ]
+        }
+      >
+        Insights
+      </Text>
+    </View>
   </RNCSafeAreaView>
 </View>
 `;

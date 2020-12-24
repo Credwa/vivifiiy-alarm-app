@@ -10,6 +10,7 @@ import AlarmsList from '@/components/Alarm/AlarmsList';
 import { AlarmInterface } from '@/interfaces';
 import { StackScreenProps } from '@react-navigation/stack';
 import { AlarmsTabParamList } from '@/types';
+import VivButton from '@/components/VivButton';
 
 export default function AlarmsScreen({ navigation }: StackScreenProps<AlarmsTabParamList, 'AlarmsTabScreen'>) {
   const [getAllAlarms, setAllAlarms] = useState(useStore.getState().getAllAlarms());
@@ -40,6 +41,14 @@ export default function AlarmsScreen({ navigation }: StackScreenProps<AlarmsTabP
             )}
           </Pressable>
         </View>
+        {getAllAlarms.size < 1 ? (
+          <View style={styles.noAlarms}>
+            <VivText color={Colors.greyLight1} fontName="Title5">
+              No alarms yet
+            </VivText>
+            <VivButton onPress={createNewAlarm} style={{ marginTop: 25 }} color="Primary" text="Create an alarm" />
+          </View>
+        ) : null}
         <AlarmsList alarms={getAllAlarms} />
       </SafeAreaView>
     </Background>
@@ -50,6 +59,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 20
+  },
+  noAlarms: {
+    alignSelf: 'center',
+    flex: 1,
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: 'center'
   },
   header: {
     flexDirection: 'row',

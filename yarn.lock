@@ -1572,6 +1572,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.10.tgz#5dda643e19e587793bc2034dd9bf7398ad43d401"
   integrity sha512-rk4sWFsmtOw8oyx8SD3KSvawwaK7gRBSEIy2TAwURyGt+3TizssXP1r8nx3zY+R7v2vYYHXZ+k2/GULAT/bcaQ==
 
+"@react-native-community/slider@3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@react-native-community/slider/-/slider-3.0.3.tgz#830167fd757ba70ac638747ba3169b2dbae60330"
+  integrity sha512-8IeHfDwJ9/CTUwFs6x90VlobV3BfuPgNLjTgC6dRZovfCWigaZwVNIFFJnHBakK3pW2xErAPwhdvNR4JeNoYbw==
+
 "@react-navigation/bottom-tabs@^5.11.2":
   version "5.11.2"
   resolved "https://registry.yarnpkg.com/@react-navigation/bottom-tabs/-/bottom-tabs-5.11.2.tgz#5b541612fcecdea2a5024a4028da35e4a727bde6"
@@ -3401,6 +3406,11 @@ expo-status-bar@~1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/expo-status-bar/-/expo-status-bar-1.0.2.tgz#2441a77c56be31597898337b0d086981f2adefd8"
   integrity sha512-5313u744GcLzCadxIPXyTkYw77++UXv1dXCuhYDxDbtsEf93iMra7WSvzyE8a7mRQLIIPRuGnBOdrL/V1C7EOQ==
+
+expo-store-review@~2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/expo-store-review/-/expo-store-review-2.2.0.tgz#99ba2c2f0396bd2553b36cbd077de92f32841ea1"
+  integrity sha512-FaLC05g0lHl40DX62iXz+aluV16QCupaNiURS1jW4Idefw5rOUrlV1hPe8SD9TJREbBahcSI9v/hw3ji+xD7sw==
 
 expo-web-browser@~8.5.0:
   version "8.5.0"
