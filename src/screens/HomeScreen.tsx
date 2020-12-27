@@ -3,9 +3,10 @@ import VivButton from '@/components/VivButton';
 import VivText from '@/components/VivText';
 import Colors from '@/constants/Colors';
 import Alarm from '@/components/Alarm';
+import { smallScreenWidthBreakpoint, largeScreenWidthBreakpoint } from '@/constants/Values';
 import { Ionicons } from '@expo/vector-icons';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Dimensions, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import useStore from '@/store';
 import { twelveHrTime } from '@/types';
@@ -13,6 +14,8 @@ import { AlarmInterface } from '@/interfaces';
 import SongSelector from '@/components/SongSelector';
 import ActiveAlarms from '@/components/Alarm/ActiveAlarm';
 import { createNewAlarm, findNearestActiveAlarm, getTimeTillAlarm, updateAlarms } from '@/services/alarm.service';
+
+const windowWidth = Dimensions.get('window').width;
 
 export default function HomeTabScreen() {
   const fakeActiveAlarm: any = { active: true, key: '0730AM', hour: '07', minute: '30', meridiem: 'AM' };
@@ -127,10 +130,28 @@ export default function HomeTabScreen() {
     <Background>
       <SafeAreaView style={styles.container}>
         <View style={styles.timeLeft}>
-          <VivText fontName="Body" color={Colors.greyLight2}>
+          <VivText
+            fontName={
+              windowWidth < smallScreenWidthBreakpoint
+                ? 'Subhead'
+                : windowWidth > largeScreenWidthBreakpoint
+                ? 'Title3'
+                : 'Body'
+            }
+            color={Colors.greyLight2}
+          >
             Time left ~
           </VivText>
-          <VivText fontName="Body" color={Colors.blueLight}>
+          <VivText
+            fontName={
+              windowWidth < smallScreenWidthBreakpoint
+                ? 'Subhead'
+                : windowWidth > largeScreenWidthBreakpoint
+                ? 'Title3'
+                : 'Body'
+            }
+            color={Colors.blueLight}
+          >
             {' ' + timeTillAlarm.hour} hrs{' '}
             {timeTillAlarm.minute < 59 ? timeTillAlarm.minute + 1 : timeTillAlarm.minute} mins
           </VivText>
@@ -201,7 +222,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   separator: {
-    marginVertical: 30,
+    marginVertical: windowWidth < smallScreenWidthBreakpoint ? 15 : windowWidth > largeScreenWidthBreakpoint ? 50 : 30,
     height: 0.3,
     width: '80%'
   }

@@ -10,6 +10,8 @@ interface TextProps {
   children?: React.ReactNode;
   color?: string;
   fontName?:
+    | 'TitleBig1'
+    | 'TitleBig2'
     | 'Title1'
     | 'Title2'
     | 'Title3'
@@ -36,6 +38,12 @@ function setFontStyle(size: number, family: string): FontStyle {
 export default function VivText(props: VivTextProps) {
   let fontStyle: FontStyle;
   switch (props.fontName) {
+    case 'TitleBig1':
+      fontStyle = setFontStyle(84, 'Nunito_400Regular');
+      break;
+    case 'TitleBig2':
+      fontStyle = setFontStyle(80, 'Nunito_400Regular');
+      break;
     case 'Title1':
       fontStyle = setFontStyle(48, 'Nunito_400Regular');
       break;

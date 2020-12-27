@@ -131,7 +131,7 @@ describe('alarm.service tests', () => {
       }`,
       hour: (timeNow.getHours() + 5).toString(),
       minute: (timeNow.getMinutes() + 8).toString(),
-      meridiem: timeNow.getHours() > 12 ? 'PM' : 'AM'
+      meridiem: timeNow.getHours() + 5 > 12 ? 'PM' : 'AM'
     };
     activeAlarmsMap.set(mockAlarmOne.key, mockAlarmOne);
     activeAlarmsMap.set(mockAlarmTwo.key, mockAlarmTwo);

@@ -12,6 +12,7 @@ import { AlarmsTabParamList, twelveHrTime } from '@/types';
 import { AlarmInterface } from '@/interfaces';
 import { createNewAlarm, getTimeTillAlarm, updateAlarms } from '@/services/alarm.service';
 import { StackScreenProps } from '@react-navigation/stack';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default function NewAlarmScreen({ navigation }: StackScreenProps<AlarmsTabParamList, 'NewAlarmScreen'>) {
   const alarmInitValue: AlarmInterface = { active: true, key: '0730AM', hour: '07', minute: '30', meridiem: 'AM' };
@@ -126,9 +127,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 44,
     marginBottom: 50,
-    width: Dimensions.get('window').width,
+    width: wp('80%'),
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     alignContent: 'space-around'
   },
   separator: {

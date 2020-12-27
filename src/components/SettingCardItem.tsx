@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { Pressable, StyleSheet, Switch, View } from 'react-native';
+import { Pressable, StyleSheet, Switch, View, Dimensions } from 'react-native';
 import VivText from '@/components/VivText';
 import Colors from '@/constants/Colors';
 import { AntDesign, SimpleLineIcons } from '@expo/vector-icons';
 import Slider from '@react-native-community/slider';
 import { LinearGradient } from 'expo-linear-gradient';
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
+
+const windowWidth = Dimensions.get('window').width;
 
 interface SettingCardItemProps {
   style?: any;
@@ -103,7 +106,7 @@ export default function SettingCardItem({
               </VivText>
               {slider ? (
                 <Slider
-                  style={{ width: 250 }}
+                  style={{ width: windowWidth > 800 ? wp('85%') : wp('60%') }}
                   minimumValue={0}
                   maximumValue={1}
                   value={1}

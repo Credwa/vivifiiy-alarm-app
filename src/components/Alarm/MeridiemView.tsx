@@ -3,11 +3,15 @@ import ScrollSelector from '@/components/ScrollSelector';
 import Colors from '@/constants/Colors';
 import { meridiem } from '@/types';
 import useStore from '@/store';
+import { smallScreenWidthBreakpoint, largeScreenWidthBreakpoint } from '@/constants/Values';
 import { findSelectedAlarmViewIndex } from '@/utils';
+import { Dimensions } from 'react-native';
 interface SnapScrollProps {
   data: meridiem[];
   initValue: meridiem;
 }
+
+const windowWidth = Dimensions.get('window').width;
 
 export default function MeridiemView({ data, initValue }: SnapScrollProps) {
   const updateMeridiemOnChange = useStore((state) => state.setMeridiem);
@@ -18,14 +22,24 @@ export default function MeridiemView({ data, initValue }: SnapScrollProps) {
   return (
     <ScrollSelector
       dataSource={data}
-      overrideFontName={['Title3', 'Title4']}
+      overrideFontName={
+        windowWidth < smallScreenWidthBreakpoint
+          ? ['Title5', 'Title6']
+          : windowWidth > largeScreenWidthBreakpoint
+          ? ['Title1', 'Title2']
+          : ['Title3', 'Title4']
+      }
       selectedIndex={findSelectedAlarmViewIndex(data, initValue, 0)}
       onValueChange={(data) => {
         updateMeridiemOnChange(data);
       }}
-      wrapperHeight={200}
-      wrapperWidth={80}
-      itemHeight={75}
+      wrapperHeight={
+        windowWidth < smallScreenWidthBreakpoint ? 175 : windowWidth > largeScreenWidthBreakpoint ? 300 : 200
+      }
+      wrapperWidth={
+        windowWidth < smallScreenWidthBreakpoint ? 55 : windowWidth > largeScreenWidthBreakpoint ? 150 : 80
+      }
+      itemHeight={windowWidth < smallScreenWidthBreakpoint ? 65 : windowWidth > largeScreenWidthBreakpoint ? 110 : 75}
       highlightColor={Colors.greyLight3}
       highlightBorderWidth={1}
     />

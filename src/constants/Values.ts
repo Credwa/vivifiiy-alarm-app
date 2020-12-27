@@ -2,6 +2,8 @@ export const storageKeys: { [key: string]: string } = {
   alarms: '@vivifiiy-alarm-app/alarms'
 };
 
+export const smallScreenWidthBreakpoint = 400;
+export const largeScreenWidthBreakpoint = 800;
 export default {
   fontSizes: {
     title1: 48,

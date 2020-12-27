@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
+import { NativeSyntheticEvent, NativeScrollEvent, Dimensions } from 'react-native';
 import ScrollSelector from '@/components/ScrollSelector';
 import Colors from '@/constants/Colors';
 import useStore from '@/store';
+import { smallScreenWidthBreakpoint, largeScreenWidthBreakpoint } from '@/constants/Values';
 import { findSelectedAlarmViewIndex } from '@/utils';
 interface SnapScrollProps {
   data: string[];
   initValue: string;
 }
+
+const windowWidth = Dimensions.get('window').width;
 
 export default function HourView({ data, initValue }: SnapScrollProps) {
   const [listState, setEndOfList] = useState(data);
@@ -26,14 +29,25 @@ export default function HourView({ data, initValue }: SnapScrollProps) {
   return (
     <ScrollSelector
       dataSource={listState}
+      overrideFontName={
+        windowWidth < smallScreenWidthBreakpoint
+          ? ['Title3', 'Title4']
+          : windowWidth > largeScreenWidthBreakpoint
+          ? ['TitleBig1', 'TitleBig2']
+          : ['Title1', 'Title2']
+      }
       selectedIndex={findSelectedAlarmViewIndex(data, initValue, 11)}
       onValueChange={(data) => {
         updateHourOnChange(data);
       }}
-      wrapperHeight={200}
-      wrapperWidth={60}
+      wrapperHeight={
+        windowWidth < smallScreenWidthBreakpoint ? 175 : windowWidth > largeScreenWidthBreakpoint ? 300 : 200
+      }
+      wrapperWidth={
+        windowWidth < smallScreenWidthBreakpoint ? 45 : windowWidth > largeScreenWidthBreakpoint ? 150 : 60
+      }
       onEndReached={onEndReached}
-      itemHeight={75}
+      itemHeight={windowWidth < smallScreenWidthBreakpoint ? 65 : windowWidth > largeScreenWidthBreakpoint ? 110 : 75}
       highlightColor={Colors.greyLight3}
       highlightBorderWidth={1}
     />

@@ -336,7 +336,9 @@ exports[`<SettingsScreen /> renders correctly 1`] = `
                             "color": "#869DB2",
                             "fontSize": 24,
                           },
-                          undefined,
+                          Object {
+                            "paddingRight": 3,
+                          },
                           Object {
                             "fontFamily": "FontAwesome",
                             "fontStyle": "normal",
@@ -508,7 +510,7 @@ exports[`<SettingsScreen /> renders correctly 1`] = `
                       ]
                     }
                   >
-                    Snooze Duration
+                    Snooze duration
                   </Text>
                 </View>
                 <View
@@ -807,7 +809,7 @@ exports[`<SettingsScreen /> renders correctly 1`] = `
                           "height": 40,
                         },
                         Object {
-                          "width": 250,
+                          "width": 450,
                         },
                       ]
                     }

@@ -6755,9 +6755,9 @@ exports[`<HomeScreen /> renders correctly 1`] = `
           Object {
             "alignSelf": "center",
             "backgroundColor": null,
-            "height": 180,
+            "height": 375,
             "overflow": "hidden",
-            "width": 350,
+            "width": 750,
           }
         }
       >
@@ -6770,7 +6770,7 @@ exports[`<HomeScreen /> renders correctly 1`] = `
               "borderTopWidth": 0.001,
               "height": 50,
               "position": "absolute",
-              "top": 65,
+              "top": 162.5,
               "width": "100%",
             }
           }
@@ -6790,7 +6790,7 @@ exports[`<HomeScreen /> renders correctly 1`] = `
               style={
                 Object {
                   "flex": 1,
-                  "height": 65,
+                  "height": 162.5,
                 }
               }
             />
@@ -6885,7 +6885,7 @@ exports[`<HomeScreen /> renders correctly 1`] = `
               style={
                 Object {
                   "flex": 1,
-                  "height": 65,
+                  "height": 162.5,
                 }
               }
             />

@@ -114,6 +114,88 @@ exports[`<AlarmsScreen /> renders correctly 1`] = `
         </Text>
       </View>
     </View>
+    <View
+      style={
+        Object {
+          "alignContent": "center",
+          "alignItems": "center",
+          "alignSelf": "center",
+          "flex": 1,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#869DB2",
+            },
+            Object {
+              "fontFamily": "Nunito_400Regular",
+              "fontSize": 22,
+            },
+            Object {
+              "color": "#CEE1F2",
+            },
+            undefined,
+          ]
+        }
+      >
+        No alarms yet
+      </Text>
+      <View
+        accessible={true}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#3DD7F2",
+              "borderRadius": 7,
+              "flexDirection": "row",
+              "marginTop": 25,
+              "paddingHorizontal": 25,
+              "paddingLeft": 12.5,
+              "paddingRight": 12.5,
+              "paddingVertical": 13.5,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_600SemiBold",
+                "fontSize": 17,
+              },
+              Object {
+                "color": "#191940",
+              },
+              Object {
+                "marginLeft": 0,
+                "marginRight": 0,
+              },
+            ]
+          }
+        >
+          Create an alarm
+        </Text>
+      </View>
+    </View>
     <RCTScrollView
       bounces={false}
       collapsable={false}

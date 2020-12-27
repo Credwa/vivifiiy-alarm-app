@@ -26,9 +26,9 @@ Array [
       Object {
         "alignSelf": "center",
         "backgroundColor": null,
-        "height": 180,
+        "height": 375,
         "overflow": "hidden",
-        "width": 350,
+        "width": 750,
       }
     }
   >
@@ -41,7 +41,7 @@ Array [
           "borderTopWidth": 0.001,
           "height": 50,
           "position": "absolute",
-          "top": 65,
+          "top": 162.5,
           "width": "100%",
         }
       }
@@ -61,7 +61,7 @@ Array [
           style={
             Object {
               "flex": 1,
-              "height": 65,
+              "height": 162.5,
             }
           }
         />
@@ -69,7 +69,7 @@ Array [
           style={
             Object {
               "flex": 1,
-              "height": 65,
+              "height": 162.5,
             }
           }
         />

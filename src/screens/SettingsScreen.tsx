@@ -42,11 +42,11 @@ export default function SettingsTabScreen() {
               title="Snooze"
               horizontalRule
               itemRight="switch"
-              icon={<FontAwesome name="moon-o" size={24} color={Colors.greyLight2} />}
+              icon={<FontAwesome name="moon-o" size={25} style={{ paddingRight: 3 }} color={Colors.greyLight2} />}
             />
 
             <SettingCardItem
-              title="Snooze Duration"
+              title="Snooze duration"
               horizontalRule
               itemRight="buttons"
               icon={<SimpleLineIcons name="volume-2" size={24} color={Colors.greyLight2} />}
