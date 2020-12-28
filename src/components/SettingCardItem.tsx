@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Pressable, StyleSheet, Switch, View, Dimensions } from 'react-native';
 import VivText from '@/components/VivText';
 import Colors from '@/constants/Colors';
+import { smallScreenWidthBreakpoint, largeScreenWidthBreakpoint } from '@/constants/Values';
 import { AntDesign, SimpleLineIcons } from '@expo/vector-icons';
 import Slider from '@react-native-community/slider';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -69,7 +70,17 @@ export default function SettingCardItem({
             </Pressable>
           </LinearGradient>
 
-          <VivText style={{ alignSelf: 'center', marginHorizontal: 5 }} fontName="Body" color={Colors.greyLight1}>
+          <VivText
+            style={{ alignSelf: 'center', marginHorizontal: 5 }}
+            fontName={
+              windowWidth < smallScreenWidthBreakpoint
+                ? 'Footnote'
+                : windowWidth > largeScreenWidthBreakpoint
+                ? 'Title6'
+                : 'Body'
+            }
+            color={Colors.greyLight1}
+          >
             {snoozeNumber} {snoozeNumber !== 1 ? 'mins' : 'min'}
           </VivText>
 
@@ -101,7 +112,16 @@ export default function SettingCardItem({
                   size: 24
                 })}
               </View>
-              <VivText fontName="Body" color={pressed ? Colors.greyLight2 : Colors.greyLight1}>
+              <VivText
+                fontName={
+                  windowWidth < smallScreenWidthBreakpoint
+                    ? 'Subhead'
+                    : windowWidth > largeScreenWidthBreakpoint
+                    ? 'Title4'
+                    : 'Body'
+                }
+                color={pressed ? Colors.greyLight2 : Colors.greyLight1}
+              >
                 {title}
               </VivText>
               {slider ? (
@@ -118,7 +138,16 @@ export default function SettingCardItem({
 
             <View style={styles.row}>
               {extraInfo ? (
-                <VivText fontName="Caption" color={Colors.greyLight2}>
+                <VivText
+                  fontName={
+                    windowWidth < smallScreenWidthBreakpoint
+                      ? 'Caption'
+                      : windowWidth > largeScreenWidthBreakpoint
+                      ? 'Body'
+                      : 'Caption'
+                  }
+                  color={Colors.greyLight2}
+                >
                   {extraInfo}
                 </VivText>
               ) : null}

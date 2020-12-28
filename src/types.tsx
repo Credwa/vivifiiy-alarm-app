@@ -28,6 +28,12 @@ export type InsightsTabParamList = {
 
 export type SettingsTabParamList = {
   SettingsTabScreen: undefined;
+  VolumeStyleScreen: undefined;
+  DataScreen: undefined;
+  HelpScreen: undefined;
+  LinkedMusicAccountsScreen: undefined;
+  ReportBugScreen: undefined;
+  AccountDetailsScreen: undefined;
 };
 
 export type meridiem = 'AM' | 'PM';

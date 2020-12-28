@@ -5,6 +5,13 @@ import InsightsScreen from '@/screens/InsightsScreen';
 import SettingsScreen from '@/screens/SettingsScreen';
 import NewAlarmScreen from '@/screens/NewAlarmScreen';
 import EditAlarmScreen from '@/screens/EditAlarmScreen';
+import VolumeStyleScreen from '@/screens/settings/VolumeStyleScreen';
+import DataScreen from '@/screens/settings/DataScreen';
+import HelpScreen from '@/screens/settings/HelpScreen';
+import LinkedMusicAccountsScreen from '@/screens/settings/LinkedMusicAccountsScreen';
+import ReportBugScreen from '@/screens/settings/ReportBugScreen';
+import AccountDetailsScreen from '@/screens/settings/AccountDetailsScreen';
+
 import {
   AlarmsTabParamList,
   BottomTabParamList,
@@ -106,6 +113,24 @@ function SettingsTabNavigator() {
   return (
     <SettingsTabStack.Navigator>
       <SettingsTabStack.Screen name="SettingsTabScreen" component={SettingsScreen} options={{ headerShown: false }} />
+      <SettingsTabStack.Screen
+        name="VolumeStyleScreen"
+        component={VolumeStyleScreen}
+        options={{ headerShown: false }}
+      />
+      <SettingsTabStack.Screen name="DataScreen" component={DataScreen} options={{ headerShown: false }} />
+      <SettingsTabStack.Screen name="HelpScreen" component={HelpScreen} options={{ headerShown: false }} />
+      <SettingsTabStack.Screen
+        name="LinkedMusicAccountsScreen"
+        component={LinkedMusicAccountsScreen}
+        options={{ headerShown: false }}
+      />
+      <SettingsTabStack.Screen name="ReportBugScreen" component={ReportBugScreen} options={{ headerShown: false }} />
+      <SettingsTabStack.Screen
+        name="AccountDetailsScreen"
+        component={AccountDetailsScreen}
+        options={{ headerShown: false }}
+      />
     </SettingsTabStack.Navigator>
   );
 }

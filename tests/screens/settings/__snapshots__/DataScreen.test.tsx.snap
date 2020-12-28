@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DataScreen /> renders correctly 1`] = `
+<View
+  accessibilityIgnoresInvertColors={true}
+  style={
+    Object {
+      "flex": 1,
+      "paddingHorizontal": 20,
+      "resizeMode": "cover",
+    }
+  }
+>
+  <Image
+    source={1}
+    style={
+      Array [
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        Object {
+          "height": undefined,
+          "width": undefined,
+        },
+        undefined,
+      ]
+    }
+  />
+  <RNCSafeAreaView
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "marginTop": 25,
+      }
+    }
+  >
+    <View>
+      <View
+        style={
+          Object {
+            "alignContent": "space-around",
+            "alignItems": "center",
+            "flexDirection": "row",
+            "height": 44,
+            "justifyContent": "space-between",
+            "marginBottom": 50,
+            "width": 600,
+          }
+        }
+      >
+        <View
+          accessible={true}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignContent": "flex-start",
+              "alignItems": "flex-start",
+              "height": 44,
+              "justifyContent": "center",
+              "width": 44,
+            }
+          }
+        >
+          <Text
+            allowFontScaling={false}
+            style={
+              Array [
+                Object {
+                  "color": "#CEE1F2",
+                  "fontSize": 28,
+                },
+                undefined,
+                Object {
+                  "fontFamily": "anticon",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {},
+              ]
+            }
+          >
+            
+          </Text>
+        </View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 20,
+              },
+              Object {
+                "color": "#CEE1F2",
+              },
+              Object {
+                "marginLeft": -15,
+              },
+            ]
+          }
+        >
+          Data
+        </Text>
+        <View
+          accessible={true}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 0,
+            }
+          }
+        >
+          <Text
+            allowFontScaling={false}
+            style={
+              Array [
+                Object {
+                  "color": "#CEE1F2",
+                  "fontSize": 28,
+                },
+                undefined,
+                Object {
+                  "fontFamily": "anticon",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {},
+              ]
+            }
+          >
+            
+          </Text>
+        </View>
+      </View>
+    </View>
+  </RNCSafeAreaView>
+</View>
+`;

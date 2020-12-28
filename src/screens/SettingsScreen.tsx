@@ -2,16 +2,46 @@ import Background from '@/components/Background';
 import React from 'react';
 import VivText from '@/components/VivText';
 import Colors from '@/constants/Colors';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView, Dimensions } from 'react-native';
 import { AntDesign, FontAwesome, Ionicons, SimpleLineIcons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import VivCard from '@/components/VivCard';
 import SettingCardItem from '@/components/SettingCardItem';
 import * as StoreReview from 'expo-store-review';
+import { smallScreenWidthBreakpoint, largeScreenWidthBreakpoint } from '@/constants/Values';
+import { SettingsTabParamList } from '@/types';
+import { StackScreenProps } from '@react-navigation/stack';
+const windowWidth = Dimensions.get('window').width;
 
-export default function SettingsTabScreen() {
+export default function SettingsTabScreen({
+  navigation
+}: StackScreenProps<SettingsTabParamList, 'SettingsTabScreen'>) {
   const onRateApp = () => {
     StoreReview.requestReview();
+  };
+
+  const onVolumeStylePress = () => {
+    navigation.navigate('VolumeStyleScreen');
+  };
+
+  const onLinkedAccountsPress = () => {
+    navigation.navigate('LinkedMusicAccountsScreen');
+  };
+
+  const onDataPress = () => {
+    navigation.navigate('DataScreen');
+  };
+
+  const onAccountDetailsPress = () => {
+    navigation.navigate('AccountDetailsScreen');
+  };
+
+  const onHelpPress = () => {
+    navigation.navigate('HelpScreen');
+  };
+
+  const onReportBugPress = () => {
+    navigation.navigate('ReportBugScreen');
   };
 
   return (
@@ -26,7 +56,16 @@ export default function SettingsTabScreen() {
           <VivCard
             style={styles.card}
             headerChildren={
-              <VivText fontName="Headline" color={Colors.greyLight1}>
+              <VivText
+                fontName={
+                  windowWidth < smallScreenWidthBreakpoint
+                    ? 'Headline'
+                    : windowWidth > largeScreenWidthBreakpoint
+                    ? 'Title5'
+                    : 'Headline'
+                }
+                color={Colors.greyLight1}
+              >
                 Alarm settings
               </VivText>
             }
@@ -34,6 +73,7 @@ export default function SettingsTabScreen() {
             <SettingCardItem
               title="Volume style"
               horizontalRule
+              onCardItemPress={onVolumeStylePress}
               extraInfo="Progressive"
               icon={<SimpleLineIcons name="volume-2" size={24} color={Colors.greyLight2} />}
             />
@@ -63,7 +103,16 @@ export default function SettingsTabScreen() {
           <VivCard
             style={styles.card}
             headerChildren={
-              <VivText fontName="Headline" color={Colors.greyLight1}>
+              <VivText
+                fontName={
+                  windowWidth < smallScreenWidthBreakpoint
+                    ? 'Headline'
+                    : windowWidth > largeScreenWidthBreakpoint
+                    ? 'Title5'
+                    : 'Headline'
+                }
+                color={Colors.greyLight1}
+              >
                 General settings
               </VivText>
             }
@@ -71,17 +120,20 @@ export default function SettingsTabScreen() {
             <SettingCardItem
               title="Linked music accounts"
               horizontalRule
+              onCardItemPress={onLinkedAccountsPress}
               icon={<SimpleLineIcons name="music-tone-alt" size={24} color={Colors.greyLight2} />}
             />
 
             <SettingCardItem
               title="Data"
               horizontalRule
+              onCardItemPress={onDataPress}
               icon={<Ionicons name="ios-cloud-outline" size={24} color={Colors.greyLight2} />}
             />
 
             <SettingCardItem
               title="Account details"
+              onCardItemPress={onAccountDetailsPress}
               icon={<AntDesign name="user" size={24} color={Colors.greyLight2} />}
             />
           </VivCard>
@@ -89,7 +141,16 @@ export default function SettingsTabScreen() {
           <VivCard
             style={styles.card}
             headerChildren={
-              <VivText fontName="Headline" color={Colors.greyLight1}>
+              <VivText
+                fontName={
+                  windowWidth < smallScreenWidthBreakpoint
+                    ? 'Headline'
+                    : windowWidth > largeScreenWidthBreakpoint
+                    ? 'Title5'
+                    : 'Headline'
+                }
+                color={Colors.greyLight1}
+              >
                 Other settings
               </VivText>
             }
@@ -97,6 +158,7 @@ export default function SettingsTabScreen() {
             <SettingCardItem
               title="Help"
               horizontalRule
+              onCardItemPress={onHelpPress}
               icon={<Ionicons name="ios-help-circle-outline" size={24} color={Colors.greyLight2} />}
             />
 
@@ -109,6 +171,7 @@ export default function SettingsTabScreen() {
 
             <SettingCardItem
               title="Report a bug"
+              onCardItemPress={onReportBugPress}
               icon={<FontAwesome name="frown-o" size={24} color={Colors.greyLight2} />}
             />
           </VivCard>
