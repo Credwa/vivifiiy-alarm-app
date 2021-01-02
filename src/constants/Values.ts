@@ -1,5 +1,6 @@
 export const storageKeys: { [key: string]: string } = {
-  alarms: '@vivifiiy-alarm-app/alarms'
+  alarms: '@vivifiiy-alarm-app/alarms',
+  settings: '@vivifiiy-alarm-app/settings'
 };
 
 export const smallScreenWidthBreakpoint = 400;

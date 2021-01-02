@@ -9,7 +9,9 @@ import useStore from '@/store';
 import { SettingsTabParamList } from '@/types';
 import { StackScreenProps } from '@react-navigation/stack';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { largeScreenWidthBreakpoint, smallScreenWidthBreakpoint } from '@/constants/Values';
 
+const windowWidth = Dimensions.get('window').width;
 export default function ReportBugScreen({ navigation }: StackScreenProps<SettingsTabParamList, 'ReportBugScreen'>) {
   return (
     <Background>
@@ -18,10 +20,26 @@ export default function ReportBugScreen({ navigation }: StackScreenProps<Setting
           <View style={styles.header}>
             <Pressable onPress={navigation.goBack} style={styles.backButton}>
               {({ pressed }) => (
-                <AntDesign name="arrowleft" size={28} color={pressed ? Colors.greyLight3 : Colors.greyLight1} />
+                <AntDesign
+                  name="arrowleft"
+                  size={
+                    windowWidth < smallScreenWidthBreakpoint ? 24 : windowWidth > largeScreenWidthBreakpoint ? 44 : 28
+                  }
+                  color={pressed ? Colors.greyLight3 : Colors.greyLight1}
+                />
               )}
             </Pressable>
-            <VivText fontName="Title6" color={Colors.greyLight1} style={{ marginLeft: -15 }}>
+            <VivText
+              fontName={
+                windowWidth < smallScreenWidthBreakpoint
+                  ? 'Body'
+                  : windowWidth > largeScreenWidthBreakpoint
+                  ? 'Title3'
+                  : 'Title6'
+              }
+              color={Colors.greyLight1}
+              style={{ marginLeft: -15 }}
+            >
               Report bug
             </VivText>
             <Pressable onPress={navigation.goBack} style={{ opacity: 0 }}>

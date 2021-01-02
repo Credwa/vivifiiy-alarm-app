@@ -1,5 +1,5 @@
 import Background from '@/components/Background';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import VivText from '@/components/VivText';
 import Colors from '@/constants/Colors';
 import { StyleSheet, View, ScrollView, Dimensions } from 'react-native';
@@ -11,14 +11,43 @@ import * as StoreReview from 'expo-store-review';
 import { smallScreenWidthBreakpoint, largeScreenWidthBreakpoint } from '@/constants/Values';
 import { SettingsTabParamList } from '@/types';
 import { StackScreenProps } from '@react-navigation/stack';
+import useStore from '@/store/settings';
+import { debounce } from '@/utils';
 const windowWidth = Dimensions.get('window').width;
 
 export default function SettingsTabScreen({
   navigation
 }: StackScreenProps<SettingsTabParamList, 'SettingsTabScreen'>) {
+  const [volumeStyle, setVolumeStyle] = useState(useStore.getState().getSetting('volumeStyle'));
+  const [snooze, setSnooze] = useState(useStore.getState().getSetting('snooze'));
+  const setSetting = useStore((state) => state.setSetting);
+  const getSetting = useStore((state) => state.getSetting);
   const onRateApp = () => {
     StoreReview.requestReview();
   };
+
+  // Listen to setting changes
+  useEffect(() => {
+    useStore.subscribe(
+      (setting: any) => {
+        setVolumeStyle(setting);
+      },
+      (state) => state.getSetting('volumeStyle')
+    );
+  }, []);
+
+  const switchValueChanged = () => {
+    setSetting('snooze', !snooze);
+    setSnooze(!snooze);
+  };
+
+  const sliderValueChanged = debounce((value: number) => {
+    setSetting('maxVolume', value);
+  }, 1000);
+
+  const buttonsValueChanged = debounce((value: number) => {
+    setSetting('snoozeDuration', value);
+  }, 500);
 
   const onVolumeStylePress = () => {
     navigation.navigate('VolumeStyleScreen');
@@ -74,7 +103,7 @@ export default function SettingsTabScreen({
               title="Volume style"
               horizontalRule
               onCardItemPress={onVolumeStylePress}
-              extraInfo="Progressive"
+              extraInfo={volumeStyle}
               icon={<SimpleLineIcons name="volume-2" size={24} color={Colors.greyLight2} />}
             />
 
@@ -82,6 +111,8 @@ export default function SettingsTabScreen({
               title="Snooze"
               horizontalRule
               itemRight="switch"
+              switchValue={getSetting('snooze')}
+              onSwitchValueChange={switchValueChanged}
               icon={<FontAwesome name="moon-o" size={25} style={{ paddingRight: 3 }} color={Colors.greyLight2} />}
             />
 
@@ -89,12 +120,16 @@ export default function SettingsTabScreen({
               title="Snooze duration"
               horizontalRule
               itemRight="buttons"
+              buttonsValue={getSetting('snoozeDuration')}
+              onButtonsValueChange={buttonsValueChanged}
               icon={<SimpleLineIcons name="volume-2" size={24} color={Colors.greyLight2} />}
             />
 
             <SettingCardItem
               itemRight="icon"
               slider={true}
+              sliderValue={getSetting('maxVolume')}
+              onSliderValueChange={sliderValueChanged}
               icon={<SimpleLineIcons name="volume-off" size={24} color={Colors.greyLight2} />}
               rightIcon={<SimpleLineIcons name="volume-2" size={24} color={Colors.greyLight2} />}
             />

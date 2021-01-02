@@ -81,7 +81,7 @@ exports[`<DataScreen /> renders correctly 1`] = `
               Array [
                 Object {
                   "color": "#CEE1F2",
-                  "fontSize": 28,
+                  "fontSize": 44,
                 },
                 undefined,
                 Object {

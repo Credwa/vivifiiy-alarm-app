@@ -18,6 +18,12 @@ interface SettingCardItemProps {
   slider?: boolean;
   horizontalRule?: boolean;
   extraInfo?: string;
+  switchValue?: boolean;
+  sliderValue?: number;
+  buttonsValue?: number;
+  onButtonsValueChange?: (value: number) => void;
+  onSwitchValueChange?: () => void;
+  onSliderValueChange?: (value: number) => void;
   onCardItemPress?: () => void;
   itemRight?: 'switch' | 'icon' | 'buttons' | 'default';
 }
@@ -31,17 +37,29 @@ export default function SettingCardItem({
   rightIcon,
   slider,
   extraInfo,
+  switchValue,
+  sliderValue,
+  buttonsValue,
+  onButtonsValueChange,
+  onSwitchValueChange,
+  onSliderValueChange,
   onCardItemPress
 }: SettingCardItemProps) {
-  const [snoozeNumber, setSnoozeNumber] = useState(10);
+  const [snoozeNumber, setSnoozeNumber] = useState(buttonsValue as number | 10);
   let itemRightComponent: React.ReactNode;
 
   const addTime = () => {
-    if (snoozeNumber < 60) setSnoozeNumber(snoozeNumber + 1);
+    if (snoozeNumber < 60 && onButtonsValueChange) {
+      setSnoozeNumber(snoozeNumber + 1);
+      onButtonsValueChange(snoozeNumber + 1);
+    }
   };
 
   const subtractTime = () => {
-    if (snoozeNumber > 1) setSnoozeNumber(snoozeNumber - 1);
+    if (snoozeNumber > 1 && onButtonsValueChange) {
+      setSnoozeNumber(snoozeNumber - 1);
+      onButtonsValueChange(snoozeNumber + 1);
+    }
   };
 
   switch (itemRight) {
@@ -52,7 +70,8 @@ export default function SettingCardItem({
           trackColor={{ false: Colors.orangeMedium, true: Colors.orangeMedium }}
           thumbColor={Colors.greyLight1}
           ios_backgroundColor={Colors.greyLight2}
-          value={true}
+          value={switchValue}
+          onValueChange={onSwitchValueChange}
         />
       );
       break;
@@ -106,11 +125,13 @@ export default function SettingCardItem({
           <View style={styles.item}>
             <View style={styles.row}>
               <View style={{ ...styles.icon }}>
-                {React.cloneElement(icon, {
-                  color: pressed && !slider ? Colors.greyBodyText : Colors.greyLight2,
-                  name: icon.props.name,
-                  size: 24
-                })}
+                {icon
+                  ? React.cloneElement(icon, {
+                      color: pressed && !slider ? Colors.greyBodyText : Colors.greyLight2,
+                      name: icon.props.name,
+                      size: 24
+                    })
+                  : null}
               </View>
               <VivText
                 fontName={
@@ -129,7 +150,8 @@ export default function SettingCardItem({
                   style={{ width: windowWidth > 800 ? wp('85%') : wp('60%') }}
                   minimumValue={0}
                   maximumValue={1}
-                  value={1}
+                  value={sliderValue}
+                  onValueChange={onSliderValueChange}
                   minimumTrackTintColor={Colors.blueLight}
                   maximumTrackTintColor={Colors.greyBodyText}
                 />

@@ -1,5 +1,5 @@
 import VolumeStyleScreen from '@/screens/settings/VolumeStyleScreen';
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, Ionicons } from '@expo/vector-icons';
 import * as Font from 'expo-font';
 import React from 'react';
 import renderer from 'react-test-renderer';
@@ -8,7 +8,8 @@ jest.useFakeTimers();
 describe('<VolumeStyleScreen />', () => {
   beforeEach(async () => {
     await Font.loadAsync({
-      ...AntDesign.font
+      ...AntDesign.font,
+      ...Ionicons.font
     });
   });
 

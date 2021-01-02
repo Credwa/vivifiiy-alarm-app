@@ -231,25 +231,6 @@ exports[`<SettingsScreen /> renders correctly 1`] = `
                   }
                 >
                   <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#869DB2",
-                        },
-                        Object {
-                          "fontFamily": "Nunito_400Regular",
-                          "fontSize": 12,
-                        },
-                        Object {
-                          "color": "#869DB2",
-                        },
-                        undefined,
-                      ]
-                    }
-                  >
-                    Progressive
-                  </Text>
-                  <Text
                     allowFontScaling={false}
                     style={
                       Array [
@@ -413,7 +394,7 @@ exports[`<SettingsScreen /> renders correctly 1`] = `
                     }
                     thumbTintColor="#CEE1F2"
                     tintColor="#D98436"
-                    value={true}
+                    value={false}
                   />
                 </View>
               </View>
@@ -619,7 +600,6 @@ exports[`<SettingsScreen /> renders correctly 1`] = `
                         ]
                       }
                     >
-                      10
                        
                       mins
                     </Text>
@@ -796,10 +776,10 @@ exports[`<SettingsScreen /> renders correctly 1`] = `
                     maximumValue={1}
                     minimumTrackTintColor="#5EC5FF"
                     minimumValue={0}
-                    onChange={null}
+                    onChange={[Function]}
                     onRNCSliderSlidingComplete={null}
                     onRNCSliderSlidingStart={null}
-                    onRNCSliderValueChange={null}
+                    onRNCSliderValueChange={[Function]}
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     step={0}
@@ -822,7 +802,7 @@ exports[`<SettingsScreen /> renders correctly 1`] = `
                         "width": 1,
                       }
                     }
-                    value={1}
+                    value={0}
                   />
                 </View>
                 <View

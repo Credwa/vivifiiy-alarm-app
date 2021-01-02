@@ -49,7 +49,7 @@ exports[`<VolumeStyleScreen /> renders correctly 1`] = `
             "height": 44,
             "justifyContent": "space-between",
             "marginBottom": 50,
-            "width": 600,
+            "width": 682.5,
           }
         }
       >
@@ -155,6 +155,315 @@ exports[`<VolumeStyleScreen /> renders correctly 1`] = `
           >
             
           </Text>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "alignSelf": "stretch",
+          "backgroundColor": "#100F62",
+          "borderRadius": 10,
+          "elevation": 9,
+          "shadowColor": "#000",
+          "shadowOffset": Object {
+            "height": 4,
+            "width": 0,
+          },
+          "shadowOpacity": 0.32,
+          "shadowRadius": 5.46,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#070562",
+            "borderTopLeftRadius": 10,
+            "borderTopRightRadius": 10,
+            "paddingHorizontal": 5,
+            "paddingVertical": 3,
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#869DB2",
+              },
+              Object {
+                "fontFamily": "Nunito_600SemiBold",
+                "fontSize": 17,
+              },
+              Object {
+                "color": "#CEE1F2",
+              },
+              undefined,
+            ]
+          }
+        >
+          Alarm settings
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "paddingHorizontal": 20,
+            "paddingVertical": 15,
+          }
+        }
+      >
+        <View
+          accessible={true}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "flexDirection": "column",
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignContent": "center",
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "paddingVertical": 17,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignContent": "center",
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <View
+                style={
+                  Object {
+                    "marginRight": 17,
+                  }
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#869DB2",
+                    },
+                    Object {
+                      "fontFamily": "Nunito_400Regular",
+                      "fontSize": 17,
+                    },
+                    Object {
+                      "color": "#CEE1F2",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Progressive
+              </Text>
+            </View>
+            <View
+              style={
+                Object {
+                  "alignContent": "center",
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                }
+              }
+            />
+          </View>
+          <View
+            style={
+              Object {
+                "borderBottomColor": "#B1C2D1",
+                "borderWidth": 0.5,
+              }
+            }
+          />
+        </View>
+        <View
+          accessible={true}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "flexDirection": "column",
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignContent": "center",
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "paddingVertical": 17,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignContent": "center",
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <View
+                style={
+                  Object {
+                    "marginRight": 17,
+                  }
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#869DB2",
+                    },
+                    Object {
+                      "fontFamily": "Nunito_400Regular",
+                      "fontSize": 17,
+                    },
+                    Object {
+                      "color": "#CEE1F2",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Adaptive
+              </Text>
+            </View>
+            <View
+              style={
+                Object {
+                  "alignContent": "center",
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                }
+              }
+            />
+          </View>
+          <View
+            style={
+              Object {
+                "borderBottomColor": "#B1C2D1",
+                "borderWidth": 0.5,
+              }
+            }
+          />
+        </View>
+        <View
+          accessible={true}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "flexDirection": "column",
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignContent": "center",
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "paddingVertical": 17,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignContent": "center",
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <View
+                style={
+                  Object {
+                    "marginRight": 17,
+                  }
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#869DB2",
+                    },
+                    Object {
+                      "fontFamily": "Nunito_400Regular",
+                      "fontSize": 17,
+                    },
+                    Object {
+                      "color": "#CEE1F2",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                Standard
+              </Text>
+            </View>
+            <View
+              style={
+                Object {
+                  "alignContent": "center",
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                }
+              }
+            />
+          </View>
         </View>
       </View>
     </View>
