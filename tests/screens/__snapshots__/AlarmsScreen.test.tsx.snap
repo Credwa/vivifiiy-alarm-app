@@ -159,6 +159,7 @@ exports[`<AlarmsScreen /> renders correctly 1`] = `
         style={
           Array [
             Object {
+              "alignItems": "center",
               "backgroundColor": "#3DD7F2",
               "borderRadius": 7,
               "flexDirection": "row",

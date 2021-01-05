@@ -3,17 +3,16 @@ import VivText from '@/components/VivText';
 import Colors from '@/constants/Colors';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
-import { Dimensions, Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import useStore from '@/store/settings';
-import { smallScreenWidthBreakpoint, largeScreenWidthBreakpoint } from '@/constants/Values';
 import { SettingsTabParamList } from '@/types';
 import { StackScreenProps } from '@react-navigation/stack';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import VivCard from '@/components/VivCard';
 import SettingCardItem from '@/components/SettingCardItem';
+import { resize } from '@/utils';
 
-const windowWidth = Dimensions.get('window').width;
 export default function VolumeStyleScreen({
   navigation
 }: StackScreenProps<SettingsTabParamList, 'VolumeStyleScreen'>) {
@@ -34,21 +33,13 @@ export default function VolumeStyleScreen({
               {({ pressed }) => (
                 <AntDesign
                   name="arrowleft"
-                  size={
-                    windowWidth < smallScreenWidthBreakpoint ? 24 : windowWidth > largeScreenWidthBreakpoint ? 44 : 28
-                  }
+                  size={resize(28, 24, 44)}
                   color={pressed ? Colors.greyLight3 : Colors.greyLight1}
                 />
               )}
             </Pressable>
             <VivText
-              fontName={
-                windowWidth < smallScreenWidthBreakpoint
-                  ? 'Body'
-                  : windowWidth > largeScreenWidthBreakpoint
-                  ? 'Title3'
-                  : 'Title6'
-              }
+              fontName={resize('Title6', 'Body', 'Title3')}
               color={Colors.greyLight1}
               style={{ marginLeft: -15 }}
             >
@@ -64,16 +55,7 @@ export default function VolumeStyleScreen({
         <VivCard
           style={styles.card}
           headerChildren={
-            <VivText
-              fontName={
-                windowWidth < smallScreenWidthBreakpoint
-                  ? 'Headline'
-                  : windowWidth > largeScreenWidthBreakpoint
-                  ? 'Title5'
-                  : 'Headline'
-              }
-              color={Colors.greyLight1}
-            >
+            <VivText fontName={resize('Headline', 'Headline', 'Title5')} color={Colors.greyLight1}>
               Alarm settings
             </VivText>
           }

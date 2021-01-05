@@ -6791,6 +6791,7 @@ exports[`<EditAlarmScreen /> renders correctly 1`] = `
         style={
           Array [
             Object {
+              "alignItems": "center",
               "backgroundColor": "#3DD7F2",
               "borderRadius": 7,
               "flexDirection": "row",
@@ -6842,6 +6843,7 @@ exports[`<EditAlarmScreen /> renders correctly 1`] = `
         style={
           Array [
             Object {
+              "alignItems": "center",
               "backgroundColor": "#D98436",
               "borderRadius": 7,
               "flexDirection": "row",

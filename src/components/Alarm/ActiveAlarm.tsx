@@ -1,51 +1,24 @@
 import React from 'react';
 import VivText from '@/components/VivText';
 import Colors from '@/constants/Colors';
-import { View, StyleSheet, Dimensions } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { AlarmInterface } from '@/interfaces';
-import { smallScreenWidthBreakpoint, largeScreenWidthBreakpoint } from '@/constants/Values';
+import { resize } from '@/utils';
 
 interface ActiveAlarmsProps {
   nearestAlarm: AlarmInterface;
 }
-const windowWidth = Dimensions.get('window').width;
+
 export default function ActiveAlarms({ nearestAlarm }: ActiveAlarmsProps) {
   return (
     <View style={styles.container}>
-      <VivText
-        fontName={
-          windowWidth < smallScreenWidthBreakpoint
-            ? 'Title6'
-            : windowWidth > largeScreenWidthBreakpoint
-            ? 'Title2'
-            : 'Title4'
-        }
-        color={Colors.greyLight3}
-      >
+      <VivText fontName={resize('Title4', 'Title6', 'Title2')} color={Colors.greyLight3}>
         Next alarm at...
       </VivText>
       <View style={styles.time}>
-        <VivText
-          fontName={
-            windowWidth < smallScreenWidthBreakpoint
-              ? 'Title3'
-              : windowWidth > largeScreenWidthBreakpoint
-              ? 'TitleBig1'
-              : 'Title1'
-          }
-          color={Colors.greyLight1}
-        >
+        <VivText fontName={resize('Title1', 'Title3', 'TitleBig1')} color={Colors.greyLight1}>
           {nearestAlarm.hour} : {nearestAlarm.minute}{' '}
-          <VivText
-            fontName={
-              windowWidth < smallScreenWidthBreakpoint
-                ? 'Title4'
-                : windowWidth > largeScreenWidthBreakpoint
-                ? 'TitleBig2'
-                : 'Title2'
-            }
-            color={Colors.greyLight1}
-          >
+          <VivText fontName={resize('Title2', 'Title4', 'TitleBig2')} color={Colors.greyLight1}>
             {nearestAlarm.meridiem}
           </VivText>
         </VivText>

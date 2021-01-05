@@ -6786,6 +6786,7 @@ exports[`<NewAlarmScreen /> renders correctly 1`] = `
         style={
           Array [
             Object {
+              "alignItems": "center",
               "backgroundColor": "#3DD7F2",
               "borderRadius": 7,
               "flexDirection": "row",
@@ -6826,7 +6827,7 @@ exports[`<NewAlarmScreen /> renders correctly 1`] = `
             Array [
               Object {
                 "color": undefined,
-                "fontSize": 22,
+                "fontSize": 24,
               },
               undefined,
               Object {

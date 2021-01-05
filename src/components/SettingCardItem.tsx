@@ -2,13 +2,11 @@ import React, { useState } from 'react';
 import { Pressable, StyleSheet, Switch, View, Dimensions } from 'react-native';
 import VivText from '@/components/VivText';
 import Colors from '@/constants/Colors';
-import { smallScreenWidthBreakpoint, largeScreenWidthBreakpoint } from '@/constants/Values';
 import { AntDesign, SimpleLineIcons } from '@expo/vector-icons';
 import Slider from '@react-native-community/slider';
 import { LinearGradient } from 'expo-linear-gradient';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
-
-const windowWidth = Dimensions.get('window').width;
+import { resize } from '@/utils';
 
 interface SettingCardItemProps {
   style?: any;
@@ -91,13 +89,7 @@ export default function SettingCardItem({
 
           <VivText
             style={{ alignSelf: 'center', marginHorizontal: 5 }}
-            fontName={
-              windowWidth < smallScreenWidthBreakpoint
-                ? 'Footnote'
-                : windowWidth > largeScreenWidthBreakpoint
-                ? 'Title6'
-                : 'Body'
-            }
+            fontName={resize('Body', 'Footnote', 'Title6')}
             color={Colors.greyLight1}
           >
             {snoozeNumber} {snoozeNumber !== 1 ? 'mins' : 'min'}
@@ -134,20 +126,14 @@ export default function SettingCardItem({
                   : null}
               </View>
               <VivText
-                fontName={
-                  windowWidth < smallScreenWidthBreakpoint
-                    ? 'Subhead'
-                    : windowWidth > largeScreenWidthBreakpoint
-                    ? 'Title4'
-                    : 'Body'
-                }
+                fontName={resize('Body', 'Subhead', 'Title4')}
                 color={pressed ? Colors.greyLight2 : Colors.greyLight1}
               >
                 {title}
               </VivText>
               {slider ? (
                 <Slider
-                  style={{ width: windowWidth > 800 ? wp('85%') : wp('60%') }}
+                  style={{ width: resize(wp('60%'), wp('60%'), wp('85%')) }}
                   minimumValue={0}
                   maximumValue={1}
                   value={sliderValue}
@@ -160,16 +146,7 @@ export default function SettingCardItem({
 
             <View style={styles.row}>
               {extraInfo ? (
-                <VivText
-                  fontName={
-                    windowWidth < smallScreenWidthBreakpoint
-                      ? 'Caption'
-                      : windowWidth > largeScreenWidthBreakpoint
-                      ? 'Body'
-                      : 'Caption'
-                  }
-                  color={Colors.greyLight2}
-                >
+                <VivText fontName={resize('Caption', 'Caption', 'Body')} color={Colors.greyLight2}>
                   {extraInfo}
                 </VivText>
               ) : null}

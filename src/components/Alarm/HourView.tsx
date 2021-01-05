@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { NativeSyntheticEvent, NativeScrollEvent, Dimensions } from 'react-native';
+import { NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 import ScrollSelector from '@/components/ScrollSelector';
 import Colors from '@/constants/Colors';
 import useStore from '@/store';
-import { smallScreenWidthBreakpoint, largeScreenWidthBreakpoint } from '@/constants/Values';
-import { findSelectedAlarmViewIndex } from '@/utils';
+import { findSelectedAlarmViewIndex, resize } from '@/utils';
 interface SnapScrollProps {
   data: string[];
   initValue: string;
 }
-
-const windowWidth = Dimensions.get('window').width;
 
 export default function HourView({ data, initValue }: SnapScrollProps) {
   const [listState, setEndOfList] = useState(data);
@@ -29,25 +26,15 @@ export default function HourView({ data, initValue }: SnapScrollProps) {
   return (
     <ScrollSelector
       dataSource={listState}
-      overrideFontName={
-        windowWidth < smallScreenWidthBreakpoint
-          ? ['Title3', 'Title4']
-          : windowWidth > largeScreenWidthBreakpoint
-          ? ['TitleBig1', 'TitleBig2']
-          : ['Title1', 'Title2']
-      }
+      overrideFontName={resize(['Title1', 'Title2'], ['Title3', 'Title4'], ['TitleBig1', 'TitleBig2'])}
       selectedIndex={findSelectedAlarmViewIndex(data, initValue, 11)}
       onValueChange={(data) => {
         updateHourOnChange(data);
       }}
-      wrapperHeight={
-        windowWidth < smallScreenWidthBreakpoint ? 175 : windowWidth > largeScreenWidthBreakpoint ? 300 : 200
-      }
-      wrapperWidth={
-        windowWidth < smallScreenWidthBreakpoint ? 45 : windowWidth > largeScreenWidthBreakpoint ? 150 : 60
-      }
+      wrapperHeight={resize(200, 175, 300)}
+      wrapperWidth={resize(60, 45, 150)}
       onEndReached={onEndReached}
-      itemHeight={windowWidth < smallScreenWidthBreakpoint ? 65 : windowWidth > largeScreenWidthBreakpoint ? 110 : 75}
+      itemHeight={resize(75, 65, 110)}
       highlightColor={Colors.greyLight3}
       highlightBorderWidth={1}
     />

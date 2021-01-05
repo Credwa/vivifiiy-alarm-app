@@ -982,7 +982,7 @@ exports[`<SettingsScreen /> renders correctly 1`] = `
                       ]
                     }
                   >
-                    Linked music accounts
+                    Connect music
                   </Text>
                 </View>
                 <View

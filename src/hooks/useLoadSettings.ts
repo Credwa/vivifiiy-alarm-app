@@ -13,7 +13,8 @@ export default function useLoadSettings() {
           volumeStyle: 'Progressive',
           snooze: true,
           snoozeDuration: 10,
-          maxVolume: 1
+          maxVolume: 1,
+          connectedMusicAccounts: ['Spotify']
         };
         const loadedSettingsMap: Map<string, SettingsInterface> = new Map();
         for (const setting in loadedSettings) {

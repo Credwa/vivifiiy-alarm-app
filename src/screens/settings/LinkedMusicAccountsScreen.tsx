@@ -3,15 +3,14 @@ import VivText from '@/components/VivText';
 import Colors from '@/constants/Colors';
 import { AntDesign } from '@expo/vector-icons';
 import React from 'react';
-import { Dimensions, Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import useStore from '@/store';
 import { SettingsTabParamList } from '@/types';
 import { StackScreenProps } from '@react-navigation/stack';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
-import { smallScreenWidthBreakpoint, largeScreenWidthBreakpoint } from '@/constants/Values';
+import MusicAccountList from '@/components/MusicAccountList/MusicAccountList';
+import { resize } from '@/utils';
 
-const windowWidth = Dimensions.get('window').width;
 export default function LinkedMusicAccountsScreen({
   navigation
 }: StackScreenProps<SettingsTabParamList, 'LinkedMusicAccountsScreen'>) {
@@ -24,25 +23,17 @@ export default function LinkedMusicAccountsScreen({
               {({ pressed }) => (
                 <AntDesign
                   name="arrowleft"
-                  size={
-                    windowWidth < smallScreenWidthBreakpoint ? 24 : windowWidth > largeScreenWidthBreakpoint ? 44 : 28
-                  }
+                  size={resize(28, 24, 44)}
                   color={pressed ? Colors.greyLight3 : Colors.greyLight1}
                 />
               )}
             </Pressable>
             <VivText
-              fontName={
-                windowWidth < smallScreenWidthBreakpoint
-                  ? 'Body'
-                  : windowWidth > largeScreenWidthBreakpoint
-                  ? 'Title3'
-                  : 'Title6'
-              }
+              fontName={resize('Title6', 'Body', 'Title3')}
               color={Colors.greyLight1}
               style={{ marginLeft: -15 }}
             >
-              Linked music accounts
+              Connect music
             </VivText>
             <Pressable onPress={navigation.goBack} style={{ opacity: 0 }}>
               {({ pressed }) => (
@@ -51,6 +42,7 @@ export default function LinkedMusicAccountsScreen({
             </Pressable>
           </View>
         </View>
+        <MusicAccountList />
       </SafeAreaView>
     </Background>
   );

@@ -1,15 +1,15 @@
 import Colors from '@/constants/Colors';
 import React from 'react';
 import { StyleSheet, Pressable, GestureResponderEvent, View } from 'react-native';
-import { Icon } from '@expo/vector-icons/build/createIconSet';
 import VivText from '@/components/VivText';
+import { resize } from '@/utils';
 
 interface PaddingHorizontal {
   left: number;
   right: number;
 }
 interface ButtonProps {
-  icon?: React.ReactComponentElement<Icon<string, any>>;
+  icon?: any;
   text?: string;
   style?: any;
   iconPosition?: 'left' | 'right';
@@ -57,11 +57,27 @@ export default function VivButton(props: ButtonProps) {
     >
       {({ pressed }) => (
         <>
-          {props.iconPosition && props.iconPosition === 'left' ? props.icon : null}
-          <VivText fontName="Headline" color={pressed ? Colors.black : Colors.blueDark} style={margin}>
+          {props.icon && props.iconPosition && props.iconPosition === 'left'
+            ? React.cloneElement(props.icon, {
+                color: props.icon.props.color,
+                name: props.icon.props.name,
+                size: resize(24, 20, 34)
+              })
+            : null}
+          <VivText
+            fontName={resize('Headline', 'Headline', 'Title3')}
+            color={pressed ? Colors.black : Colors.blueDark}
+            style={margin}
+          >
             {props.text}
           </VivText>
-          {!props.iconPosition || props.iconPosition === 'right' ? props.icon : null}
+          {(props.icon && !props.iconPosition) || props.iconPosition === 'right'
+            ? React.cloneElement(props.icon, {
+                color: props.icon.props.color,
+                name: props.icon.props.name,
+                size: resize(24, 20, 34)
+              })
+            : null}
         </>
       )}
     </Pressable>
@@ -78,7 +94,7 @@ export default function VivButton(props: ButtonProps) {
             {props.icon}
           </View>
           <VivText
-            fontName="Headline"
+            fontName={resize('Headline', 'Headline', 'Title3')}
             color={pressed ? Colors.black : Colors.blueDark}
             style={[
               styles.textSeparated,
@@ -103,6 +119,7 @@ const styles = StyleSheet.create({
   button: {
     flexDirection: 'row',
     textAlign: 'center',
+    alignItems: 'center',
     backgroundColor: '#FFFFFF',
     paddingHorizontal: 25,
     borderRadius: 7

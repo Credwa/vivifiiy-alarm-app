@@ -15,4 +15,5 @@ export interface SettingsInterface {
   snooze: boolean;
   snoozeDuration: number;
   maxVolume: number;
+  connectedMusicAccounts: Array<string>;
 }

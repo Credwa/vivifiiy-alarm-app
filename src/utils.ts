@@ -1,5 +1,6 @@
 import { meridiem, twelveHrTime } from '@/types';
-
+import { smallScreenWidthBreakpoint, largeScreenWidthBreakpoint } from '@/constants/Values';
+import { Dimensions } from 'react-native';
 /**
  * ConvertTo24Hour
  *
@@ -65,6 +66,12 @@ export const findSelectedAlarmViewIndex = (
   return index;
 };
 
+/**
+ * debounce
+ *
+ * @param func
+ * @param waitFor
+ */
 export const debounce = <F extends (...args: any[]) => any>(func: F, waitFor: number) => {
   let timeout: ReturnType<typeof setTimeout> | null = null;
 
@@ -77,4 +84,26 @@ export const debounce = <F extends (...args: any[]) => any>(func: F, waitFor: nu
   };
 
   return debounced as (...args: Parameters<F>) => ReturnType<F>;
+};
+
+/**
+ * resize
+ *
+ * Resizes items depending on screen size
+ *
+ * @param standard
+ * @param small
+ * @param large
+ */
+export const resize = (
+  standard: number | string | Array<any>,
+  small: number | string | Array<any>,
+  large: number | string | Array<any>
+): any => {
+  const windowWidth = Dimensions.get('window').width;
+  return windowWidth < smallScreenWidthBreakpoint
+    ? small
+    : windowWidth > largeScreenWidthBreakpoint
+    ? large
+    : standard;
 };

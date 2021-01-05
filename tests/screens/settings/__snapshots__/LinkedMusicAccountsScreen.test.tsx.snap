@@ -115,7 +115,7 @@ exports[`<LinkedMusicAccountsScreen /> renders correctly 1`] = `
             ]
           }
         >
-          Linked music accounts
+          Connect music
         </Text>
         <View
           accessible={true}
@@ -158,6 +158,361 @@ exports[`<LinkedMusicAccountsScreen /> renders correctly 1`] = `
         </View>
       </View>
     </View>
+    <RCTScrollView
+      bounces={false}
+      collapsable={false}
+      contentContainerStyle={
+        Object {
+          "alignContent": "center",
+          "alignItems": "center",
+          "flex": 1,
+          "justifyContent": "space-between",
+        }
+      }
+      onGestureHandlerEvent={[Function]}
+      onGestureHandlerStateChange={[Function]}
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <View>
+        <View
+          style={
+            Object {
+              "alignContent": "center",
+              "alignItems": "center",
+              "justifyContent": "center",
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#869DB2",
+                },
+                Object {
+                  "fontFamily": "Nunito_400Regular",
+                  "fontSize": 17,
+                },
+                Object {
+                  "color": "#CEE1F2",
+                },
+                Object {
+                  "marginBottom": 26.5,
+                  "marginLeft": 0,
+                },
+              ]
+            }
+          >
+            Connected
+          </Text>
+          <View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#869DB2",
+                  },
+                  Object {
+                    "fontFamily": "Nunito_400Regular",
+                    "fontSize": 16,
+                  },
+                  Object {
+                    "color": "#B1C2D1",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              Press an item below to connect a music account
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "alignContent": "center",
+              "alignItems": "center",
+              "justifyContent": "center",
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#869DB2",
+                },
+                Object {
+                  "fontFamily": "Nunito_400Regular",
+                  "fontSize": 20,
+                },
+                Object {
+                  "color": "#CEE1F2",
+                },
+                Object {
+                  "marginBottom": 26.5,
+                  "marginLeft": 0,
+                },
+              ]
+            }
+          >
+            Available
+          </Text>
+          <View>
+            <View
+              style={
+                Object {
+                  "borderBottomColor": "#B1C2D1",
+                  "borderWidth": 0.5,
+                }
+              }
+            />
+            <View
+              accessible={true}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+            >
+              <View
+                style={
+                  Object {
+                    "alignContent": "center",
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "paddingVertical": 13.5,
+                    "width": 675,
+                  }
+                }
+              >
+                <Image
+                  source={1}
+                  style={
+                    Object {
+                      "height": 44,
+                      "marginRight": 37.5,
+                      "opacity": 1,
+                      "width": 44,
+                    }
+                  }
+                />
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#869DB2",
+                      },
+                      Object {
+                        "fontFamily": "Nunito_400Regular",
+                        "fontSize": 20,
+                      },
+                      Object {
+                        "color": "#CEE1F2",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Spotify
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                Object {
+                  "borderBottomColor": "#B1C2D1",
+                  "borderWidth": 0.5,
+                }
+              }
+            />
+          </View>
+          <View>
+            <View
+              accessible={true}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+            >
+              <View
+                style={
+                  Object {
+                    "alignContent": "center",
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "paddingVertical": 13.5,
+                    "width": 675,
+                  }
+                }
+              >
+                <Image
+                  source={1}
+                  style={
+                    Object {
+                      "height": 44,
+                      "marginRight": 37.5,
+                      "opacity": 1,
+                      "width": 44,
+                    }
+                  }
+                />
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#869DB2",
+                      },
+                      Object {
+                        "fontFamily": "Nunito_400Regular",
+                        "fontSize": 20,
+                      },
+                      Object {
+                        "color": "#CEE1F2",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  Apple
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                Object {
+                  "borderBottomColor": "#B1C2D1",
+                  "borderWidth": 0.5,
+                }
+              }
+            />
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "alignContent": "center",
+              "alignItems": "center",
+              "justifyContent": "center",
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#869DB2",
+                },
+                Object {
+                  "fontFamily": "Nunito_400Regular",
+                  "fontSize": 20,
+                },
+                Object {
+                  "color": "#CEE1F2",
+                },
+                Object {
+                  "marginBottom": 26.5,
+                  "marginLeft": 0,
+                },
+              ]
+            }
+          >
+            Coming soon
+          </Text>
+          <View>
+            <View>
+              <View
+                style={
+                  Object {
+                    "borderBottomColor": "#B1C2D1",
+                    "borderWidth": 0.5,
+                  }
+                }
+              />
+              <View
+                accessible={true}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <View
+                  style={
+                    Object {
+                      "alignContent": "center",
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "paddingVertical": 13.5,
+                      "width": 675,
+                    }
+                  }
+                >
+                  <Image
+                    source={1}
+                    style={
+                      Object {
+                        "height": 44,
+                        "marginRight": 37.5,
+                        "opacity": 0.5,
+                        "width": 44,
+                      }
+                    }
+                  />
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#869DB2",
+                        },
+                        Object {
+                          "fontFamily": "Nunito_400Regular",
+                          "fontSize": 20,
+                        },
+                        Object {
+                          "color": "#B1C2D1",
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Amazon music
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={
+                  Object {
+                    "borderBottomColor": "#B1C2D1",
+                    "borderWidth": 0.5,
+                  }
+                }
+              />
+            </View>
+          </View>
+        </View>
+      </View>
+    </RCTScrollView>
   </RNCSafeAreaView>
 </View>
 `;

@@ -2,18 +2,16 @@ import Background from '@/components/Background';
 import React, { useEffect, useState } from 'react';
 import VivText from '@/components/VivText';
 import Colors from '@/constants/Colors';
-import { StyleSheet, View, ScrollView, Dimensions } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import { AntDesign, FontAwesome, Ionicons, SimpleLineIcons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import VivCard from '@/components/VivCard';
 import SettingCardItem from '@/components/SettingCardItem';
 import * as StoreReview from 'expo-store-review';
-import { smallScreenWidthBreakpoint, largeScreenWidthBreakpoint } from '@/constants/Values';
 import { SettingsTabParamList } from '@/types';
 import { StackScreenProps } from '@react-navigation/stack';
 import useStore from '@/store/settings';
-import { debounce } from '@/utils';
-const windowWidth = Dimensions.get('window').width;
+import { debounce, resize } from '@/utils';
 
 export default function SettingsTabScreen({
   navigation
@@ -85,16 +83,7 @@ export default function SettingsTabScreen({
           <VivCard
             style={styles.card}
             headerChildren={
-              <VivText
-                fontName={
-                  windowWidth < smallScreenWidthBreakpoint
-                    ? 'Headline'
-                    : windowWidth > largeScreenWidthBreakpoint
-                    ? 'Title5'
-                    : 'Headline'
-                }
-                color={Colors.greyLight1}
-              >
+              <VivText fontName={resize('Headline', 'Headline', 'Title5')} color={Colors.greyLight1}>
                 Alarm settings
               </VivText>
             }
@@ -138,22 +127,13 @@ export default function SettingsTabScreen({
           <VivCard
             style={styles.card}
             headerChildren={
-              <VivText
-                fontName={
-                  windowWidth < smallScreenWidthBreakpoint
-                    ? 'Headline'
-                    : windowWidth > largeScreenWidthBreakpoint
-                    ? 'Title5'
-                    : 'Headline'
-                }
-                color={Colors.greyLight1}
-              >
+              <VivText fontName={resize('Headline', 'Headline', 'Title5')} color={Colors.greyLight1}>
                 General settings
               </VivText>
             }
           >
             <SettingCardItem
-              title="Linked music accounts"
+              title="Connect music"
               horizontalRule
               onCardItemPress={onLinkedAccountsPress}
               icon={<SimpleLineIcons name="music-tone-alt" size={24} color={Colors.greyLight2} />}
@@ -176,16 +156,7 @@ export default function SettingsTabScreen({
           <VivCard
             style={styles.card}
             headerChildren={
-              <VivText
-                fontName={
-                  windowWidth < smallScreenWidthBreakpoint
-                    ? 'Headline'
-                    : windowWidth > largeScreenWidthBreakpoint
-                    ? 'Title5'
-                    : 'Headline'
-                }
-                color={Colors.greyLight1}
-              >
+              <VivText fontName={resize('Headline', 'Headline', 'Title5')} color={Colors.greyLight1}>
                 Other settings
               </VivText>
             }
