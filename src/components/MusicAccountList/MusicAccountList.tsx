@@ -1,5 +1,5 @@
-import React from 'react';
-import { Dimensions, StyleSheet, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { Platform, StyleSheet, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import Colors from '@/constants/Colors';
 import VivText from '@/components/VivText';
@@ -7,10 +7,14 @@ import MusicAccountItem from './MusicAccountItem';
 import { heightPercentageToDP } from 'react-native-responsive-screen';
 import useStore from '@/store/settings';
 import { resize } from '@/utils';
+import useSpotifyAuth from '@/hooks/useSpotifyAuth';
+import { MusicAccount } from '@/interfaces';
+import { makeRedirectUri } from 'expo-auth-session';
+import Constants from 'expo-constants';
 
 interface MusicAccountListProps {}
 
-const musicAccountObject = [
+const musicAccountObject: Array<MusicAccount> = [
   {
     accountName: 'Spotify',
     accountIconUri: require('~/assets/images/spotify.png'),
@@ -32,12 +36,31 @@ const musicAccountObject = [
 ];
 
 export default function MusicAccountList({}: MusicAccountListProps) {
+  // const { isAuthenticated, error, authenticateSpotifyAsync } = useSpotifyAuth();
+  const USE_PROXY = Platform.select({
+    web: false,
+    default: Constants.appOwnership === 'standalone' ? false : true
+  });
+  console.log(Constants);
+
+  const REDIRECT_URI = makeRedirectUri({
+    useProxy: USE_PROXY,
+    native: 'vivifiiyalarmapp://redirect'
+  });
+
+  console.log(REDIRECT_URI);
   const connectedMusicAccounts = useStore.getState().getSetting('connectedMusicAccounts') || [];
   musicAccountObject.forEach((item) => {
     if (connectedMusicAccounts.includes(item.accountName) && item.available) {
       item.connected = true;
     } else item.connected = false;
   });
+
+  // useEffect(() => {
+  //   if (error) {
+  //     alert(error);
+  //   }
+  // }, [error]);
 
   const connectedAccounts = musicAccountObject.filter((item) => (item.connected && item.available ? item : undefined));
 
@@ -46,6 +69,18 @@ export default function MusicAccountList({}: MusicAccountListProps) {
   );
 
   const unavailableAccounts = musicAccountObject.filter((item) => (!item.available ? item : undefined));
+
+  const linkMusicAccount = (account: MusicAccount) => {
+    console.log('running');
+    if (account.available) {
+      if (!account.connected) {
+        if (account.accountName === 'Spotify') {
+          console.log('ran');
+          // authenticateSpotifyAsync();
+        }
+      }
+    }
+  };
   return (
     <ScrollView
       bounces={false}
@@ -96,6 +131,9 @@ export default function MusicAccountList({}: MusicAccountListProps) {
                 <View key={index}>
                   {index === availableAccounts.length - 1 && index !== 0 ? null : <View style={styles.hairline} />}
                   <MusicAccountItem
+                    onLinkMusicAccount={() => {
+                      linkMusicAccount(account);
+                    }}
                     accountName={account.accountName}
                     size={resize(44, 38, 64)}
                     accountIconUrl={account.accountIconUri}

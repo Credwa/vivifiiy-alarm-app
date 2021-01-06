@@ -9,12 +9,13 @@ export default function useLoadSettings() {
   useEffect(() => {
     getSettings()
       .then((settings: SettingsInterface) => {
+        console.log('setting', settings);
         const loadedSettings: SettingsInterface = settings || {
           volumeStyle: 'Progressive',
           snooze: true,
           snoozeDuration: 10,
           maxVolume: 1,
-          connectedMusicAccounts: ['Spotify']
+          connectedMusicAccounts: []
         };
         const loadedSettingsMap: Map<string, SettingsInterface> = new Map();
         for (const setting in loadedSettings) {

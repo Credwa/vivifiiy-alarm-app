@@ -1,0 +1,11 @@
+
+
+ POST https://7r7hha3pzk.execute-api.us-east-1.amazonaws.com/spotify-credential/spotify-credential HTTP/1.1
+content-type: application/json
+
+{
+  "body": {
+    "code": "200",
+    "redirectUri": "vivifiiyalarmapp://redirect"
+  }
+}

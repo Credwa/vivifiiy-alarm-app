@@ -1,6 +1,9 @@
+const asyncStorageBase = '@vivifiiy-alarm-app';
+
 export const storageKeys: { [key: string]: string } = {
-  alarms: '@vivifiiy-alarm-app/alarms',
-  settings: '@vivifiiy-alarm-app/settings'
+  alarms: `${asyncStorageBase}/alarms`,
+  settings: `${asyncStorageBase}/settings`,
+  credentials: `${asyncStorageBase}/credenti`
 };
 
 export const smallScreenWidthBreakpoint = 400;

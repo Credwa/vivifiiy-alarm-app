@@ -17,3 +17,9 @@ export interface SettingsInterface {
   maxVolume: number;
   connectedMusicAccounts: Array<string>;
 }
+export interface MusicAccount {
+  accountName: string;
+  accountIconUri: any;
+  available: boolean;
+  connected: boolean;
+}

@@ -43,3 +43,10 @@ export type twelveHrTime = { hour: string; minute: string; meridiem: meridiem };
 export type alarmObject = { [x: string]: AlarmInterface };
 
 export type settingObject = { [x: string]: SettingsInterface };
+
+export type Credentials = {
+  token: string;
+  refreshToken: string;
+  expiresIn: number;
+  lastRefreshed: string; // date obj as string for serialization
+};
