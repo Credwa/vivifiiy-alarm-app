@@ -5,7 +5,7 @@ content-type: application/json
 
 {
   "body": {
-    "code": "200",
-    "redirectUri": "vivifiiyalarmapp://redirect"
+    "code": "AQBLCW3b3KCiaJCXgjZK1qeYq6A68yQFpaOQmyAeusNpWQNTb70oqqZ1H8I4n2zwrAjQUYOlMJo3_T2uBQNGkN2imbdljS709LjJGHrKI6yP4Ik8wjV4Iu5x9uLzuKrjBszffMkKGCIBpVbtcxhpcgsEkwwiQ1b6Ti821owbdAMNjY5zpr_VMZEZvy_uOGi6ryeldXu_3gGCmnR8ken_y1ZxyXvZ6k8e_tKKHsxHgtzM5F4sYP07UNUHCtMgfspGp6LKJwhr80-KtEJYg2Ei3-fsVMq5L32fabhgWYGclmIcns_Ktl-dIX6tRc1oNIZnZKYslFByoooaFM-tI9M4Qw2lxgHP-Yg4ulY5EeRFAB2VpQeGLiYdLJ1clg9u6rTh88DBk83CBkYrUP5mWVOMVtC0xDX04bX5kHquHkSF9dAQAqW6eA-7sHclGWQwXjdJdpCBWHr0YIE",
+    "redirectUri": "https://auth.expo.io/@credwa/vivifiiy-alarm-app"
   }
 }

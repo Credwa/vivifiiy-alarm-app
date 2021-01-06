@@ -14,6 +14,7 @@ const TOKEN_ENDPOINT = 'https://7r7hha3pzk.execute-api.us-east-1.amazonaws.com/s
  */
 export const setCredentialsAsync = async (credentials: Credentials) => {
   try {
+    console.log(credentials);
     const jsonValue = JSON.stringify(credentials);
     await AsyncStorage.setItem(storageKeys.credentials, jsonValue);
   } catch (e) {
@@ -30,8 +31,10 @@ export async function fetchTokenAsync(code: string, redirectUri: string) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      code,
-      redirectUri
+      body: {
+        code,
+        redirectUri
+      }
     })
   });
 

@@ -19,7 +19,6 @@ const REDIRECT_URI = makeRedirectUri({
   useProxy: USE_PROXY,
   native: 'vivifiiyalarmapp://redirect'
 });
-console.log(REDIRECT_URI);
 const CLIENT_ID = '71d0b4843f1f4ed68f48010cf0934658';
 
 WebBrowser.maybeCompleteAuthSession();
@@ -61,13 +60,13 @@ export default function useSpotifyAuth() {
         setError(authResponse.error);
         return;
       } else if (authResponse.type === 'success') {
-        console.log(authResponse.params.code);
         const result = await fetchTokenAsync(authResponse.params.code, REDIRECT_URI);
-        if (result.error || !result.token) {
+        const parsedResults = JSON.parse(result.body);
+        if (result.error || !parsedResults.token) {
           setError(result.error ?? 'Unknown error');
         } else {
           await setCredentialsAsync({
-            ...result,
+            ...parsedResults,
             lastRefreshed: new Date()
           });
           setIsAuthenticated(true);

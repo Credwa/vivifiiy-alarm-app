@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import Colors from '@/constants/Colors';
 import VivText from '@/components/VivText';
@@ -9,8 +9,6 @@ import useStore from '@/store/settings';
 import { resize } from '@/utils';
 import useSpotifyAuth from '@/hooks/useSpotifyAuth';
 import { MusicAccount } from '@/interfaces';
-import { makeRedirectUri } from 'expo-auth-session';
-import Constants from 'expo-constants';
 
 interface MusicAccountListProps {}
 
@@ -22,9 +20,9 @@ const musicAccountObject: Array<MusicAccount> = [
     connected: false
   },
   {
-    accountName: 'Apple',
+    accountName: 'Apple music',
     accountIconUri: require('~/assets/images/apple.png'),
-    available: true,
+    available: false,
     connected: false
   },
   {
@@ -36,19 +34,11 @@ const musicAccountObject: Array<MusicAccount> = [
 ];
 
 export default function MusicAccountList({}: MusicAccountListProps) {
-  // const { isAuthenticated, error, authenticateSpotifyAsync } = useSpotifyAuth();
-  const USE_PROXY = Platform.select({
-    web: false,
-    default: Constants.appOwnership === 'standalone' ? false : true
-  });
-  console.log(Constants);
+  const { isAuthenticated, error, authenticateSpotifyAsync } = useSpotifyAuth();
+  const setCurrentUser = useStore((state) => state.setCurrentUser);
+  const setSetting = useStore((state) => state.setSetting);
+  const getSetting = useStore((state) => state.getSetting);
 
-  const REDIRECT_URI = makeRedirectUri({
-    useProxy: USE_PROXY,
-    native: 'vivifiiyalarmapp://redirect'
-  });
-
-  console.log(REDIRECT_URI);
   const connectedMusicAccounts = useStore.getState().getSetting('connectedMusicAccounts') || [];
   musicAccountObject.forEach((item) => {
     if (connectedMusicAccounts.includes(item.accountName) && item.available) {
@@ -56,11 +46,17 @@ export default function MusicAccountList({}: MusicAccountListProps) {
     } else item.connected = false;
   });
 
-  // useEffect(() => {
-  //   if (error) {
-  //     alert(error);
-  //   }
-  // }, [error]);
+  useEffect(() => {
+    if (error) {
+      alert(error);
+    }
+  }, [error]);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      setCurrentUser({ isAuthenticated: true });
+    }
+  }, [isAuthenticated]);
 
   const connectedAccounts = musicAccountObject.filter((item) => (item.connected && item.available ? item : undefined));
 
@@ -71,12 +67,18 @@ export default function MusicAccountList({}: MusicAccountListProps) {
   const unavailableAccounts = musicAccountObject.filter((item) => (!item.available ? item : undefined));
 
   const linkMusicAccount = (account: MusicAccount) => {
-    console.log('running');
     if (account.available) {
       if (!account.connected) {
         if (account.accountName === 'Spotify') {
-          console.log('ran');
-          // authenticateSpotifyAsync();
+          musicAccountObject[0].connected = true;
+          authenticateSpotifyAsync()
+            .then(() => {
+              let setting = getSetting('connectedMusicAccounts');
+              setSetting('connectedMusicAccounts', [...setting, 'Spotify']);
+            })
+            .catch(() => {
+              musicAccountObject[0].connected = false;
+            });
         }
       }
     }
