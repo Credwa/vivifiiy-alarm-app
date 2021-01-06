@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, View, Alert } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import Colors from '@/constants/Colors';
 import VivText from '@/components/VivText';
@@ -9,6 +9,8 @@ import useStore from '@/store/settings';
 import { resize } from '@/utils';
 import useSpotifyAuth from '@/hooks/useSpotifyAuth';
 import { MusicAccount } from '@/interfaces';
+import { fetchPlaylistsAsync, setCredentialsAsync } from '@/services/spotify.service';
+import { useQuery } from 'react-query';
 
 interface MusicAccountListProps {}
 
@@ -35,16 +37,22 @@ const musicAccountObject: Array<MusicAccount> = [
 
 export default function MusicAccountList({}: MusicAccountListProps) {
   const { isAuthenticated, error, authenticateSpotifyAsync } = useSpotifyAuth();
+  const { data, isFetching } = useQuery('playlists', fetchPlaylistsAsync);
   const setCurrentUser = useStore((state) => state.setCurrentUser);
   const setSetting = useStore((state) => state.setSetting);
   const getSetting = useStore((state) => state.getSetting);
-
+  const [musicAccountsState, setMusicAccounts] = useState(musicAccountObject);
   const connectedMusicAccounts = useStore.getState().getSetting('connectedMusicAccounts') || [];
-  musicAccountObject.forEach((item) => {
+  musicAccountsState.forEach((item) => {
     if (connectedMusicAccounts.includes(item.accountName) && item.available) {
       item.connected = true;
     } else item.connected = false;
   });
+
+  // if (!isFetching) console.log(data);
+  // fetchPlaylistsAsync().then((data) => {
+  //   console.log(data);
+  // });
 
   useEffect(() => {
     if (error) {
@@ -58,30 +66,68 @@ export default function MusicAccountList({}: MusicAccountListProps) {
     }
   }, [isAuthenticated]);
 
-  const connectedAccounts = musicAccountObject.filter((item) => (item.connected && item.available ? item : undefined));
+  const connectedAccounts = musicAccountsState.filter((item) => (item.connected && item.available ? item : undefined));
 
-  const availableAccounts = musicAccountObject.filter((item) =>
+  const availableAccounts = musicAccountsState.filter((item) =>
     !item.connected && item.available ? item : undefined
   );
 
-  const unavailableAccounts = musicAccountObject.filter((item) => (!item.available ? item : undefined));
+  const unavailableAccounts = musicAccountsState.filter((item) => (!item.available ? item : undefined));
+
+  const updateMusicAccount = (accountName: string, connected: boolean) => {
+    let newMusicAccountsState = musicAccountsState.map((account) => {
+      if (account.accountName === accountName && account.available) {
+        const tempAccount = account;
+        tempAccount.connected = connected;
+        console.log(tempAccount);
+        return tempAccount;
+      }
+      return account;
+    });
+
+    setMusicAccounts(newMusicAccountsState);
+  };
 
   const linkMusicAccount = (account: MusicAccount) => {
     if (account.available) {
       if (!account.connected) {
         if (account.accountName === 'Spotify') {
-          musicAccountObject[0].connected = true;
           authenticateSpotifyAsync()
             .then(() => {
               let setting = getSetting('connectedMusicAccounts');
               setSetting('connectedMusicAccounts', [...setting, 'Spotify']);
+              updateMusicAccount(account.accountName, true);
             })
             .catch(() => {
-              musicAccountObject[0].connected = false;
+              updateMusicAccount(account.accountName, false);
             });
         }
       }
     }
+  };
+
+  const unlinkMusicAccount = (account: MusicAccount) => {
+    Alert.alert(
+      `Disconnect ${account.accountName.toLocaleLowerCase()} account`,
+      '',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => {},
+          style: 'cancel'
+        },
+        {
+          text: 'Logout',
+          onPress: () => {
+            setCredentialsAsync(null);
+            setSetting('connectedMusicAccounts', []);
+            updateMusicAccount(account.accountName, false);
+          },
+          style: 'destructive'
+        }
+      ],
+      { cancelable: true }
+    );
   };
   return (
     <ScrollView
@@ -104,6 +150,9 @@ export default function MusicAccountList({}: MusicAccountListProps) {
                 {index === connectedAccounts.length - 1 && index !== 0 ? null : <View style={styles.hairline} />}
                 <MusicAccountItem
                   accountName={account.accountName}
+                  onMusicAccountPress={() => {
+                    unlinkMusicAccount(account);
+                  }}
                   size={resize(44, 38, 64)}
                   accountIconUrl={account.accountIconUri}
                 />
@@ -133,7 +182,7 @@ export default function MusicAccountList({}: MusicAccountListProps) {
                 <View key={index}>
                   {index === availableAccounts.length - 1 && index !== 0 ? null : <View style={styles.hairline} />}
                   <MusicAccountItem
-                    onLinkMusicAccount={() => {
+                    onMusicAccountPress={() => {
                       linkMusicAccount(account);
                     }}
                     accountName={account.accountName}

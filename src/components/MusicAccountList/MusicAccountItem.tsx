@@ -10,7 +10,7 @@ interface MusicAccountItemProps {
   accountIconUrl: any;
   size?: number;
   comingSoon?: boolean;
-  onLinkMusicAccount?: ((event: GestureResponderEvent) => void) | undefined;
+  onMusicAccountPress?: ((event: GestureResponderEvent) => void) | undefined;
 }
 
 export default function MusicAccountItem({
@@ -18,10 +18,10 @@ export default function MusicAccountItem({
   size,
   accountIconUrl,
   comingSoon,
-  onLinkMusicAccount
+  onMusicAccountPress
 }: MusicAccountItemProps) {
   return (
-    <Pressable onPress={onLinkMusicAccount}>
+    <Pressable onPress={onMusicAccountPress}>
       {({ pressed }) => (
         <View style={styles.musicAccountItem}>
           <Image

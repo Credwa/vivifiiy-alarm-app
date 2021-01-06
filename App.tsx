@@ -9,10 +9,15 @@ import * as SplashScreen from 'expo-splash-screen';
 import React, { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import useLoadCredentials from '@/hooks/useLoadCredentials';
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+
+const queryClient = new QueryClient();
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const isAlarmsLoaded = useLoadAlarms();
+  const isCredentialsLoaded = useLoadCredentials();
   const isSettingsLoaded = useLoadSettings();
   const [robotoLoaded, robotoError] = useFontsRoboto({ Roboto_400Regular, Roboto_500Medium });
   const [nunitoLoaded, nunitoError] = useFontsNunito({ Nunito_400Regular, Nunito_600SemiBold });
@@ -26,20 +31,36 @@ export default function App() {
     } catch (e) {
       console.warn('hide async error');
     } finally {
-      if (isLoadingComplete && isAlarmsLoaded && isSettingsLoaded && robotoLoaded && nunitoLoaded) {
+      if (
+        isLoadingComplete &&
+        isAlarmsLoaded &&
+        isSettingsLoaded &&
+        isCredentialsLoaded &&
+        robotoLoaded &&
+        nunitoLoaded
+      ) {
         SplashScreen.hideAsync().catch(console.warn);
       }
     }
   }, [isLoadingComplete, isAlarmsLoaded, isSettingsLoaded, robotoLoaded, nunitoLoaded]);
 
-  if (!isLoadingComplete || !robotoLoaded || !nunitoLoaded || !isAlarmsLoaded || !isSettingsLoaded) {
+  if (
+    !isLoadingComplete ||
+    !robotoLoaded ||
+    !nunitoLoaded ||
+    !isAlarmsLoaded ||
+    !isSettingsLoaded ||
+    !isCredentialsLoaded
+  ) {
     return null;
   } else {
     return (
-      <SafeAreaProvider style={styles.container}>
-        <Navigation />
-        <StatusBar style="light" />
-      </SafeAreaProvider>
+      <QueryClientProvider client={queryClient}>
+        <SafeAreaProvider style={styles.container}>
+          <Navigation />
+          <StatusBar style="light" />
+        </SafeAreaProvider>
+      </QueryClientProvider>
     );
   }
 }
