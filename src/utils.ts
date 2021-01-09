@@ -95,15 +95,27 @@ export const debounce = <F extends (...args: any[]) => any>(func: F, waitFor: nu
  * @param small
  * @param large
  */
-export const resize = (
-  standard: number | string | Array<any>,
-  small: number | string | Array<any>,
-  large: number | string | Array<any>
-): any => {
+export function resize<T>(standard: T, small: T, large: T) {
   const windowWidth = Dimensions.get('window').width;
   return windowWidth < smallScreenWidthBreakpoint
     ? small
     : windowWidth > largeScreenWidthBreakpoint
     ? large
     : standard;
-};
+}
+
+/**
+ * truncateString
+ *
+ * Returns a truncated string with ... concated
+ *
+ * @param str
+ * @param num
+ */
+export function truncateString(str: string, maxLen: number) {
+  if (str.length <= maxLen) {
+    return str;
+  }
+
+  return str.slice(0, maxLen) + '...';
+}

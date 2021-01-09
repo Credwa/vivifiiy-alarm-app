@@ -1,5 +1,5 @@
 import React from 'react';
-import VivText from '@/components/VivText';
+import VivText, { FontName } from '@/components/VivText';
 import Colors from '@/constants/Colors';
 import { View, StyleSheet } from 'react-native';
 import { AlarmInterface } from '@/interfaces';
@@ -12,13 +12,13 @@ interface ActiveAlarmsProps {
 export default function ActiveAlarms({ nearestAlarm }: ActiveAlarmsProps) {
   return (
     <View style={styles.container}>
-      <VivText fontName={resize('Title4', 'Title6', 'Title2')} color={Colors.greyLight3}>
+      <VivText fontName={resize<FontName>('Title4', 'Title6', 'Title2')} color={Colors.greyLight3}>
         Next alarm at...
       </VivText>
       <View style={styles.time}>
-        <VivText fontName={resize('Title1', 'Title3', 'TitleBig1')} color={Colors.greyLight1}>
+        <VivText fontName={resize<FontName>('Title1', 'Title3', 'TitleBig1')} color={Colors.greyLight1}>
           {nearestAlarm.hour} : {nearestAlarm.minute}{' '}
-          <VivText fontName={resize('Title2', 'Title4', 'TitleBig2')} color={Colors.greyLight1}>
+          <VivText fontName={resize<FontName>('Title2', 'Title4', 'TitleBig2')} color={Colors.greyLight1}>
             {nearestAlarm.meridiem}
           </VivText>
         </VivText>

@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react';
-import { Platform } from 'react-native';
+import { Linking, Platform } from 'react-native';
 import { useAuthRequest, makeRedirectUri } from 'expo-auth-session';
 import * as WebBrowser from 'expo-web-browser';
 import Constants from 'expo-constants';
-import { fetchTokenAsync, setCredentialsAsync } from '@/services/spotify.service';
+import {
+  Device,
+  fetchDevicesAsync,
+  fetchTokenAsync,
+  setCredentialsAsync,
+  getAvailableDevice
+} from '@/services/spotify.service';
+import useStore from '@/store/settings';
 
 const discovery = {
   authorizationEndpoint: 'https://accounts.spotify.com/authorize',
@@ -24,6 +31,7 @@ const CLIENT_ID = '71d0b4843f1f4ed68f48010cf0934658';
 WebBrowser.maybeCompleteAuthSession();
 
 export default function useSpotifyAuth() {
+  const setSetting = useStore((state) => state.setSetting);
   const [error, setError] = useState<any | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -38,6 +46,7 @@ export default function useSpotifyAuth() {
         'playlist-read-private',
         'user-read-playback-state',
         'app-remote-control',
+        'user-top-read',
         'user-read-playback-state',
         'user-modify-playback-state',
         'user-read-currently-playing',
@@ -68,6 +77,9 @@ export default function useSpotifyAuth() {
           await setCredentialsAsync({
             ...parsedResults,
             lastRefreshed: new Date()
+          }).then(async () => {
+            const savedDevice = await getAvailableDevice();
+            setSetting('savedDevice', savedDevice);
           });
           setIsAuthenticated(true);
         }

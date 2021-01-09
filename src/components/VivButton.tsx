@@ -1,7 +1,7 @@
 import Colors from '@/constants/Colors';
 import React from 'react';
 import { StyleSheet, Pressable, GestureResponderEvent, View } from 'react-native';
-import VivText from '@/components/VivText';
+import VivText, { FontName } from '@/components/VivText';
 import { resize } from '@/utils';
 
 interface PaddingHorizontal {
@@ -61,11 +61,11 @@ export default function VivButton(props: ButtonProps) {
             ? React.cloneElement(props.icon, {
                 color: props.icon.props.color,
                 name: props.icon.props.name,
-                size: resize(24, 20, 34)
+                size: resize<number>(24, 20, 34)
               })
             : null}
           <VivText
-            fontName={resize('Headline', 'Headline', 'Title3')}
+            fontName={resize<FontName>('Headline', 'Headline', 'Title3')}
             color={pressed ? Colors.black : Colors.blueDark}
             style={margin}
           >
@@ -75,7 +75,7 @@ export default function VivButton(props: ButtonProps) {
             ? React.cloneElement(props.icon, {
                 color: props.icon.props.color,
                 name: props.icon.props.name,
-                size: resize(24, 20, 34)
+                size: resize<number>(24, 20, 34)
               })
             : null}
         </>
@@ -94,7 +94,7 @@ export default function VivButton(props: ButtonProps) {
             {props.icon}
           </View>
           <VivText
-            fontName={resize('Headline', 'Headline', 'Title3')}
+            fontName={resize<FontName>('Headline', 'Headline', 'Title3')}
             color={pressed ? Colors.black : Colors.blueDark}
             style={[
               styles.textSeparated,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { GestureResponderEvent, Pressable, StyleSheet, Image, View } from 'react-native';
-import VivText from '@/components/VivText';
+import VivText, { FontName } from '@/components/VivText';
 import Colors from '@/constants/Colors';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 import { resize } from '@/utils';
@@ -34,7 +34,7 @@ export default function MusicAccountItem({
             }}
           />
           <VivText
-            fontName={resize('Title6', 'Body', 'Title3')}
+            fontName={resize<FontName>('Title6', 'Body', 'Title3')}
             color={pressed || comingSoon ? Colors.greyLight3 : Colors.greyLight1}
           >
             {accountName}

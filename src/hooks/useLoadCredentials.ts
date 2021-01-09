@@ -14,7 +14,9 @@ export default function useLoadCredentials() {
         let setting = getSetting('connectedMusicAccounts');
         if (credentials) {
           setCurrentUser({ isAuthenticated: true });
-          setSetting('connectedMusicAccounts', [...setting, 'Spotify']);
+          Array.isArray(setting)
+            ? setSetting('connectedMusicAccounts', [...setting, 'Spotify'])
+            : setSetting('connectedMusicAccounts', [...[], 'Spotify']);
         } else {
           setCurrentUser({ isAuthenticated: false });
           setSetting('connectedMusicAccounts', []);

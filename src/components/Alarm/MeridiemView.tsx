@@ -4,6 +4,7 @@ import Colors from '@/constants/Colors';
 import { meridiem } from '@/types';
 import useStore from '@/store';
 import { findSelectedAlarmViewIndex, resize } from '@/utils';
+import { FontName } from '../VivText';
 interface SnapScrollProps {
   data: meridiem[];
   initValue: meridiem;
@@ -18,14 +19,14 @@ export default function MeridiemView({ data, initValue }: SnapScrollProps) {
   return (
     <ScrollSelector
       dataSource={data}
-      overrideFontName={resize(['Title3', 'Title4'], ['Title5', 'Title6'], ['Title1', 'Title2'])}
+      overrideFontName={resize<FontName[]>(['Title3', 'Title4'], ['Title5', 'Title6'], ['Title1', 'Title2'])}
       selectedIndex={findSelectedAlarmViewIndex(data, initValue, 0)}
       onValueChange={(data) => {
         updateMeridiemOnChange(data);
       }}
-      wrapperHeight={resize(200, 175, 300)}
-      wrapperWidth={resize(80, 55, 150)}
-      itemHeight={resize(75, 65, 110)}
+      wrapperHeight={resize<number>(200, 175, 300)}
+      wrapperWidth={resize<number>(80, 55, 150)}
+      itemHeight={resize<number>(75, 65, 110)}
       highlightColor={Colors.greyLight3}
       highlightBorderWidth={1}
     />

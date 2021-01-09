@@ -4,6 +4,7 @@ import ScrollSelector from '@/components/ScrollSelector';
 import Colors from '@/constants/Colors';
 import useStore from '@/store';
 import { findSelectedAlarmViewIndex, resize } from '@/utils';
+import { FontName } from '../VivText';
 interface SnapScrollProps {
   data: string[];
   initValue: string;
@@ -26,15 +27,15 @@ export default function MinuteView({ data, initValue }: SnapScrollProps) {
   return (
     <ScrollSelector
       dataSource={listState}
-      overrideFontName={resize(['Title1', 'Title2'], ['Title3', 'Title4'], ['TitleBig1', 'TitleBig2'])}
+      overrideFontName={resize<FontName[]>(['Title1', 'Title2'], ['Title3', 'Title4'], ['TitleBig1', 'TitleBig2'])}
       selectedIndex={findSelectedAlarmViewIndex(data, initValue, 58)}
       onValueChange={(data) => {
         updateMinuteOnChange(data);
       }}
-      wrapperHeight={resize(200, 175, 300)}
-      wrapperWidth={resize(60, 45, 150)}
+      wrapperHeight={resize<number>(200, 175, 300)}
+      wrapperWidth={resize<number>(60, 45, 150)}
       onEndReached={onEndReached}
-      itemHeight={resize(75, 65, 110)}
+      itemHeight={resize<number>(75, 65, 110)}
       highlightColor={Colors.greyLight3}
       highlightBorderWidth={1}
     />

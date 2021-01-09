@@ -9,3 +9,10 @@ content-type: application/json
     "redirectUri": "https://auth.expo.io/@credwa/vivifiiy-alarm-app"
   }
 }
+
+###
+
+GET https://api.spotify.com/v1/me/top/tracks HTTP/1.1
+content-type: application/json
+Accept: application/json
+Authorization: Bearer BQBtFidv2cV5rvr2Wngwex0s4Zu6XSv8jzWj5VCw48xBMBLpE8G6D-9bK0Q6jlSd4WW3FnaIE8QGGKm7q-X_LzdfegtT14tdLZuGHxlJ92qMfBIJL5bS1iP3-YHyYyyM5FbqSjkhxfDLZJU69w

@@ -179,7 +179,7 @@ export default function HomeTabScreen() {
             alignItems: 'center'
           }}
         >
-          <SongSelector data={mockSongs} />
+          <SongSelector />
         </View>
       </SafeAreaView>
     </Background>

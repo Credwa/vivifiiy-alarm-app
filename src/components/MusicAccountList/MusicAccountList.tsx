@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Alert } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import Colors from '@/constants/Colors';
-import VivText from '@/components/VivText';
+import VivText, { FontName } from '@/components/VivText';
 import MusicAccountItem from './MusicAccountItem';
 import { heightPercentageToDP } from 'react-native-responsive-screen';
 import useStore from '@/store/settings';
 import { resize } from '@/utils';
 import useSpotifyAuth from '@/hooks/useSpotifyAuth';
 import { MusicAccount } from '@/interfaces';
-import { fetchPlaylistsAsync, setCredentialsAsync } from '@/services/spotify.service';
+import { setCredentialsAsync, fetchDevicesAsync } from '@/services/spotify.service';
 import { useQuery } from 'react-query';
+import Constants from 'expo-constants';
 
 interface MusicAccountListProps {}
 
@@ -37,7 +38,7 @@ const musicAccountObject: Array<MusicAccount> = [
 
 export default function MusicAccountList({}: MusicAccountListProps) {
   const { isAuthenticated, error, authenticateSpotifyAsync } = useSpotifyAuth();
-  const { data, isFetching } = useQuery('playlists', fetchPlaylistsAsync);
+  const spotifyDevices = useQuery('devices', fetchDevicesAsync);
   const setCurrentUser = useStore((state) => state.setCurrentUser);
   const setSetting = useStore((state) => state.setSetting);
   const getSetting = useStore((state) => state.getSetting);
@@ -48,11 +49,6 @@ export default function MusicAccountList({}: MusicAccountListProps) {
       item.connected = true;
     } else item.connected = false;
   });
-
-  // if (!isFetching) console.log(data);
-  // fetchPlaylistsAsync().then((data) => {
-  //   console.log(data);
-  // });
 
   useEffect(() => {
     if (error) {
@@ -79,7 +75,6 @@ export default function MusicAccountList({}: MusicAccountListProps) {
       if (account.accountName === accountName && account.available) {
         const tempAccount = account;
         tempAccount.connected = connected;
-        console.log(tempAccount);
         return tempAccount;
       }
       return account;
@@ -137,7 +132,7 @@ export default function MusicAccountList({}: MusicAccountListProps) {
     >
       <View style={styles.center}>
         <VivText
-          fontName={resize('Body', 'Body', 'Title4')}
+          fontName={resize<FontName>('Body', 'Body', 'Title4')}
           style={{ marginBottom: heightPercentageToDP('2%'), marginLeft: 0 }}
           color={Colors.greyLight1}
         >
@@ -153,14 +148,14 @@ export default function MusicAccountList({}: MusicAccountListProps) {
                   onMusicAccountPress={() => {
                     unlinkMusicAccount(account);
                   }}
-                  size={resize(44, 38, 64)}
+                  size={resize<number>(44, 38, 64)}
                   accountIconUrl={account.accountIconUri}
                 />
                 <View style={styles.hairline} />
               </View>
             ))
           ) : (
-            <VivText fontName={resize('Callout', 'Subhead', 'Title6')} color={Colors.greyLight3}>
+            <VivText fontName={resize<FontName>('Callout', 'Subhead', 'Title6')} color={Colors.greyLight3}>
               Press an item below to connect a music account
             </VivText>
           )}
@@ -171,7 +166,7 @@ export default function MusicAccountList({}: MusicAccountListProps) {
         {availableAccounts.length > 0 ? (
           <>
             <VivText
-              fontName={resize('Title6', 'Body', 'Title4')}
+              fontName={resize<FontName>('Title6', 'Body', 'Title4')}
               color={Colors.greyLight1}
               style={{ marginBottom: heightPercentageToDP('2%'), marginLeft: 0 }}
             >
@@ -186,7 +181,7 @@ export default function MusicAccountList({}: MusicAccountListProps) {
                       linkMusicAccount(account);
                     }}
                     accountName={account.accountName}
-                    size={resize(44, 38, 64)}
+                    size={resize<number>(44, 38, 64)}
                     accountIconUrl={account.accountIconUri}
                   />
                   <View style={styles.hairline} />
@@ -201,7 +196,7 @@ export default function MusicAccountList({}: MusicAccountListProps) {
         {unavailableAccounts.length > 0 ? (
           <>
             <VivText
-              fontName={resize('Title6', 'Body', 'Title4')}
+              fontName={resize<FontName>('Title6', 'Body', 'Title4')}
               style={{ marginBottom: heightPercentageToDP('2%'), marginLeft: 0 }}
               color={Colors.greyLight1}
             >
@@ -214,7 +209,7 @@ export default function MusicAccountList({}: MusicAccountListProps) {
                   <MusicAccountItem
                     accountName={account.accountName}
                     comingSoon={true}
-                    size={resize(44, 38, 64)}
+                    size={resize<number>(44, 38, 64)}
                     accountIconUrl={account.accountIconUri}
                   />
                   <View style={styles.hairline} />

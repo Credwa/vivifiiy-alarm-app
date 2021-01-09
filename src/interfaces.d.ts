@@ -16,7 +16,9 @@ export interface SettingsInterface {
   snoozeDuration: number;
   maxVolume: number;
   connectedMusicAccounts: Array<string>;
+  deviceSaved: string;
 }
+
 export interface MusicAccount {
   accountName: string;
   accountIconUri: any;

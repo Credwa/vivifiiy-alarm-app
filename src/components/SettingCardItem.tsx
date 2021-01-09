@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Pressable, StyleSheet, Switch, View, Dimensions } from 'react-native';
-import VivText from '@/components/VivText';
+import VivText, { FontName } from '@/components/VivText';
 import Colors from '@/constants/Colors';
 import { AntDesign, SimpleLineIcons } from '@expo/vector-icons';
 import Slider from '@react-native-community/slider';
@@ -89,7 +89,7 @@ export default function SettingCardItem({
 
           <VivText
             style={{ alignSelf: 'center', marginHorizontal: 5 }}
-            fontName={resize('Body', 'Footnote', 'Title6')}
+            fontName={resize<FontName>('Body', 'Footnote', 'Title6')}
             color={Colors.greyLight1}
           >
             {snoozeNumber} {snoozeNumber !== 1 ? 'mins' : 'min'}
@@ -126,14 +126,14 @@ export default function SettingCardItem({
                   : null}
               </View>
               <VivText
-                fontName={resize('Body', 'Subhead', 'Title4')}
+                fontName={resize<FontName>('Body', 'Subhead', 'Title4')}
                 color={pressed ? Colors.greyLight2 : Colors.greyLight1}
               >
                 {title}
               </VivText>
               {slider ? (
                 <Slider
-                  style={{ width: resize(wp('60%'), wp('60%'), wp('85%')) }}
+                  style={{ width: resize<number>(wp('60%'), wp('60%'), wp('85%')) }}
                   minimumValue={0}
                   maximumValue={1}
                   value={sliderValue}
@@ -146,7 +146,7 @@ export default function SettingCardItem({
 
             <View style={styles.row}>
               {extraInfo ? (
-                <VivText fontName={resize('Caption', 'Caption', 'Body')} color={Colors.greyLight2}>
+                <VivText fontName={resize<FontName>('Caption', 'Caption', 'Body')} color={Colors.greyLight2}>
                   {extraInfo}
                 </VivText>
               ) : null}

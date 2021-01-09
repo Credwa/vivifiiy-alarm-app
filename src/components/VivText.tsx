@@ -6,26 +6,29 @@ interface FontStyle {
   fontFamily: string;
   fontSize: number;
 }
+
+export type FontName =
+  | 'TitleBig1'
+  | 'TitleBig2'
+  | 'Title1'
+  | 'Title2'
+  | 'Title3'
+  | 'Title4'
+  | 'Title5'
+  | 'Title6'
+  | 'Headline'
+  | 'Body'
+  | 'Callout'
+  | 'Subhead'
+  | 'Footnote'
+  | 'Caption'
+  | 'CardSubtitle'
+  | 'CardTitle';
+
 interface TextProps {
   children?: React.ReactNode;
   color?: string;
-  fontName?:
-    | 'TitleBig1'
-    | 'TitleBig2'
-    | 'Title1'
-    | 'Title2'
-    | 'Title3'
-    | 'Title4'
-    | 'Title5'
-    | 'Title6'
-    | 'Headline'
-    | 'Body'
-    | 'Callout'
-    | 'Subhead'
-    | 'Footnote'
-    | 'Caption'
-    | 'CardSubtitle'
-    | 'CardTitle';
+  fontName?: FontName;
 }
 
 export type VivTextProps = TextProps & Text['props'];

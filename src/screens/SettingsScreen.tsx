@@ -1,6 +1,6 @@
 import Background from '@/components/Background';
 import React, { useEffect, useState } from 'react';
-import VivText from '@/components/VivText';
+import VivText, { FontName } from '@/components/VivText';
 import Colors from '@/constants/Colors';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import { AntDesign, FontAwesome, Ionicons, SimpleLineIcons } from '@expo/vector-icons';
@@ -83,7 +83,7 @@ export default function SettingsTabScreen({
           <VivCard
             style={styles.card}
             headerChildren={
-              <VivText fontName={resize('Headline', 'Headline', 'Title5')} color={Colors.greyLight1}>
+              <VivText fontName={resize<FontName>('Headline', 'Headline', 'Title5')} color={Colors.greyLight1}>
                 Alarm settings
               </VivText>
             }
@@ -127,7 +127,7 @@ export default function SettingsTabScreen({
           <VivCard
             style={styles.card}
             headerChildren={
-              <VivText fontName={resize('Headline', 'Headline', 'Title5')} color={Colors.greyLight1}>
+              <VivText fontName={resize<FontName>('Headline', 'Headline', 'Title5')} color={Colors.greyLight1}>
                 General settings
               </VivText>
             }
@@ -156,7 +156,7 @@ export default function SettingsTabScreen({
           <VivCard
             style={styles.card}
             headerChildren={
-              <VivText fontName={resize('Headline', 'Headline', 'Title5')} color={Colors.greyLight1}>
+              <VivText fontName={resize<FontName>('Headline', 'Headline', 'Title5')} color={Colors.greyLight1}>
                 Other settings
               </VivText>
             }

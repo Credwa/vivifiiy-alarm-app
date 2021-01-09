@@ -11,7 +11,7 @@ import SelectedItem from './src/SelectedItem';
 interface IProps<T> {
   dataSource: T[];
   overrideFontName?: string[] | string;
-  renderItem?: (data: T, index: number) => React.ReactNode | ReactElement;
+  renderItem?: (data: T, index: number, currentSelectedIndex: number) => React.ReactNode | ReactElement;
   selectedIndex?: number;
   onValueChange?: (value: T, index: number) => void;
   onEndReached?: (event: NativeSyntheticEvent<NativeScrollEvent> | NativeScrollEvent) => void;
@@ -65,7 +65,7 @@ const ScrollSelector = <T,>({
     }
 
     if (timer) return () => clearTimeout(timer);
-  }, []);
+  }, [dataSource]);
 
   const scrollFix = (e: any) => {
     let verticalY = 0;
@@ -184,7 +184,9 @@ const ScrollSelector = <T,>({
         onScrollEndDrag={(e) => onScrollEndDragPrivate(e)}
       >
         <PlaceHolder itemHeight={itemHeight} wrapperHeight={wrapperHeight} />
-        {dataSource.map(renderItem ? renderItem : renderItemPrivate)}
+        {dataSource?.map((value, index) => {
+          return renderItem ? renderItem(value, index, currentSelectedIndex) : renderItemPrivate(value, index);
+        })}
         <PlaceHolder itemHeight={itemHeight} wrapperHeight={wrapperHeight} />
       </ScrollView>
     </Container>
