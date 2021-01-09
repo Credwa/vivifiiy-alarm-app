@@ -1,15 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Linking, Platform } from 'react-native';
+import { Platform } from 'react-native';
 import { useAuthRequest, makeRedirectUri } from 'expo-auth-session';
 import * as WebBrowser from 'expo-web-browser';
 import Constants from 'expo-constants';
-import {
-  Device,
-  fetchDevicesAsync,
-  fetchTokenAsync,
-  setCredentialsAsync,
-  getAvailableDevice
-} from '@/services/spotify.service';
+import { fetchTokenAsync, setCredentialsAsync, getAvailableDevice } from '@/services/spotify.service';
 import useStore from '@/store/settings';
 
 const discovery = {
