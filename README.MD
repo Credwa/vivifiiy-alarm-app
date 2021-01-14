@@ -4,6 +4,19 @@
 
 Vivifiiy Alarm is an app that change the way you wake up in the mornings. By connecting your favorite music app (such as spotify, apple music, etc.) AI selects the best songs and volume to wake you up to every morning automatically.
 
+## Mockups
+
+![LofiMockups](https://github.com/Credwa/vivifiiy-alarm-app/raw/master/_static/lofi-mockup.png)
+![HiFiMockups](https://github.com/Credwa/vivifiiy-alarm-app/raw/master/_static/hifi-mockup.png)
+
+## Screenshots
+
+![screenshots](https://github.com/Credwa/vivifiiy-alarm-app/raw/master/_static/viv-scr6.png)
+![screenshots](https://github.com/Credwa/vivifiiy-alarm-app/raw/master/_static/viv-scr5.png)
+![screenshots](https://github.com/Credwa/vivifiiy-alarm-app/raw/master/_static/viv-scr1.png)
+![screenshots](https://github.com/Credwa/vivifiiy-alarm-app/raw/master/_static/viv-scr3.png)
+![screenshots](https://github.com/Credwa/vivifiiy-alarm-app/raw/master/_static/viv-scr2.png)
+
 **Table of Contents**
 
 - [Install](#Install)
@@ -31,7 +44,7 @@ You can download the expo mobile app also see [expo docs](https://docs.expo.io/)
 
 Run the command below to start development and follow instructions detailed in command line for more information
 
- $ yarn start
+\$ yarn start
 
 <a name="Build"></a>
 
