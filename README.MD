@@ -11,11 +11,7 @@ Vivifiiy Alarm is an app that change the way you wake up in the mornings. By con
 
 ## Screenshots
 
-![screenshots](https://github.com/Credwa/vivifiiy-alarm-app/blob/master/_static/viv-scr6.jpg)
-![screenshots](https://github.com/Credwa/vivifiiy-alarm-app/blob/master/_static/viv-scr5.jpg)
-![screenshots](https://github.com/Credwa/vivifiiy-alarm-app/blob/master/_static/viv-scr1.jpg)
-![screenshots](https://github.com/Credwa/vivifiiy-alarm-app/blob/master/_static/viv-scr3.jpg)
-![screenshots](https://github.com/Credwa/vivifiiy-alarm-app/blob/master/_static/viv-scr2.jpg)
+![screenshots](https://github.com/Credwa/vivifiiy-alarm-app/blob/master/_static/viv-screenshots.jpg)
 
 **Table of Contents**
 
