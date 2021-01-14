@@ -48,7 +48,7 @@ export default function BottomTabNavigator() {
         name="Alarms"
         component={AlarmsTabNavigator}
         options={{
-          tabBarIcon: ({ color }) => <Ionicons name="md-alarm" size={26} color={color} />
+          tabBarIcon: ({ color }) => <Ionicons name="md-alarm-outline" size={26} color={color} />
         }}
       />
       {/* <BottomTab.Screen

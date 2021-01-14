@@ -6,16 +6,32 @@ import { Nunito_400Regular, Nunito_600SemiBold, useFonts as useFontsNunito } fro
 import { Roboto_400Regular, Roboto_500Medium, useFonts as useFontsRoboto } from '@expo-google-fonts/roboto';
 import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import useLoadCredentials from '@/hooks/useLoadCredentials';
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
-
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { registerForPushNotificationsAsync } from '@/services/notification.service';
+import { getAvailableDevice, playTrackAsync } from '@/services/spotify.service';
+import * as Notifications from 'expo-notifications';
+import useStore from '@/store/settings';
 const queryClient = new QueryClient();
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: false
+  })
+});
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
+  const [expoPushToken, setExpoPushToken] = useState('');
+  const [notification, setNotification] = useState(false);
+  const getSetting = useStore((state) => state.getSetting);
+  const notificationListener = useRef();
+  const responseListener = useRef();
   const isAlarmsLoaded = useLoadAlarms();
   const isCredentialsLoaded = useLoadCredentials();
   const isSettingsLoaded = useLoadSettings();
@@ -24,6 +40,31 @@ export default function App() {
 
   if (robotoError) throw robotoError;
   if (nunitoError) throw nunitoError;
+
+  useEffect(() => {
+    // @ts-ignore
+    registerForPushNotificationsAsync().then((token) => setExpoPushToken(token));
+
+    // @ts-ignore
+    notificationListener.current = Notifications.addNotificationReceivedListener(async (notification) => {
+      // @ts-ignore
+      const track = getSetting('track');
+      let device = getSetting('deviceSaved') ?? (await getAvailableDevice());
+      console.log(device);
+      playTrackAsync({ uri: track.song.uri, deviceId: device.id as string });
+    });
+    // @ts-ignore
+    responseListener.current = Notifications.addNotificationResponseReceivedListener((response) => {
+      // console.log(response);
+    });
+
+    return () => {
+      // @ts-ignore
+      Notifications.removeNotificationSubscription(notificationListener);
+      // @ts-ignore
+      Notifications.removeNotificationSubscription(responseListener);
+    };
+  }, []);
 
   useEffect(() => {
     try {

@@ -166,7 +166,7 @@ export default function HomeTabScreen() {
             text="Create alarm"
             onPress={onCreateAlarm}
             iconPosition="right"
-            icon={<Ionicons name="md-alarm" size={22} />}
+            icon={<Ionicons name="md-alarm-outline" size={22} />}
             paddingHorizontal={{ left: 65, right: 65 }}
           />
         )}

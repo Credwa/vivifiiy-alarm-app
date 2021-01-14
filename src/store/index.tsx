@@ -2,6 +2,7 @@ import { AlarmInterface } from '@/interfaces';
 import { alarmObject, meridiem, twelveHrTime } from '@/types';
 import create from 'zustand';
 import { updateAlarms } from '@/services/alarm.service';
+import { scheduleAlarmNotification } from '@/services/notification.service';
 
 type State = {
   timeStandard: string;
@@ -29,10 +30,21 @@ const useStore = create<State>((set, get) => ({
   setHour: (newHour: string) => set(() => ({ hour: newHour })),
   setMinute: (newMinute: string) => set(() => ({ minute: newMinute })),
   setMeridiem: (newMeridiem: meridiem) => set(() => ({ meridiem: newMeridiem })),
-  setAlarms: (newAlarms: alarmObject) => set(() => ({ alarms: newAlarms })),
+  setAlarms: (newAlarms: alarmObject) =>
+    set(() => {
+      for (const alarm in newAlarms) {
+        if (newAlarms[alarm].active) {
+          scheduleAlarmNotification(newAlarms[alarm]);
+        }
+      }
+      return { alarms: newAlarms };
+    }),
   setAlarm: (key: string, value: AlarmInterface) => {
     const newAlarms = { ...get().alarms };
     newAlarms[key] = value;
+    if (value.active) {
+      scheduleAlarmNotification(value);
+    }
     updateAlarms(newAlarms).catch((e) => {
       console.log(e);
     });

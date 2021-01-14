@@ -28,7 +28,6 @@ export default function Alarm({ nearestActiveAlarm, style }: AlarmProps) {
       <View style={styles.timeView}>
         <MinuteView data={generateTimerArray(59, true, 2)} initValue={nearestActiveAlarm.minute} />
       </View>
-
       <MeridiemView data={['AM', 'PM']} initValue={nearestActiveAlarm.meridiem} />
     </View>
   );

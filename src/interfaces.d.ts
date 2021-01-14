@@ -3,6 +3,7 @@
  */
 
 import { twelveHrTime } from '@/types';
+import { Track } from './services/spotify.service';
 
 export interface AlarmInterface extends twelveHrTime {
   active: boolean;
@@ -17,6 +18,8 @@ export interface SettingsInterface {
   maxVolume: number;
   connectedMusicAccounts: Array<string>;
   deviceSaved: string;
+  trackkIndexSaved: number;
+  track: Track;
 }
 
 export interface MusicAccount {

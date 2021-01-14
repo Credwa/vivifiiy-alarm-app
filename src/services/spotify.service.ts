@@ -4,7 +4,7 @@ import { storageKeys } from '@/constants/Values';
 import { Credentials } from '@/types';
 import { format } from 'date-fns';
 import Constants from 'expo-constants';
-import Linking from 'expo-linking';
+import * as Linking from 'expo-linking';
 const TOKEN_ENDPOINT = 'https://7r7hha3pzk.execute-api.us-east-1.amazonaws.com/spotify-credential/spotify-credential';
 
 export type Track = {

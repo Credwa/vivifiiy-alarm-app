@@ -9,13 +9,10 @@ import useStore from '@/store/settings';
 import { resize } from '@/utils';
 import useSpotifyAuth from '@/hooks/useSpotifyAuth';
 import { MusicAccount } from '@/interfaces';
-import { setCredentialsAsync, fetchDevicesAsync } from '@/services/spotify.service';
-import { useQuery } from 'react-query';
-import Constants from 'expo-constants';
-
+import { setCredentialsAsync } from '@/services/spotify.service';
 interface MusicAccountListProps {}
 
-const musicAccountObject: Array<MusicAccount> = [
+const musicAccountList: Array<MusicAccount> = [
   {
     accountName: 'Spotify',
     accountIconUri: require('~/assets/images/spotify.png'),
@@ -38,11 +35,10 @@ const musicAccountObject: Array<MusicAccount> = [
 
 export default function MusicAccountList({}: MusicAccountListProps) {
   const { isAuthenticated, error, authenticateSpotifyAsync } = useSpotifyAuth();
-  const spotifyDevices = useQuery('devices', fetchDevicesAsync);
   const setCurrentUser = useStore((state) => state.setCurrentUser);
   const setSetting = useStore((state) => state.setSetting);
   const getSetting = useStore((state) => state.getSetting);
-  const [musicAccountsState, setMusicAccounts] = useState(musicAccountObject);
+  const [musicAccountsState, setMusicAccounts] = useState(musicAccountList);
   const connectedMusicAccounts = useStore.getState().getSetting('connectedMusicAccounts') || [];
   musicAccountsState.forEach((item) => {
     if (connectedMusicAccounts.includes(item.accountName) && item.available) {

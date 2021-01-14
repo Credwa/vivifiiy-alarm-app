@@ -2,7 +2,7 @@ import Background from '@/components/Background';
 import React, { useEffect, useState } from 'react';
 import VivText, { FontName } from '@/components/VivText';
 import Colors from '@/constants/Colors';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView, Alert } from 'react-native';
 import { AntDesign, FontAwesome, Ionicons, SimpleLineIcons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import VivCard from '@/components/VivCard';
@@ -56,19 +56,34 @@ export default function SettingsTabScreen({
   };
 
   const onDataPress = () => {
-    navigation.navigate('DataScreen');
+    sendAlert();
   };
 
   const onAccountDetailsPress = () => {
-    navigation.navigate('AccountDetailsScreen');
+    sendAlert();
   };
 
   const onHelpPress = () => {
-    navigation.navigate('HelpScreen');
+    sendAlert();
   };
 
   const onReportBugPress = () => {
-    navigation.navigate('ReportBugScreen');
+    sendAlert();
+  };
+
+  const sendAlert = () => {
+    Alert.alert(
+      `Not yet available`,
+      '',
+      [
+        {
+          text: 'Ok',
+          onPress: () => {},
+          style: 'cancel'
+        }
+      ],
+      { cancelable: true }
+    );
   };
 
   return (

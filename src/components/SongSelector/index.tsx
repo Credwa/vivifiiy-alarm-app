@@ -1,130 +1,107 @@
-import React, { useEffect, memo, useRef, useState } from 'react';
+import React, { useEffect, memo, useState } from 'react';
 import ScrollSelector from '@/components/ScrollSelector';
 import Colors from '@/constants/Colors';
 import VivText, { FontName } from '@/components/VivText';
-import { Dimensions, Platform } from 'react-native';
+import { Dimensions, ActivityIndicator } from 'react-native';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { debounce, resize } from '@/utils';
 import { useQuery } from 'react-query';
-import {
-  fetchDevicesAsync,
-  fetchTopTracksAsync,
-  getAvailableDevice,
-  playTrackAsync,
-  TopTrack
-} from '@/services/spotify.service';
-import * as Permissions from 'expo-permissions';
-import * as Notifications from 'expo-notifications';
+import { fetchTopTracksAsync, getAvailableDevice, TopTrack } from '@/services/spotify.service';
 import ItemText from '@/components/ScrollSelector/src/ItemText';
 import SelectedItem from '@/components/ScrollSelector/src/SelectedItem';
 import useStore from '@/store/settings';
-import Constants from 'expo-constants';
+import VivButton from '../VivButton';
+import useSpotifyAuth from '@/hooks/useSpotifyAuth';
+import { MusicAccount } from '@/interfaces';
 
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true,
-    shouldPlaySound: false,
-    shouldSetBadge: false
-  })
-});
+const musicAccountList: Array<MusicAccount> = [
+  {
+    accountName: 'Spotify',
+    accountIconUri: require('~/assets/images/spotify.png'),
+    available: true,
+    connected: false
+  },
+  {
+    accountName: 'Apple music',
+    accountIconUri: require('~/assets/images/apple.png'),
+    available: false,
+    connected: false
+  },
+  {
+    accountName: 'Amazon music',
+    accountIconUri: require('~/assets/images/amazon-music.png'),
+    available: false,
+    connected: false
+  }
+];
 
 export default memo(function SongSelector() {
-  const [expoPushToken, setExpoPushToken] = useState('');
-  const [notification, setNotification] = useState(false);
-  const notificationListener = useRef();
-  const responseListener = useRef();
+  const [defaultIndex, setDefaultIndex] = useState(1);
+  const [spotifyLoading, setSpotifyLoading] = useState(true);
+  const [musicAccountsState, setMusicAccounts] = useState(musicAccountList);
+  const { isAuthenticated, error, authenticateSpotifyAsync } = useSpotifyAuth();
   const spotifySongs = useQuery('topTracks', fetchTopTracksAsync);
   const setSetting = useStore((state) => state.setSetting);
-  const spotifyDevices = useQuery('devices', fetchDevicesAsync);
+  const getSetting = useStore((state) => state.getSetting);
   let spotifyTopSongsData: TopTrack[] = [];
   if (!spotifySongs.isFetching) spotifyTopSongsData = spotifySongs.data;
-  useEffect(() => {
-    fetchTopTracksAsync().then((songs) => {
-      // console.log(songs);
-      spotifyTopSongsData = songs;
-    });
-  }, []);
 
   useEffect(() => {
-    // @ts-ignore
-    registerForPushNotificationsAsync().then((token) => setExpoPushToken(token));
-    // @ts-ignore
-    notificationListener.current = Notifications.addNotificationReceivedListener((notification) => {
-      // @ts-ignore
-      setNotification(notification);
-    });
-    // @ts-ignore
-    responseListener.current = Notifications.addNotificationResponseReceivedListener((response) => {
-      console.log(response);
-    });
-
-    return () => {
-      // @ts-ignore
-      Notifications.removeNotificationSubscription(notificationListener);
-      // @ts-ignore
-      Notifications.removeNotificationSubscription(responseListener);
-    };
-  }, []);
-
-  async function schedulePushNotification() {
-    await Notifications.scheduleNotificationAsync({
-      content: {
-        title: "You've got mail! 📬",
-        body: 'Here is the notification body',
-        data: { data: 'goes here' }
-      },
-      trigger: { seconds: 2 }
-    });
-  }
-
-  async function registerForPushNotificationsAsync() {
-    let token;
-    if (Constants.isDevice) {
-      const { status: existingStatus } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
-      let finalStatus = existingStatus;
-      if (existingStatus !== 'granted') {
-        const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
-        finalStatus = status;
-      }
-      if (finalStatus !== 'granted') {
-        alert('Failed to get push token for push notification!');
-        return;
-      }
-      token = (await Notifications.getExpoPushTokenAsync()).data;
-      console.log(token);
-    } else {
-      alert('Must use physical device for Push Notifications');
-    }
-
-    if (Platform.OS === 'android') {
-      Notifications.setNotificationChannelAsync('default', {
-        name: 'default',
-        importance: Notifications.AndroidImportance.MAX,
-        vibrationPattern: [0, 250, 250, 250],
-        lightColor: '#FF231F7C'
+    fetchTopTracksAsync()
+      .then((songs) => {
+        spotifyTopSongsData = songs;
+        setSpotifyLoading(false);
+      })
+      .catch((e) => {
+        setSpotifyLoading(false);
       });
+  }, []);
+
+  useEffect(() => {
+    const trackIndexSaved = getSetting('trackIndexSaved');
+    if (trackIndexSaved) setDefaultIndex(trackIndexSaved);
+  });
+
+  const updateMusicAccount = (accountName: string, connected: boolean) => {
+    let newMusicAccountsState = musicAccountsState.map((account) => {
+      if (account.accountName === accountName && account.available) {
+        const tempAccount = account;
+        tempAccount.connected = connected;
+        return tempAccount;
+      }
+      return account;
+    });
+
+    setMusicAccounts(newMusicAccountsState);
+  };
+
+  const linkMusicAccount = (account: MusicAccount) => {
+    if (account.available) {
+      if (!account.connected) {
+        if (account.accountName === 'Spotify') {
+          setSpotifyLoading(true);
+          authenticateSpotifyAsync()
+            .then(() => {
+              let setting = getSetting('connectedMusicAccounts');
+              setSetting('connectedMusicAccounts', [...setting, 'Spotify']);
+              updateMusicAccount(account.accountName, true);
+              setSpotifyLoading(false);
+            })
+            .catch(() => {
+              updateMusicAccount(account.accountName, false);
+              setSpotifyLoading(false);
+            });
+        }
+      }
     }
+  };
 
-    return token;
-  }
-
-  const onSongChange = debounce(async (track: TopTrack) => {
+  const onSongChange = debounce(async (track: TopTrack, index) => {
     let device = await getAvailableDevice();
     if (device) {
       setSetting('savedDevice', device);
-      playTrackAsync({ uri: track.song.uri, deviceId: device.id as string });
-      await schedulePushNotification();
-      Notifications.scheduleNotificationAsync({
-        content: {
-          title: "You've got mail! 📬",
-          body: 'Open the notification to read them all',
-          sound: 'email-sound.wav' // <- for Android below 8.0
-        },
-        trigger: {
-          seconds: 2,
-          channelId: 'new-emails' // <- for Android 8.0+, see definition above
-        }
-      });
+      setSetting('track', track);
+      setSetting('trackIndexSaved', index);
     }
   }, 1000);
 
@@ -162,18 +139,35 @@ export default memo(function SongSelector() {
       >
         Up next...
       </VivText>
-      <ScrollSelector
-        dataSource={spotifyTopSongsData}
-        renderItem={renderItem}
-        overrideFontName={resize<FontName[]>(['Headline', 'Footnote'], ['Subhead', 'Caption'], ['Title1', 'Title2'])}
-        selectedIndex={1}
-        onValueChange={onSongChange}
-        wrapperWidth={Dimensions.get('window').width}
-        wrapperHeight={wp('30%')}
-        itemHeight={resize<number>(50, 45, 110)}
-        highlightColor={Colors.white}
-        highlightBorderWidth={0.001}
-      />
+      {spotifyLoading ? <ActivityIndicator size="large" color={Colors.orangeMedium} /> : null}
+      {spotifyTopSongsData.length && !spotifyLoading ? (
+        <ScrollSelector
+          dataSource={spotifyTopSongsData}
+          renderItem={renderItem}
+          overrideFontName={resize<FontName[]>(['Headline', 'Footnote'], ['Subhead', 'Caption'], ['Title1', 'Title2'])}
+          selectedIndex={defaultIndex}
+          onValueChange={onSongChange}
+          wrapperWidth={Dimensions.get('window').width}
+          wrapperHeight={wp('30%')}
+          itemHeight={resize<number>(50, 45, 110)}
+          highlightColor={Colors.white}
+          highlightBorderWidth={0.001}
+        />
+      ) : null}
+      {!spotifyLoading && !spotifyTopSongsData.length ? (
+        <VivButton
+          onPress={() => {
+            linkMusicAccount(musicAccountList[0]);
+          }}
+          paddingHorizontal={{ right: 30, left: 15 }}
+          iconPosition="left"
+          style={{ marginTop: 25 }}
+          type="separated"
+          separator
+          color="Spotify"
+          text="Connect spotify"
+        />
+      ) : null}
     </>
   );
 });

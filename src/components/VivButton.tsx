@@ -1,6 +1,6 @@
 import Colors from '@/constants/Colors';
 import React from 'react';
-import { StyleSheet, Pressable, GestureResponderEvent, View } from 'react-native';
+import { StyleSheet, Pressable, GestureResponderEvent, View, Image } from 'react-native';
 import VivText, { FontName } from '@/components/VivText';
 import { resize } from '@/utils';
 
@@ -17,7 +17,7 @@ interface ButtonProps {
   type?: 'basic' | 'separated';
   paddingHorizontal?: PaddingHorizontal;
   paddingVertical?: number;
-  color?: 'Primary' | 'Secondary' | 'Default';
+  color?: 'Primary' | 'Secondary' | 'Spotify' | 'Default';
   onPress?: ((event: GestureResponderEvent) => void) | undefined;
 }
 
@@ -31,6 +31,8 @@ export default function VivButton(props: ButtonProps) {
     case 'Secondary':
       color = { default: Colors.orangeMedium, pressed: Colors.orangeMedium2 };
       break;
+    case 'Spotify':
+      color = { default: '#1DB954', pressed: '#45ba69' };
     default:
       color = color;
   }
@@ -91,7 +93,17 @@ export default function VivButton(props: ButtonProps) {
       {({ pressed }) => (
         <>
           <View style={[styles.iconSeparatedView, { paddingVertical: props.paddingVertical || 13.5 }]}>
-            {props.icon}
+            {props.color === 'Spotify' ? (
+              <Image
+                style={{
+                  height: resize<number>(24, 20, 34),
+                  width: resize<number>(24, 20, 34)
+                }}
+                source={require('~/assets/images/spotify.png')}
+              />
+            ) : (
+              props.icon
+            )}
           </View>
           <VivText
             fontName={resize<FontName>('Headline', 'Headline', 'Title3')}
@@ -131,7 +143,7 @@ const styles = StyleSheet.create({
   },
   iconSeparatedView: {
     borderRightWidth: 0.3,
-    borderColor: Colors.greyLight2,
+    borderColor: Colors.blueMediumCardBody,
     paddingHorizontal: 18
   },
   textSeparated: {

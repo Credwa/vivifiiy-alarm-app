@@ -8,8 +8,8 @@
     "scheme": "vivifiiyalarmapp",
     "splash": {
       "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "cover",
+      "backgroundColor": "#100F6"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
