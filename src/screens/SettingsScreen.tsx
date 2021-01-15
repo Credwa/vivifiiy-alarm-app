@@ -12,6 +12,7 @@ import { SettingsTabParamList } from '@/types';
 import { StackScreenProps } from '@react-navigation/stack';
 import useStore from '@/store/settings';
 import { debounce, resize } from '@/utils';
+import * as Linking from 'expo-linking';
 
 export default function SettingsTabScreen({
   navigation
@@ -56,7 +57,7 @@ export default function SettingsTabScreen({
   };
 
   const onDataPress = () => {
-    sendAlert();
+    Linking.openURL('https://www.privacy-policy-template.com/live.php?token=jQx8HpKBPfQOtcLdtOhO6wjl6t98ocTs');
   };
 
   const onAccountDetailsPress = () => {
@@ -64,11 +65,12 @@ export default function SettingsTabScreen({
   };
 
   const onHelpPress = () => {
-    sendAlert();
+    Linking.openURL('mailto:craigroe7@gmail.com?subject=Help me!');
   };
 
   const onReportBugPress = () => {
     sendAlert();
+    Linking.openURL('mailto:craigroe7@gmail.com?subject=Found a bug');
   };
 
   const sendAlert = () => {
@@ -155,17 +157,17 @@ export default function SettingsTabScreen({
             />
 
             <SettingCardItem
-              title="Data"
+              title="Privacy policy"
               horizontalRule
               onCardItemPress={onDataPress}
               icon={<Ionicons name="ios-cloud-outline" size={24} color={Colors.greyLight2} />}
             />
-
+            {/*
             <SettingCardItem
               title="Account details"
               onCardItemPress={onAccountDetailsPress}
               icon={<AntDesign name="user" size={24} color={Colors.greyLight2} />}
-            />
+            /> */}
           </VivCard>
 
           <VivCard

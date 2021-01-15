@@ -30,7 +30,7 @@ export default function DataScreen({ navigation }: StackScreenProps<SettingsTabP
               color={Colors.greyLight1}
               style={{ marginLeft: -15 }}
             >
-              Data
+              Privacy policy
             </VivText>
             <Pressable onPress={navigation.goBack} style={{ opacity: 0 }}>
               {({ pressed }) => (
