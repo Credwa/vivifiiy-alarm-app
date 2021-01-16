@@ -20,7 +20,6 @@ export async function registerForPushNotificationsAsync() {
       return;
     }
     token = (await Notifications.getExpoPushTokenAsync()).data;
-    console.log(token);
   } else {
     alert('Must use physical device for Push Notifications');
   }
@@ -47,6 +46,5 @@ export async function schedulePushNotification(content: NotificationContentInput
 export async function scheduleAlarmNotification(alarm: AlarmInterface) {
   const timeTill = getTimeTillAlarm(alarm);
   const seconds = timeTill.hour * 3600 + timeTill.minute * 60;
-  console.log('seconds:', seconds);
   schedulePushNotification({ title: 'Vivifiiy alarm' }, { seconds: seconds === 0 ? 30 : seconds });
 }

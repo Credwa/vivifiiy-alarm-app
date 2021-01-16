@@ -96,8 +96,8 @@ export default function VivButton(props: ButtonProps) {
             {props.color === 'Spotify' ? (
               <Image
                 style={{
-                  height: resize<number>(24, 20, 34),
-                  width: resize<number>(24, 20, 34)
+                  height: resize<number>(24, 20, 44),
+                  width: resize<number>(24, 20, 44)
                 }}
                 source={require('~/assets/images/spotify.png')}
               />

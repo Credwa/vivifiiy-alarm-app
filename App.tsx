@@ -50,13 +50,12 @@ export default function App() {
       // @ts-ignore
       const track = getSetting('track');
       let device = getSetting('deviceSaved') ?? (await getAvailableDevice());
-      console.log(device);
       playTrackAsync({ uri: track.song.uri, deviceId: device.id as string });
     });
     // @ts-ignore
-    responseListener.current = Notifications.addNotificationResponseReceivedListener((response) => {
-      // console.log(response);
-    });
+    // responseListener.current = Notifications.addNotificationResponseReceivedListener((response) => {
+    //   // console.log(response);
+    // });
 
     return () => {
       // @ts-ignore

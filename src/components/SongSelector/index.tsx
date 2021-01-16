@@ -44,12 +44,12 @@ export default memo(function SongSelector() {
   const setSetting = useStore((state) => state.setSetting);
   const getSetting = useStore((state) => state.getSetting);
   let spotifyTopSongsData: TopTrack[] = [];
-  if (!spotifySongs.isFetching) spotifyTopSongsData = spotifySongs.data;
+  if (!spotifySongs.isFetching) spotifyTopSongsData = spotifySongs.data ?? [];
 
   useEffect(() => {
     fetchTopTracksAsync()
       .then((songs) => {
-        spotifyTopSongsData = songs;
+        spotifyTopSongsData = songs ?? [];
         setSpotifyLoading(false);
       })
       .catch((e) => {
@@ -161,7 +161,7 @@ export default memo(function SongSelector() {
           }}
           paddingHorizontal={{ right: 30, left: 15 }}
           iconPosition="left"
-          style={{ marginTop: 25 }}
+          style={{ marginTop: 25, marginBottom: 10 }}
           type="separated"
           separator
           color="Spotify"

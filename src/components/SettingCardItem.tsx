@@ -44,6 +44,9 @@ export default function SettingCardItem({
   onCardItemPress
 }: SettingCardItemProps) {
   const [snoozeNumber, setSnoozeNumber] = useState(buttonsValue as number | 10);
+  if (!snoozeNumber) {
+    setSnoozeNumber(10);
+  }
   let itemRightComponent: React.ReactNode;
 
   const addTime = () => {

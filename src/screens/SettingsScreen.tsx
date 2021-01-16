@@ -158,7 +158,6 @@ export default function SettingsTabScreen({
 
             <SettingCardItem
               title="Privacy policy"
-              horizontalRule
               onCardItemPress={onDataPress}
               icon={<Ionicons name="ios-cloud-outline" size={24} color={Colors.greyLight2} />}
             />

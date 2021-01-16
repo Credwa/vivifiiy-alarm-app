@@ -76,10 +76,6 @@ export type TopTrack = {
 export const setCredentialsAsync = async (credentials: Credentials | null) => {
   try {
     const jsonValue = JSON.stringify(credentials);
-    if (credentials) {
-      console.log('last refreshed', format(new Date(<string>credentials?.lastRefreshed), 'MM/dd/yyyy h:mm:ss'));
-    }
-    // console.log()
     await AsyncStorage.setItem(storageKeys.credentials, jsonValue);
   } catch (e) {
     // saving error
@@ -114,7 +110,6 @@ export const getCredentialsAsync = async () => {
   let credentials: string | null;
   try {
     credentials = await AsyncStorage.getItem(storageKeys.credentials);
-    console.log(credentials);
     return credentials != null ? JSON.parse(credentials) : null;
   } catch (e) {
     // getting error
