@@ -41,29 +41,29 @@ export default function App() {
   if (robotoError) throw robotoError;
   if (nunitoError) throw nunitoError;
 
-  useEffect(() => {
-    // @ts-ignore
-    registerForPushNotificationsAsync().then((token) => setExpoPushToken(token));
+  // useEffect(() => {
+  //   // @ts-ignore
+  //   registerForPushNotificationsAsync().then((token) => setExpoPushToken(token));
 
-    // @ts-ignore
-    notificationListener.current = Notifications.addNotificationReceivedListener(async (notification) => {
-      // @ts-ignore
-      const track = getSetting('track');
-      let device = getSetting('deviceSaved') ?? (await getAvailableDevice());
-      playTrackAsync({ uri: track.song.uri, deviceId: device.id as string });
-    });
-    // @ts-ignore
-    // responseListener.current = Notifications.addNotificationResponseReceivedListener((response) => {
-    //   // console.log(response);
-    // });
+  //   // @ts-ignore
+  //   notificationListener.current = Notifications.addNotificationReceivedListener(async (notification) => {
+  //     // @ts-ignore
+  //     const track = getSetting('track');
+  //     let device = getSetting('deviceSaved') ?? (await getAvailableDevice());
+  //     playTrackAsync({ uri: track.song.uri, deviceId: device.id as string });
+  //   });
+  //   // @ts-ignore
+  //   // responseListener.current = Notifications.addNotificationResponseReceivedListener((response) => {
+  //   //   // console.log(response);
+  //   // });
 
-    return () => {
-      // @ts-ignore
-      Notifications.removeNotificationSubscription(notificationListener);
-      // @ts-ignore
-      Notifications.removeNotificationSubscription(responseListener);
-    };
-  }, []);
+  //   return () => {
+  //     // @ts-ignore
+  //     Notifications.removeNotificationSubscription(notificationListener);
+  //     // @ts-ignore
+  //     Notifications.removeNotificationSubscription(responseListener);
+  //   };
+  // }, []);
 
   useEffect(() => {
     try {
