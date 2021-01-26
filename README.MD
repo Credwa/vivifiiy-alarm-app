@@ -4,6 +4,12 @@
 
 Vivifiiy Alarm is an app that change the way you wake up in the mornings. By connecting your favorite music app (such as spotify, apple music, etc.) AI selects the best songs and volume to wake you up to every morning automatically.
 
+[Figma Wifeframes](https://www.figma.com/file/wsOFu181TlWluQF4NyBzUM/Wireframes?node-id=0%3A1)
+[Figma Hi-fidelity mockups](https://www.figma.com/file/BbwtLoj5Dxcu61FFGXNkhh/Prototype?node-id=0%3A1)
+
+[Play store](https://play.google.com/store/apps/details?id=com.credwa.vivifiiyalarmapp)
+[App store](#)
+
 ## Mockups
 
 ![LofiMockups](https://github.com/Credwa/vivifiiy-alarm-app/blob/master/_static/lofi-mockup.PNG)
